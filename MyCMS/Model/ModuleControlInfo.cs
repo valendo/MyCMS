@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MyCMS.Model
 {
-    public class ModuleControl
+    public class ModuleControlInfo
     {
         [Key]
         public int ModuleControlId { get; set; }

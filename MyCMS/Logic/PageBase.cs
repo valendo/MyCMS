@@ -23,8 +23,9 @@ namespace MyCMS.Logic
                     control.ModuleId = ModuleId;
                     sb.AppendFormat("<div class=\"dragbox\" id=\"PageModule{0}\" >", PageModuleId);
                     sb.AppendFormat("<h2>{0}", ModuleTitle);
-                    sb.AppendFormat("<a href=\"#\" class=\"delete opIcons\"> </a>");
-                    sb.AppendFormat("<a href=\"#\" class=\"maxmin opIcons\"> </a>");
+                    sb.AppendFormat("<a class=\"delete opIcons\"> </a>");
+                    sb.AppendFormat("<a class=\"maxmin opIcons\"> </a>");
+                    sb.AppendFormat("<a class=\"opIcons\" onclick=\"openPopup('Edit module','/Admin/HandleModuleControls.aspx?mid={0}');\"> </a>", ModuleId);
                     sb.AppendFormat("</h2>");
                     sb.AppendFormat("<div class=\"dragbox-content\" >");
                     pchPane.Controls.Add(new LiteralControl(sb.ToString()));

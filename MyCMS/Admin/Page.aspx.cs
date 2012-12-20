@@ -54,7 +54,7 @@ namespace MyCMS.Admin
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            var p = new MyCMS.Model.Page();
+            var p = new MyCMS.Model.PageInfo();
             p.PageName = txtPageName.Text;
             p.Title = txtTittle.Text;
             p.ParentId = int.Parse(ddlParentPage.SelectedValue);

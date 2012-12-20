@@ -6,6 +6,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using MyCMS;
+using System.Data.Entity;
+using MyCMS.Model;
 
 namespace MyCMS
 {
@@ -16,6 +18,8 @@ namespace MyCMS
             // Code that runs on application startup
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
+
+            Database.SetInitializer<MyCMSContext>(null);
         }
 
         void Application_End(object sender, EventArgs e)

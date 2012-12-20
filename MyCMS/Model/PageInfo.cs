@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MyCMS.Model
 {
-    public class Page
+    public class PageInfo
     {
         [Key]
         public int PageId { get; set; }

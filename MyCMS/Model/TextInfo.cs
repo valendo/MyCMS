@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MyCMS.Model
 {
-    public class Text
+    public class TextInfo
     {
         [Key]
         public int TextId { get; set; }

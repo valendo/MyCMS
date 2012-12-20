@@ -27,13 +27,13 @@ namespace MyCMS
         }
 
         [WebMethod]
-        public List<ModuleDefinition> GetModules()
+        public List<ModuleDefinitionInfo> GetModules()
         {
             return db.ModuleDefinitions.ToList();
         }
 
         [WebMethod]
-        public List<ModuleControl> GetControls(int ModuleDefId)
+        public List<ModuleControlInfo> GetControls(int ModuleDefId)
         {
             return db.ModuleControls.Where(t => t.ModuleDefId == ModuleDefId).ToList();
         }
@@ -72,13 +72,13 @@ namespace MyCMS
         [WebMethod]
         public bool DragModules(int ModuleDefId, int PageId, string PaneName)
         {
-            Module m = new Module();
+            ModuleInfo m = new ModuleInfo();
             m.ModuleDefId = ModuleDefId;
             db.Modules.Add(m);
             db.SaveChanges();
             int ModuleId = db.Modules.OrderByDescending(t => t.ModuleId).FirstOrDefault().ModuleId;
             int ModuleOrder = db.PageModules.OrderByDescending(t => t.ModuleOrder).FirstOrDefault().ModuleOrder;
-            PageModule pm = new PageModule();
+            PageModuleInfo pm = new PageModuleInfo();
             pm.PageId = PageId;
             pm.ModuleId = ModuleId;
             pm.PaneName = PaneName;

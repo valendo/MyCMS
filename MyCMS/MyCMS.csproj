@@ -129,6 +129,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\HandleModuleControls.aspx" />
     <Content Include="Admin\Page.aspx" />
     <Content Include="Cmd.asmx" />
     <Content Include="Contact.aspx" />
@@ -252,6 +253,13 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\HandleModuleControls.aspx.cs">
+      <DependentUpon>HandleModuleControls.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\HandleModuleControls.aspx.designer.cs">
+      <DependentUpon>HandleModuleControls.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Page.aspx.cs">
       <DependentUpon>Page.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -330,13 +338,13 @@
     <Compile Include="Logic\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Model\ModuleControl.cs" />
-    <Compile Include="Model\ModuleDefinition.cs" />
-    <Compile Include="Model\Module.cs" />
+    <Compile Include="Model\ModuleControlInfo.cs" />
+    <Compile Include="Model\ModuleDefinitionInfo.cs" />
+    <Compile Include="Model\ModuleInfo.cs" />
     <Compile Include="Model\MyCMSContext.cs" />
-    <Compile Include="Model\PageModule.cs" />
-    <Compile Include="Model\Page.cs" />
-    <Compile Include="Model\Text.cs" />
+    <Compile Include="Model\PageModuleInfo.cs" />
+    <Compile Include="Model\PageInfo.cs" />
+    <Compile Include="Model\TextInfo.cs" />
     <Compile Include="Modules\Text\TextEdit.ascx.cs">
       <DependentUpon>TextEdit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

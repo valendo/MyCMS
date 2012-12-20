@@ -39,7 +39,9 @@
         width:13px;
         margin:0px 2px;
         }
-
+            .opIcons:hover {
+                cursor:pointer !important;
+            }
         .maxmin
         {
 	        background-position:-26px 1px;
