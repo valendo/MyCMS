@@ -7,11 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyCMS
-{
-
-    public partial class About
-    {
-
+namespace MyCMS {
+    
+    
+    public partial class About {
+        
+        /// <summary>
+        /// PageTree control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::MyCMS.UserControls.PageTree PageTree;
     }
 }
