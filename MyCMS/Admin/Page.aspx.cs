@@ -1,6 +1,7 @@
 ﻿using MyCMS.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,9 @@ namespace MyCMS.Admin
         {
             if (!IsPostBack)
             {
+                string action = Request.QueryString["act"].ToString();
+                int pageId = int.Parse(Request.QueryString["pid"].ToString());
+
                 BindingParentPages();
                 DirectoryInfo dirTheme = new DirectoryInfo(Server.MapPath("~/Themes"));
                 List<string> Folders = new List<string>();
@@ -25,9 +29,37 @@ namespace MyCMS.Admin
                 }
                 ddlTheme.DataSource = Folders;
                 ddlTheme.DataBind();
+                BindingLayout();
+
+                if (action == "update")
+                {
+                    BindingData(pageId);
+                }
+                else if (action == "delete")
+                {
+                    var p = db.Pages.Find(pageId);
+                    db.Pages.Remove(p);
+                    db.SaveChanges();
+                    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), UniqueID, "closePopup();", true);
+                }
                 
             }
+        }
+
+        private void BindingData(int PageId)
+        { 
+            var p = db.Pages.Where(t => t.PageId == PageId).FirstOrDefault();
+            txtPageName.Text = p.PageName;
+            txtTitle.Text = p.Title;
+            ddlParentPage.SelectedValue = p.ParentId.ToString();
+            txtPageSEO.Text = p.PageSEO;
+            txtPageOrder.Text = p.PageOrder.ToString();
+            chkIsVisible.Checked = p.IsVisible;
+            txtDescription.Text = p.Description;
+            txtKeywords.Text = p.Keywords;
+            ddlTheme.SelectedValue = p.Theme;
             BindingLayout();
+            ddlLayout.SelectedValue = p.Layout;
         }
 
         private void BindingParentPages()
@@ -54,9 +86,15 @@ namespace MyCMS.Admin
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            string action = Request.QueryString["act"].ToString();
+            int pageId = int.Parse(Request.QueryString["pid"].ToString());
             var p = new MyCMS.Model.PageInfo();
+            if (action == "update")
+            {
+                p = db.Pages.Find(pageId);
+            }
             p.PageName = txtPageName.Text;
-            p.Title = txtTittle.Text;
+            p.Title = txtTitle.Text;
             p.ParentId = int.Parse(ddlParentPage.SelectedValue);
             p.PageSEO = txtPageSEO.Text;
             p.PageOrder = int.Parse(txtPageOrder.Text);
@@ -65,8 +103,21 @@ namespace MyCMS.Admin
             p.Keywords = txtKeywords.Text;
             p.Theme = ddlTheme.SelectedValue;
             p.Layout = ddlLayout.SelectedValue;
-            db.Pages.Add(p);
+            if (action == "update")
+            {
+                db.Entry(p).State = EntityState.Modified;
+            }
+            else
+            {
+                db.Pages.Add(p);
+            }
             db.SaveChanges();
+            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), UniqueID, "closePopup();", true);
+        }
+
+        protected void ddlTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindingLayout();
         }
     }
 }

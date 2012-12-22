@@ -27,18 +27,6 @@ namespace MyCMS
         }
 
         [WebMethod]
-        public List<ModuleDefinitionInfo> GetModules()
-        {
-            return db.ModuleDefinitions.ToList();
-        }
-
-        [WebMethod]
-        public List<ModuleControlInfo> GetControls(int ModuleDefId)
-        {
-            return db.ModuleControls.Where(t => t.ModuleDefId == ModuleDefId).ToList();
-        }
-
-        [WebMethod]
         public bool SortModules(string PageModuleId, string OldPane, string NewPane, string SortOrder)
         {
             int pageModuleId = int.Parse(PageModuleId.Replace("PageModule", ""));
@@ -70,7 +58,7 @@ namespace MyCMS
             return true;
         }
         [WebMethod]
-        public bool DragModules(int ModuleDefId, int PageId, string PaneName)
+        public string DragModules(int ModuleDefId, int PageId, string PaneName)
         {
             ModuleInfo m = new ModuleInfo();
             m.ModuleDefId = ModuleDefId;
@@ -86,6 +74,16 @@ namespace MyCMS
             pm.ModuleTitle = "Default";
             pm.DisplayTitle = true;
             db.PageModules.Add(pm);
+            db.SaveChanges();
+            return ModuleId.ToString();
+        }
+
+        [WebMethod]
+        public bool DeleteModule(string PageModuleId)
+        {
+            int pmi = int.Parse(PageModuleId.Replace("PageModule",""));
+            var pageModule = db.PageModules.Find(pmi);
+            db.PageModules.Remove(pageModule);
             db.SaveChanges();
             return true;
         }

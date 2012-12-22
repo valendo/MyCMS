@@ -42,6 +42,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="ASTreeView, Version=1.5.9.0, Culture=neutral, PublicKeyToken=521e0b4262a9001c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ASTreeView.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -190,6 +194,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
+    <Content Include="Images\DockPanel\hide.png" />
+    <Content Include="Images\DockPanel\show.png" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
@@ -201,9 +207,8 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
-    <Content Include="Modules\Text\TextEdit.ascx" />
-    <Content Include="Modules\Text\TextSettings.ascx" />
-    <Content Include="Modules\Text\TextView.ascx" />
+    <Content Include="Modules\Text\Edit.ascx" />
+    <Content Include="Modules\Text\View.ascx" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -211,9 +216,97 @@
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\MyScripts\asdropdowntreeview\dropdowntreeview.css" />
+    <Content Include="Scripts\MyScripts\asdropdowntreeview\images\windropdown-disabled.gif" />
+    <Content Include="Scripts\MyScripts\asdropdowntreeview\images\windropdown.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\astreeview.css" />
+    <Content Include="Scripts\MyScripts\astreeview\astreeview_packed.js" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-bottom-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-checkbox-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-checkbox-half-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-checkbox-unchecked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-dragDrop-indicator1.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-dragDrop-indicator2.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-folder-open.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-folder.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-li-bg.jpg" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-middle-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-minus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-node.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-plus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-root-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-top-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\images\astreeview-vertical-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\default.css" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-bottom-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-checkbox-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-checkbox-half-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-checkbox-unchecked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-dragDrop-indicator1.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-dragDrop-indicator2.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-folder-open.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-folder.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-middle-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-minus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-node.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-plus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-root-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-top-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\default\images\astreeview-vertical-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-bottom-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-checkbox-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-checkbox-half-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-checkbox-unchecked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-dragDrop-indicator1.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-dragDrop-indicator2.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-folder-open.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-folder.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-middle-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-minus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-node.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-plus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-root-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-top-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\images\astreeview-vertical-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\macOS\macOS.css" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-bottom-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-checkbox-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-checkbox-half-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-checkbox-unchecked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-dragDrop-indicator1.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-dragDrop-indicator2.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-folder-open.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-folder.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-middle-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-minus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-node.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-plus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-root-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-top-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\images\astreeview-vertical-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\right-left\right-left.css" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-bottom-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-checkbox-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-checkbox-half-checked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-checkbox-unchecked.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-dragDrop-indicator1.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-dragDrop-indicator2.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-folder-open.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-folder.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-middle-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-minus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-node.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-plus.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-root-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-top-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\images\astreeview-vertical-line.gif" />
+    <Content Include="Scripts\MyScripts\astreeview\themes\vista\vista.css" />
+    <Content Include="Scripts\MyScripts\contextmenu\contextmenu.css" />
+    <Content Include="Scripts\MyScripts\contextmenu\contextmenu_packed.js" />
+    <Content Include="Scripts\MyScripts\dialog.js" />
     <Content Include="Scripts\MyScripts\dockpanel.js" />
     <Content Include="Scripts\MyScripts\dragdrop.js" />
-    <Content Include="Scripts\MyScripts\dwindow.js" />
+    <Content Include="Scripts\MyScripts\jquery.dynatree-1.2.2.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -239,14 +332,30 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Styles\contextmenu\images\cut.png" />
+    <Content Include="Styles\contextmenu\images\door.png" />
+    <Content Include="Styles\contextmenu\images\page_white_copy.png" />
+    <Content Include="Styles\contextmenu\images\page_white_delete.png" />
+    <Content Include="Styles\contextmenu\images\page_white_edit.png" />
+    <Content Include="Styles\contextmenu\images\page_white_paste.png" />
+    <Content Include="Styles\contextmenu\jquery.contextMenu-custom.js" />
+    <Content Include="Styles\contextmenu\jquery.contextMenu.css" />
     <Content Include="Styles\dockpanel.css" />
     <Content Include="Styles\dragdrop.css" />
     <Content Include="Styles\popupbox.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Styles\dynatree\icons-rtl.gif" />
+    <Content Include="Styles\dynatree\icons.gif" />
+    <Content Include="Styles\dynatree\loading.gif" />
+    <Content Include="Styles\dynatree\ui.dynatree.css" />
+    <Content Include="Styles\dynatree\vline-rtl.gif" />
+    <Content Include="Styles\dynatree\vline.gif" />
     <Content Include="Themes\Custom\2Columns.ascx" />
     <Content Include="Themes\Custom\Index.ascx" />
     <Content Include="Themes\Default\Detail.ascx" />
     <Content Include="Themes\Default\Home.ascx" />
     <Content Include="UserControls\DockPanel.ascx" />
+    <Content Include="UserControls\PageTree.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -338,33 +447,25 @@
     <Compile Include="Logic\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Model\ModuleControlInfo.cs" />
     <Compile Include="Model\ModuleDefinitionInfo.cs" />
     <Compile Include="Model\ModuleInfo.cs" />
     <Compile Include="Model\MyCMSContext.cs" />
     <Compile Include="Model\PageModuleInfo.cs" />
     <Compile Include="Model\PageInfo.cs" />
     <Compile Include="Model\TextInfo.cs" />
-    <Compile Include="Modules\Text\TextEdit.ascx.cs">
-      <DependentUpon>TextEdit.ascx</DependentUpon>
+    <Compile Include="Modules\Text\Edit.ascx.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modules\Text\TextEdit.ascx.designer.cs">
-      <DependentUpon>TextEdit.ascx</DependentUpon>
+    <Compile Include="Modules\Text\Edit.ascx.designer.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Text\TextSettings.ascx.cs">
-      <DependentUpon>TextSettings.ascx</DependentUpon>
+    <Compile Include="Modules\Text\View.ascx.cs">
+      <DependentUpon>View.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modules\Text\TextSettings.ascx.designer.cs">
-      <DependentUpon>TextSettings.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Text\TextView.ascx.cs">
-      <DependentUpon>TextView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modules\Text\TextView.ascx.designer.cs">
-      <DependentUpon>TextView.ascx</DependentUpon>
+    <Compile Include="Modules\Text\View.ascx.designer.cs">
+      <DependentUpon>View.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -381,10 +482,16 @@
     <Compile Include="UserControls\DockPanel.ascx.designer.cs">
       <DependentUpon>DockPanel.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PageTree.ascx.cs">
+      <DependentUpon>PageTree.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\PageTree.ascx.designer.cs">
+      <DependentUpon>PageTree.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\DockPanel\" />
     <Folder Include="Images\DragDrop\" />
   </ItemGroup>
   <ItemGroup>
@@ -392,6 +499,9 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\MyScripts\asdropdowntreeview\images\Thumbs.db" />
+    <Content Include="Styles\dynatree\Thumbs.db" />
+    <Content Include="Styles\contextmenu\images\Thumbs.db" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

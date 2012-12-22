@@ -20,6 +20,9 @@ namespace MyCMS
             AuthConfig.RegisterOpenAuth();
 
             Database.SetInitializer<MyCMSContext>(null);
+
+            // Add Routes.
+            RegisterRoutes(RouteTable.Routes);
         }
 
         void Application_End(object sender, EventArgs e)
@@ -32,6 +35,20 @@ namespace MyCMS
         {
             // Code that runs when an unhandled error occurs
 
+        }
+
+        void RegisterRoutes(RouteCollection routes)
+        {
+            routes.MapPageRoute(
+                "PageRoute",
+                "{pageSEO}",
+                "~/Default.aspx"
+            );
+            //routes.MapPageRoute(
+            //    "ProductByNameRoute",
+            //    "Product/{productName}",
+            //    "~/ProductDetails.aspx"
+            //);
         }
     }
 }

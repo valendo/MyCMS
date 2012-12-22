@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCMS.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace MyCMS.Logic
 {
     public class PageBase : System.Web.UI.Page
     {
+        public MyCMSContext db = new MyCMSContext();
         public void LoadControl(UserControl layoutControl, string ControlSrc, string PaneName, int ModuleId, string ModuleTitle, int PageModuleId)
         {
             StringBuilder sb = new StringBuilder();
@@ -19,7 +21,7 @@ namespace MyCMS.Logic
                 PlaceHolder pchPane = (PlaceHolder)layoutControl.FindControl(PaneName);
                 if (pchPane != null)
                 {
-                    BaseUserControl control = this.Page.LoadControl("~/" + ControlSrc) as BaseUserControl;
+                    BaseUserControl control = this.Page.LoadControl(ControlSrc) as BaseUserControl;
                     control.ModuleId = ModuleId;
                     sb.AppendFormat("<div class=\"dragbox\" id=\"PageModule{0}\" >", PageModuleId);
                     sb.AppendFormat("<h2>{0}", ModuleTitle);
@@ -33,6 +35,23 @@ namespace MyCMS.Logic
                     pchPane.Controls.Add(new LiteralControl("</div></div>"));
                 }
             }
+        }
+
+        public int GetPageId(string pageSEO)
+        {
+            if (!string.IsNullOrEmpty(pageSEO))
+            {
+                var page = db.Pages.Where(t => t.PageSEO == pageSEO).ToList();
+                if (page.Count > 0)
+                {
+                    return page.FirstOrDefault().PageId;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            return -1;
         }
     }
 }

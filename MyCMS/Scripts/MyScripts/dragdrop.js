@@ -7,9 +7,22 @@ function () {
 
     $('a.delete').click(
 	function () {
-	    var sel = confirm('do you want to delete the widget?');
+	    var sel = confirm('Do you want to delete this module?');
 	    if (sel) {
-	        //del code here
+	        var pageModuleId = $(this).parent().parent().attr("id");
+	        $.ajax({
+	            type: "POST",
+	            url: "Cmd.asmx/DeleteModule",
+	            data: "{'PageModuleId':'" + pageModuleId + "'}",
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function (response) {
+	                self.location.reload();
+	            },
+	            failure: function (msg) {
+	                alert(msg);
+	            }
+	        });
 	    }
 	}
 	);
@@ -48,7 +61,7 @@ function () {
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    //alert("ok");
+                    //alert(response);
                 },
                 failure: function (msg) {
                     alert(msg);

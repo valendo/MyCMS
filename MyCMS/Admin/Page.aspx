@@ -5,26 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style type="text/css">
-        .auto-style1
-        {
-            height: 23px;
-        }
-        .auto-style2
-        {
-            height: 23px;
-            width: 136px;
-        }
-        .auto-style3
-        {
-            width: 136px;
-        }
-    </style>
+    <script src="../Scripts/MyScripts/dialog.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-    
+        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
         <table style="width:100%;">
             <tr>
                 <td class="auto-style2">Page Name</td>
@@ -35,7 +21,7 @@
             <tr>
                 <td class="auto-style3">Title</td>
                 <td>
-                    <asp:TextBox ID="txtTittle" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -78,7 +64,7 @@
             <tr>
                 <td class="auto-style3">Theme</td>
                 <td>
-                    <asp:DropDownList ID="ddlTheme" runat="server" AutoPostBack="True">
+                    <asp:DropDownList ID="ddlTheme" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTheme_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
             </tr>
