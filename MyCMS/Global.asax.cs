@@ -22,6 +22,7 @@ namespace MyCMS
             Database.SetInitializer<MyCMSContext>(null);
 
             // Add Routes.
+            
             RegisterRoutes(RouteTable.Routes);
         }
 
@@ -39,6 +40,7 @@ namespace MyCMS
 
         void RegisterRoutes(RouteCollection routes)
         {
+            routes.Ignore("{resource}.axd/{*pathInfo}");
             routes.MapPageRoute(
                 "PageRoute",
                 "{pageSEO}",

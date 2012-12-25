@@ -17,8 +17,6 @@ namespace MyCMS
         {
             if (!IsPostBack)
             {
-                //string pageSEO = Page.RouteData.Values["pageSEO"] as string;
-                //int PageId = GetPageId(pageSEO);
                 if (this.PageId != -1)
                 {
                     var page = db.Pages.Where(t => t.PageId == this.PageId).FirstOrDefault();

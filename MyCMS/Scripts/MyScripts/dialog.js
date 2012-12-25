@@ -4,8 +4,8 @@
         .dialog({
             autoOpen: false,
             modal: true,
-            height: 625,
-            width: 500,
+            width: $(window).width() - 300,
+            height: $(window).height() - 100,
             title: title
         });
     $dialog.dialog('open');

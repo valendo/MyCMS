@@ -188,6 +188,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\DockPanel\hide.png" />
@@ -203,6 +204,10 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\Splitter\paneh.gif" />
+    <Content Include="Images\Splitter\panehc.gif" />
+    <Content Include="Images\Splitter\panev.gif" />
+    <Content Include="Images\Splitter\panevc.gif" />
     <Content Include="Modules\Text\Edit.ascx" />
     <Content Include="Modules\Text\View.ascx" />
     <Content Include="packages.config" />
@@ -300,9 +305,9 @@
     <Content Include="Scripts\MyScripts\contextmenu\contextmenu.css" />
     <Content Include="Scripts\MyScripts\contextmenu\contextmenu_packed.js" />
     <Content Include="Scripts\MyScripts\dialog.js" />
-    <Content Include="Scripts\MyScripts\dockpanel.js" />
     <Content Include="Scripts\MyScripts\dragdrop.js" />
     <Content Include="Scripts\MyScripts\jquery.dynatree-1.2.2.js" />
+    <Content Include="Scripts\MyScripts\jquery.splitter-0.6.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -336,8 +341,8 @@
     <Content Include="Styles\contextmenu\images\page_white_paste.png" />
     <Content Include="Styles\contextmenu\jquery.contextMenu-custom.js" />
     <Content Include="Styles\contextmenu\jquery.contextMenu.css" />
-    <Content Include="Styles\dockpanel.css" />
     <Content Include="Styles\dragdrop.css" />
+    <Content Include="Styles\jquery.splitter.css" />
     <Content Include="Styles\popupbox.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Styles\dynatree\icons-rtl.gif" />
@@ -501,6 +506,7 @@
     <Content Include="Scripts\MyScripts\asdropdowntreeview\images\Thumbs.db" />
     <Content Include="Styles\dynatree\Thumbs.db" />
     <Content Include="Styles\contextmenu\images\Thumbs.db" />
+    <Content Include="Scripts\MyScripts\splitter.panel.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -3,7 +3,6 @@
 <%@ Register Src="~/UserControls/DockPanel.ascx" TagPrefix="uc1" TagName="DockPanel" %>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head id="Head1" runat="server">
@@ -18,18 +17,24 @@
     <script src="Scripts/MyScripts/dockpanel.js"></script>
     <script src="Scripts/MyScripts/dragdrop.js"></script>
     <script src="Scripts/MyScripts/dialog.js"></script>
+    <link href="Styles/jquery.splitter.css" rel="stylesheet" />
+    <script src="Scripts/MyScripts/jquery.splitter-0.6.js"></script>
+    <script src="Scripts/MyScripts/splitter.panel.js"></script>
     
 </head>
-<body id="Body">
+<body>
     <form id="Form1" runat="server">
-        <uc1:DockPanel runat="server" id="DockPanel" />
-        <div id="content">
-            <asp:PlaceHolder ID="pchDefault" runat="server"></asp:Placeholder>
-            <%--<a id="pop" href="/About.aspx" title="Ashish Blog">AshishBlog</a>--%>
-            <a id="pop" title="Ashish Blog" onclick="openPopup('hello','/About.aspx');">AshishBlog</a>
-            <div id="popup"></div>
-            
+        <div id="widget">
+            <div id="panel">
+                <uc1:DockPanel runat="server" id="DockPanel" />
+            </div>
+            <div id="content">
+                <asp:PlaceHolder ID="pchDefault" runat="server"></asp:Placeholder>
+                <a id="pop" title="Ashish Blog" onclick="openPopup('hello','/About.aspx');">AshishBlog</a>
+                <div id="popup"></div>
+            </div>
         </div>
+        
         <script type="text/javascript">
             var PageId = "<%: this.PageId %>";
     </script>

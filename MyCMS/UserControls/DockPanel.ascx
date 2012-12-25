@@ -2,28 +2,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Register Src="~/UserControls/PageTree.ascx" TagPrefix="uc1" TagName="PageTree" %>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#showDockPanel").click(function () {
-            $("#dockPanel").removeClass("undock");
-            $("#dockPanel").addClass("dock");
-            $("#content").css("margin-left", "252px");
-            $(this).hide();
-            $("#hideDockPanel").show();
-        });
-        $("#hideDockPanel").click(function () {
-            $("#dockPanel").removeClass("dock");
-            $("#dockPanel").addClass("undock");
-            $("#content").css("margin-left", "0");
-            $(this).hide();
-            $("#showDockPanel").show();
-        });
-    });
-</script>
-<div id="showDockPanel" class="iconDockPanel" style="display:none;"><img src="/Images/DockPanel/show.png" alt="Show" /></div>
-<div id="hideDockPanel" class="iconDockPanel"><img src="/Images/DockPanel/hide.png" alt="Hide" /></div>
-
-<div id="dockPanel" class="dockPanel dock">
+<div id="dockPanel" class="dockPanel">
     <div class="dock_pages">
         <div class="dock_panel_header">Pages</div>
         <uc1:PageTree runat="server" ID="PageTree" />
