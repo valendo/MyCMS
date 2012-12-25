@@ -1,10 +1,5 @@
 ﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MyCMS._Default" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit.HTMLEditor"
-    TagPrefix="cc1" %>
-
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
 <%@ Register Src="~/UserControls/DockPanel.ascx" TagPrefix="uc1" TagName="DockPanel" %>
 
 
@@ -27,7 +22,6 @@
 </head>
 <body id="Body">
     <form id="Form1" runat="server">
-        <ajaxToolkit:ToolkitScriptManager runat="server" ID="asm" EnablePageMethods="true"></ajaxToolkit:ToolkitScriptManager>
         <uc1:DockPanel runat="server" id="DockPanel" />
         <div id="content">
             <asp:PlaceHolder ID="pchDefault" runat="server"></asp:Placeholder>
@@ -36,6 +30,9 @@
             <div id="popup"></div>
             
         </div>
+        <script type="text/javascript">
+            var PageId = "<%: this.PageId %>";
+    </script>
     </form>
 </body>
 </html>

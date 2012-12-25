@@ -31,7 +31,8 @@
                     logMsg("tree.onDrop(%o, %o, %s)", node, sourceNode, hitMode);
                     sourceNode.move(node, hitMode);
                 }
-            }
+            },
+            debugLevel: 0
         });
 
         function bindContextMenu(span) {

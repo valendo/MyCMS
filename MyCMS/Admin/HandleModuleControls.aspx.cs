@@ -15,7 +15,6 @@ namespace MyCMS.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadModuleControls();
-            Label1.Text = Request.QueryString["mid"].ToString();
         }
 
         private void LoadModuleControl(PlaceHolder ContainerControl, string controlSource)

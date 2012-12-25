@@ -6,16 +6,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using MyCMS.Logic;
 
 namespace MyCMS.Modules.Text
 {
-    public partial class Edit : System.Web.UI.UserControl
+    public partial class Edit : BaseAdminUserControl
     {
         MyCMSContext db = new MyCMSContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-            int moduleId = int.Parse(Request.QueryString["mid"].ToString());
-            var texts = db.Texts.Where(t => t.ModuleId == moduleId).ToList();
+            var texts = db.Texts.Where(t => t.ModuleId == this.ModuleId).ToList();
             if (texts.Count > 0)
             {
                 txtContent.Text = texts.FirstOrDefault().Content;

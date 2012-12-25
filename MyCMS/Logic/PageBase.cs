@@ -37,10 +37,28 @@ namespace MyCMS.Logic
             }
         }
 
-        public int GetPageId(string pageSEO)
+        //public int GetPageId(string pageSEO)
+        //{
+        //    if (!string.IsNullOrEmpty(pageSEO))
+        //    {
+        //        var page = db.Pages.Where(t => t.PageSEO == pageSEO).ToList();
+        //        if (page.Count > 0)
+        //        {
+        //            return page.FirstOrDefault().PageId;
+        //        }
+        //        else
+        //        {
+        //            return -1;
+        //        }
+        //    }
+        //    return -1;
+        //}
+
+        public int PageId
         {
-            if (!string.IsNullOrEmpty(pageSEO))
+            get
             {
+                string pageSEO = Page.RouteData.Values["pageSEO"] as string;
                 var page = db.Pages.Where(t => t.PageSEO == pageSEO).ToList();
                 if (page.Count > 0)
                 {
@@ -51,7 +69,7 @@ namespace MyCMS.Logic
                     return -1;
                 }
             }
-            return -1;
         }
+
     }
 }

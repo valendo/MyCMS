@@ -17,12 +17,12 @@ namespace MyCMS
         {
             if (!IsPostBack)
             {
-                string pageSEO = Page.RouteData.Values["pageSEO"] as string;
-                int PageId = GetPageId(pageSEO);
-                if (PageId != -1)
+                //string pageSEO = Page.RouteData.Values["pageSEO"] as string;
+                //int PageId = GetPageId(pageSEO);
+                if (this.PageId != -1)
                 {
-                    var page = db.Pages.Where(t => t.PageId == PageId).FirstOrDefault();
-                    var pageModules = db.PageModules.Where(t => t.PageId == PageId).OrderBy(t => t.ModuleOrder).ToList();
+                    var page = db.Pages.Where(t => t.PageId == this.PageId).FirstOrDefault();
+                    var pageModules = db.PageModules.Where(t => t.PageId == this.PageId).OrderBy(t => t.ModuleOrder).ToList();
                     //Add meta
                     AddMeta(page.Title, page.Description, page.Keywords);
 
