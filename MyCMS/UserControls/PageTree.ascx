@@ -13,8 +13,15 @@
             onCreate: function (node, span) {
                 bindContextMenu(span);
             },
+            onPostInit: function (isReloading, isError) {
+                this.activateKey(PageId);
+                
+            },
             onActivate: function (node) {
-                window.location.href = "/" + node.data.url;
+                if (node.tree.isUserEvent()) {
+                    //node.expand(true);
+                    window.location.href = "/" + node.data.url;
+                }
             },
             dnd: {
                 onDragStart: function (node) {

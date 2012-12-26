@@ -1,15 +1,10 @@
 ﻿body {
     margin: 0;
     padding: 0;
+    font-size:12px;
+    font-family:Arial;
 }
-.dockPanel {
-    padding:5px;
-}
-.dock_pages {
-    position:fixed;
-    top:0;
-}
-.dock_modules {
-    position:fixed;
-    bottom:40px;
+
+.ui-widget {
+    font-size:12px !important;
 }

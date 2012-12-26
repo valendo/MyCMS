@@ -204,6 +204,7 @@
     <Content Include="Images\orderedList7.png" />
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\Site\panel_bg.png" />
     <Content Include="Images\Splitter\paneh.gif" />
     <Content Include="Images\Splitter\panehc.gif" />
     <Content Include="Images\Splitter\panev.gif" />
@@ -307,7 +308,7 @@
     <Content Include="Scripts\MyScripts\dialog.js" />
     <Content Include="Scripts\MyScripts\dragdrop.js" />
     <Content Include="Scripts\MyScripts\jquery.dynatree-1.2.2.js" />
-    <Content Include="Scripts\MyScripts\jquery.splitter-0.6.js" />
+    <Content Include="Scripts\MyScripts\xpanel.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
@@ -342,7 +343,6 @@
     <Content Include="Styles\contextmenu\jquery.contextMenu-custom.js" />
     <Content Include="Styles\contextmenu\jquery.contextMenu.css" />
     <Content Include="Styles\dragdrop.css" />
-    <Content Include="Styles\jquery.splitter.css" />
     <Content Include="Styles\popupbox.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Styles\dynatree\icons-rtl.gif" />
@@ -351,6 +351,7 @@
     <Content Include="Styles\dynatree\ui.dynatree.css" />
     <Content Include="Styles\dynatree\vline-rtl.gif" />
     <Content Include="Styles\dynatree\vline.gif" />
+    <Content Include="Styles\xpanel.css" />
     <Content Include="Themes\Custom\2Columns.ascx" />
     <Content Include="Themes\Custom\Index.ascx" />
     <Content Include="Themes\Default\Detail.ascx" />
@@ -504,9 +505,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\MyScripts\asdropdowntreeview\images\Thumbs.db" />
-    <Content Include="Styles\dynatree\Thumbs.db" />
     <Content Include="Styles\contextmenu\images\Thumbs.db" />
-    <Content Include="Scripts\MyScripts\splitter.panel.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

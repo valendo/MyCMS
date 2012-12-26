@@ -5,15 +5,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script src="../Scripts/MyScripts/dialog.js"></script>
+    <style type="text/css">
+        body
+        {
+            font-size:11px;
+            margin:0;
+            padding:0;
+        }
+        .ui-widget {
+            font-size:12px !important;
+        }
+    </style>
+    <link href="/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.8.20.min.js"></script>
+    <script src="/Scripts/MyScripts/dialog.js"></script>
+
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>Edit</div>
-        <asp:PlaceHolder ID="pchEdit" runat="server"></asp:PlaceHolder>
-        <div>Setting</div>
-        <asp:PlaceHolder ID="pchSetting" runat="server"></asp:PlaceHolder>
-    <input id="btnCancel" type="button" value="Cancel" onclick="closePopup();" />
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-edit">Edit</a></li>
+                <li><a href="#tabs-setting">Settings</a></li>
+            </ul>
+            <div id="tabs-edit">
+                <asp:PlaceHolder ID="pchEdit" runat="server"></asp:PlaceHolder>
+            </div>
+            <div id="tabs-setting">
+                <asp:PlaceHolder ID="pchSetting" runat="server"></asp:PlaceHolder>
+            </div>
+        </div>
     </form>
 </body>
 </html>

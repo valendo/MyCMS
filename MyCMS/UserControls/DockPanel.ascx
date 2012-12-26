@@ -6,6 +6,7 @@
     <div class="dock_pages">
         <div class="dock_panel_header">Pages</div>
         <uc1:PageTree runat="server" ID="PageTree" />
+        <div style="clear:both;"></div>
     </div>
     <div id="dock_modules" class="dock_modules">
         <div class="dock_panel_header">Modules</div>

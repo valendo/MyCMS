@@ -1,0 +1,31 @@
+﻿#x_top
+{
+    position:fixed; left:0; width:100%; height:53px; top:0; z-index: 998;background:#222222 url(/images/site/panel_bg.png);color:white;
+}
+#x_left
+{
+    position:fixed; left:0; width:250px;top:53px; z-index: 998;height:100%;background:#222222;color:white;
+}
+#x_main
+{
+    display:block; position:relative; margin-left: 260px;margin-top:53px;
+}
+.dockPanel {
+    position:relative;
+    width:100%;
+    height:100%;
+}
+.dock_pages {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+}
+.dock_modules {
+    position:absolute;
+    height:300px;
+    left:0;
+    bottom:0;
+    width:100%;
+    
+}

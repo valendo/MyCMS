@@ -268,7 +268,7 @@ span.dynatree-node
 ul.dynatree-container a
 /*, ul.dynatree-container a:visited*/
 {
-	color: black; /* inherit doesn't work on IE */
+	color: #fff; /* inherit doesn't work on IE */
 	text-decoration: none;
 	vertical-align: top;
 	margin: 0px;
@@ -279,8 +279,7 @@ ul.dynatree-container a
 ul.dynatree-container a:hover
 {
 /*	text-decoration: underline; */
-	background-color: #F2F7FD; /* light blue */
-	border-color: #B8D6FB; /* darker light blue */
+	text-decoration:underline;
 }
 
 span.dynatree-node a
@@ -300,7 +299,7 @@ span.dynatree-folder a
 ul.dynatree-container a:focus,
 span.dynatree-focused a:link  /* @IE */
 {
-	background-color: #EFEBDE; /* gray */
+	
 }
 
 span.dynatree-has-children a
@@ -319,8 +318,7 @@ span.dynatree-selected a
 
 span.dynatree-active a
 {
-	background-color: #3169C6 !important;
-	color: white !important; /* @ IE6 */
+	text-decoration:underline;
 }
 
 /*******************************************************************************
