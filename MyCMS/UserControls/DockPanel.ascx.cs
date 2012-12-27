@@ -18,7 +18,7 @@ namespace MyCMS.UserControls
             var list = db.ModuleDefinitions.ToList();
             foreach (var item in list)
             {
-                sb.AppendFormat("<li id=\"{0}\"><a href=\"#\">{1}</a></li>",item.ModuleDefId, item.ModuleName);
+                sb.AppendFormat("<li id=\"{0}\"><a href=\"#\" style=\"background-image:url(/images/icons/20/{1}.png);\">{2}</a></li>", item.ModuleDefId, item.Icon, item.ModuleName);
             }
             ltModules.Text = sb.ToString();
         }

@@ -10,7 +10,7 @@
     </div>
     <div id="dock_modules" class="dock_modules">
         <div class="dock_panel_header">Modules</div>
-        <ul>
+        <ul id="list_modules">
             <asp:Literal ID="ltModules" runat="server"></asp:Literal>
         </ul>
     </div>

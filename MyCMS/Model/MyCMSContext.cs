@@ -26,4 +26,5 @@ namespace MyCMS.Model
             modelBuilder.Entity<TextInfo>().ToTable("Texts");
         }
     }
+
 }

@@ -3,22 +3,29 @@
 	        background:#fff;
         }
         .pane .dragbox{
-	        background:#fff;
 	        position:relative;
-	        border:1px solid #946553;
 	        -moz-border-radius:5px;
 	        -webkit-border-radius:5px;
         }
         .pane .dragbox h2{
-	        margin:0;
-	        font-size:12px;
-	        background:#946553;
+            display:none;
+            height:20px;
+            line-height:18px;
+	        font-size:11px;
+	        background:url(/images/site/module_header_bg.png);
 	        color:#fff;
-	        border-bottom:1px solid #946553;
 	        font-family:Verdana;
 	        cursor:move;
-	        padding:5px;
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
         }
+
+            .pane .dragbox h2 span
+            {
+                margin:0 5px;
+            }
 
         .dragbox-content{
 	        min-height:100px;
@@ -35,7 +42,7 @@
         float:right;
         height:13px;
         width:13px;
-        margin:0px 2px;
+        margin:3px 3px;
         }
             .opIcons:hover {
                 cursor:pointer !important;
@@ -50,3 +57,10 @@
 	        background-position:-269px center;
 	        padding-top:1px;
         }
+
+.pane
+{
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}

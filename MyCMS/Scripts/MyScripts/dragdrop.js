@@ -70,4 +70,16 @@ function () {
 
         }
     }).disableSelection();
+
+    $('.dragbox').mouseover(function () {
+        $(this).children('h2').show();
+        $(this).css('border','2px dotted #000');
+    });
+    $('.dragbox').mouseout(function () {
+        $(this).children('h2').hide();
+        $(this).css('border', 'none');
+    });
+    
+    
+
 });

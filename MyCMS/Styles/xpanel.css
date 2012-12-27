@@ -4,7 +4,8 @@
 }
 #x_left
 {
-    position:fixed; left:0; width:250px;top:53px; z-index: 998;height:100%;background:#222222;color:white;
+    position:fixed; left:0; width:230px;top:53px; z-index: 998;height:100%;background:#222222;color:white;
+    padding:0 10px;
 }
 #x_main
 {
@@ -28,4 +29,12 @@
     bottom:0;
     width:100%;
     
+}
+.dock_panel_header
+{
+    height:32px;
+    line-height:32px;
+    background:url(/images/site/panel_header_bg.png) repeat-x;
+    padding:0 10px;
+    margin:0 -10px;
 }

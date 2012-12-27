@@ -24,7 +24,7 @@ namespace MyCMS.Logic
                     BaseUserControl control = this.Page.LoadControl(ControlSrc) as BaseUserControl;
                     control.ModuleId = ModuleId;
                     sb.AppendFormat("<div class=\"dragbox\" id=\"PageModule{0}\" >", PageModuleId);
-                    sb.AppendFormat("<h2>{0}", ModuleTitle);
+                    sb.AppendFormat("<h2><span>{0}</span>", ModuleTitle);
                     sb.AppendFormat("<a class=\"delete opIcons\"> </a>");
                     sb.AppendFormat("<a class=\"maxmin opIcons\"> </a>");
                     sb.AppendFormat("<a class=\"opIcons\" onclick=\"openPopup('Edit module','/Admin/HandleModuleControls.aspx?mid={0}');\"> </a>", ModuleId);

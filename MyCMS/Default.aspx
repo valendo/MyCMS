@@ -8,6 +8,7 @@
 <head id="Head1" runat="server">
     <meta charset="utf-8" />
     <title><%: Page.Title %> - My CMS</title>
+    <link href="Styles/reset.css" rel="stylesheet" />
     <link href="Styles/Site.css" rel="stylesheet" />
     <link href="Styles/xpanel.css" rel="stylesheet" />
     <link href="Styles/dragdrop.css" rel="stylesheet" />
@@ -18,7 +19,6 @@
     <script src="Scripts/MyScripts/dragdrop.js"></script>
     <script src="Scripts/MyScripts/dialog.js"></script>
     <script src="Scripts/MyScripts/xpanel.js"></script>
-    
 </head>
 <body id="Body">
     <form id="Form1" runat="server">

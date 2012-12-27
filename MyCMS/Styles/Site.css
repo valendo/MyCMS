@@ -8,3 +8,26 @@
 .ui-widget {
     font-size:12px !important;
 }
+#list_modules li
+{
+    
+}
+#list_modules li a
+{
+    margin:5px 0;
+    padding-left:25px;
+    display:block;
+    line-height:20px;
+    background-position:left bottom; 
+    background-repeat:no-repeat;
+    font-size:11px;
+}
+    #list_modules li a
+    {
+        color:#fff;
+        text-decoration:none;
+    }
+    #list_modules li a:hover
+    {
+        background-position:left top; 
+    }
