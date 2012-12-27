@@ -115,3 +115,4 @@ D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.pdb
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache
 D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache
+D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\CKFinder.dll

@@ -11,7 +11,7 @@
     <link href="Styles/reset.css" rel="stylesheet" />
     <link href="Styles/Site.css" rel="stylesheet" />
     <link href="Styles/xpanel.css" rel="stylesheet" />
-    <link href="Styles/dragdrop.css" rel="stylesheet" />
+    <link href="Styles/module.css" rel="stylesheet" />
     <link href="Styles/popupbox.css" rel="stylesheet" />
     <link href="Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.7.1.min.js"></script>

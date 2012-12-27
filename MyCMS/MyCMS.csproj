@@ -38,9 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ASTreeView, Version=1.5.9.0, Culture=neutral, PublicKeyToken=521e0b4262a9001c, processorArchitecture=MSIL">
+    <Reference Include="CKFinder, Version=2.3.0.2394, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ASTreeView.dll</HintPath>
+      <HintPath>Resources\ckfinder\bin\Release\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -130,6 +130,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Admin\HandleModuleControls.aspx" />
+    <Content Include="Admin\ModuleSetting.aspx" />
     <Content Include="Admin\Page.aspx" />
     <Content Include="Cmd.asmx" />
     <Content Include="Contact.aspx" />
@@ -193,6 +194,9 @@
     <Content Include="Images\DockPanel\hide.png" />
     <Content Include="Images\DockPanel\show.png" />
     <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\icons\12\Delete.png" />
+    <Content Include="Images\icons\12\Edit.png" />
+    <Content Include="Images\icons\12\More.png" />
     <Content Include="Images\icons\20\3d bar chart.png" />
     <Content Include="Images\icons\20\Abacus.png" />
     <Content Include="Images\icons\20\Abort.png" />
@@ -1267,7 +1271,7 @@
     <Content Include="Styles\contextmenu\images\page_white_paste.png" />
     <Content Include="Styles\contextmenu\jquery.contextMenu-custom.js" />
     <Content Include="Styles\contextmenu\jquery.contextMenu.css" />
-    <Content Include="Styles\dragdrop.css" />
+    <Content Include="Styles\module.css" />
     <Content Include="Styles\popupbox.css" />
     <Content Include="Styles\reset.css" />
     <Content Include="Styles\Site.css" />
@@ -1296,6 +1300,13 @@
     </Compile>
     <Compile Include="Admin\HandleModuleControls.aspx.designer.cs">
       <DependentUpon>HandleModuleControls.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ModuleSetting.aspx.cs">
+      <DependentUpon>ModuleSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ModuleSetting.aspx.designer.cs">
+      <DependentUpon>ModuleSetting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Page.aspx.cs">
       <DependentUpon>Page.aspx</DependentUpon>
@@ -1424,6 +1435,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\DragDrop\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Users\files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

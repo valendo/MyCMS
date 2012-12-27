@@ -8,9 +8,9 @@
         maxWidth: 500
     });
 
-    $('.pane').css('border', '1px dotted #cdcdcd');
-    $('.pane').each(function (index) {
-        //$(this).prepend("<div style='text-align:center;'>" + $(this).attr('id') + "</div>");
+    $('.x_pane').css('border', '1px dotted #cdcdcd');
+    $('.x_pane').each(function (index) {
+        $(this).prepend("<div class='ui-state-disabled' style='text-align:center;'>" + $(this).attr('id') + "</div>");
     });
 
 });

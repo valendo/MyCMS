@@ -31,13 +31,14 @@ function () {
     var newPane = "";
     var pageModuleId = "";
 
-    $('.pane').sortable({
-        connectWith: '.pane',
+    $('.x_pane').sortable({
+        connectWith: '.x_pane',
         handle: 'h2',
         cursor: 'move',
         placeholder: 'placeholder',
         forcePlaceholderSize: true,
-        opacity: 0.4,
+        opacity: 0.5,
+        items: ".dragbox",
         start: function (event, ui) {
             oldPane = $(ui.item).parent().attr('id');
             pageModuleId = $(ui.item).attr('id');
@@ -46,7 +47,7 @@ function () {
             $(ui.item).find('h2').click();
             var sortorder = '';
 
-            $('.pane').each(function () {
+            $('.x_pane').each(function () {
                 var itemorder = $(this).sortable('toArray');
                 var columnId = $(this).attr('id');
                 sortorder += columnId + '=' + itemorder.toString() + '&';

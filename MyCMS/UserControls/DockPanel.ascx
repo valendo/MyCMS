@@ -23,29 +23,29 @@
             helper: "clone",
             cursor: "move"
         });
-        $(".pane").droppable({
-            activeClass: "ui-state-default",
-            hoverClass: "ui-state-hover",
+        $(".x_pane").droppable({
+            hoverClass: "placeholder",
             accept: ":not(.ui-sortable-helper)",
             drop: function (event, ui) {
                 var moduleDefId = ui.draggable.attr('id');
                 var paneName = $(this).attr('id');
-                var returnURL = window.location.pathname;
                 //window.location.href = '/page/dragdropmodule?moduleDefinitionId=' + moduleDefinitionId + '&pageId=' + pageId + '&pane=' + pane + '&returnURL=' + returnURL;
-                $.ajax({
-                    type: "POST",
-                    url: "Cmd.asmx/DragModules",
-                    data: "{'ModuleDefId':'" + moduleDefId + "', 'PageId':'" + PageId + "', 'PaneName':'" + paneName + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (response) {
-                        //window.location.href = window.location.pathname;
-                        openPopup('Edit module', '/Admin/HandleModuleControls.aspx?mid=' + response.d);
-                    },
-                    failure: function (msg) {
-                        alert(msg);
-                    }
-                });
+                //$.ajax({
+                //    type: "POST",
+                //    url: "Cmd.asmx/DragModules",
+                //    data: "{'ModuleDefId':'" + moduleDefId + "', 'PageId':'" + PageId + "', 'PaneName':'" + paneName + "'}",
+                //    contentType: "application/json; charset=utf-8",
+                //    dataType: "json",
+                //    success: function (response) {
+                //        openPopup('Edit module', '/Admin/HandleModuleControls.aspx?mid=' + response.d);
+                //    },
+                //    failure: function (msg) {
+                //        alert(msg);
+                //    }
+                //});
+                openPopup('Module Settings', '/Admin/ModuleSetting.aspx?action=add&ModuleDefId=' + moduleDefId + '&PageId=' + PageId + '&PaneName=' + paneName);
+                //openPopup('edit','http://ngoisao.net');
+                
             }
         });
     });

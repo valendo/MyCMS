@@ -57,26 +57,7 @@ namespace MyCMS
             }
             return true;
         }
-        [WebMethod]
-        public string DragModules(int ModuleDefId, int PageId, string PaneName)
-        {
-            ModuleInfo m = new ModuleInfo();
-            m.ModuleDefId = ModuleDefId;
-            db.Modules.Add(m);
-            db.SaveChanges();
-            int ModuleId = db.Modules.OrderByDescending(t => t.ModuleId).FirstOrDefault().ModuleId;
-            int ModuleOrder = db.PageModules.OrderByDescending(t => t.ModuleOrder).FirstOrDefault().ModuleOrder;
-            PageModuleInfo pm = new PageModuleInfo();
-            pm.PageId = PageId;
-            pm.ModuleId = ModuleId;
-            pm.PaneName = PaneName;
-            pm.ModuleOrder = ModuleOrder;
-            pm.ModuleTitle = "Default";
-            pm.DisplayTitle = true;
-            db.PageModules.Add(pm);
-            db.SaveChanges();
-            return ModuleId.ToString();
-        }
+        
 
         [WebMethod]
         public bool DeleteModule(string PageModuleId)

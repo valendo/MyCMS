@@ -23,13 +23,13 @@
 
     <script>
         $(function () {
-            $("#tabs").tabs();
+            $("#tabs_module").tabs();
         });
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="tabs">
+        <div id="tabs_module">
             <ul>
                 <li><a href="#tabs-edit">Edit</a></li>
                 <li><a href="#tabs-setting">Settings</a></li>
