@@ -1,11 +1,19 @@
-﻿function openPopup(title, url) {
+﻿function openPopup(title, url, width, height) {
+    var w = $(window).width() - 300;
+    var h = $(window).height() - 100;
+    if (width != null) {
+        w = width;
+    }
+    if (height != null) {
+        h = height;
+    }
     var $dialog = $('#popup')
         .html('<iframe style="border: 0px; " src="' + url + '" width="100%" height="100%"></iframe>')
         .dialog({
             autoOpen: false,
             modal: true,
-            width: $(window).width() - 300,
-            height: $(window).height() - 100,
+            width: w,
+            height: h,
             title: title
         });
     $dialog.dialog('open');

@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MyCMS._Default" %>
 
 <%@ Register Src="~/UserControls/DockPanel.ascx" TagPrefix="uc1" TagName="DockPanel" %>
+<%@ Register Src="~/UserControls/TopPanel.ascx" TagPrefix="uc1" TagName="TopPanel" %>
+
 
 
 <!DOCTYPE html>
@@ -10,6 +12,7 @@
     <title><%: Page.Title %> - My CMS</title>
     <link href="Styles/reset.css" rel="stylesheet" />
     <link href="Styles/Site.css" rel="stylesheet" />
+    <link href="Styles/admin.css" rel="stylesheet" />
     <link href="Styles/xpanel.css" rel="stylesheet" />
     <link href="Styles/module.css" rel="stylesheet" />
     <link href="Styles/popupbox.css" rel="stylesheet" />
@@ -19,10 +22,12 @@
     <script src="Scripts/MyScripts/dragdrop.js"></script>
     <script src="Scripts/MyScripts/dialog.js"></script>
     <script src="Scripts/MyScripts/xpanel.js"></script>
+
 </head>
 <body id="Body">
     <form id="Form1" runat="server">
         <div id="x_top">
+            <uc1:TopPanel runat="server" id="TopPanel" />
         </div>
         <div id="x_left">
             <uc1:DockPanel runat="server" id="DockPanel" />

@@ -12,26 +12,10 @@
     <script src="/Scripts/MyScripts/dialog.js"></script>
     <script src="../Resources/ckeditor/ckeditor.js"></script>
 
-    <script>
-        $(function () {
-            $("#tabs_module").tabs();
-        });
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="tabs_module">
-            <ul>
-                <li><a href="#tabs-edit">Edit</a></li>
-                <li><a href="#tabs-setting">Settings</a></li>
-            </ul>
-            <div id="tabs-edit">
-                <asp:PlaceHolder ID="pchEdit" runat="server"></asp:PlaceHolder>
-            </div>
-            <div id="tabs-setting">
-                <asp:PlaceHolder ID="pchSetting" runat="server"></asp:PlaceHolder>
-            </div>
-        </div>
+        <asp:PlaceHolder ID="pchEdit" runat="server"></asp:PlaceHolder>
     </form>
 </body>
 </html>

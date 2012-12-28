@@ -15,5 +15,64 @@
 }
 .gridview tr th
 {
-    background: -moz-linear-gradient(center top , #F5F5F5, #CFD1CF) repeat scroll 0 0 #CFD1CF;
+    background: LightGray;
+}
+button.cpsecondary {
+	display: inline-block;
+    position:relative;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-decoration: none;
+	font: 12px Arial, Helvetica, sans-serif;
+	padding-left: 30px;
+	padding-right: 10px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	-webkit-border-radius: .3em; 
+	-moz-border-radius: .3em;
+	border-radius: 0.3em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+
+	color: #fff;
+	border: solid 1px #282828;
+	background: #424242;
+	background: -webkit-gradient(linear, left top, left bottom, from(#696969), to(#424242));
+	background: -moz-linear-gradient(top,  #696969,  #424242);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#696969', endColorstr='#424242');
+}
+
+
+button.cpsecondary:hover {
+	background: #616161;
+	background: -webkit-gradient(linear, left top, left bottom, from(#757575), to(#4b4b4b));
+	background: -moz-linear-gradient(top,  #757575,  #4b4b4b);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#757575', endColorstr='#4b4b4b');
+}
+
+button.cpsecondary:active {
+	color: #afafaf;
+	background: -webkit-gradient(linear, left top, left bottom, from(#575757), to(#888));
+	background: -moz-linear-gradient(top,  #575757,  #888);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#575757', endColorstr='#888888');
+}
+.panel_button {
+    float:right;
+    margin:12px 2px 0 0;
+}
+.icon {
+    background-position: left bottom;
+    height: 20px;
+    left: 6px;
+    position: absolute;
+    top: 4px;
+    width: 20px;
+}
+.icon:hover {
+    background-position: left top;
 }

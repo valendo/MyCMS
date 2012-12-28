@@ -1296,6 +1296,7 @@
     <Content Include="Themes\Default\Home.ascx" />
     <Content Include="UserControls\DockPanel.ascx" />
     <Content Include="UserControls\PageTree.ascx" />
+    <Content Include="UserControls\TopPanel.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1445,6 +1446,13 @@
     </Compile>
     <Compile Include="UserControls\PageTree.ascx.designer.cs">
       <DependentUpon>PageTree.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TopPanel.ascx.cs">
+      <DependentUpon>TopPanel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\TopPanel.ascx.designer.cs">
+      <DependentUpon>TopPanel.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -31,6 +31,15 @@ namespace MyCMS {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
+        /// TopPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::MyCMS.UserControls.TopPanel TopPanel;
+        
+        /// <summary>
         /// DockPanel control.
         /// </summary>
         /// <remarks>
