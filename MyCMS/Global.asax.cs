@@ -21,8 +21,18 @@ namespace MyCMS
 
             Database.SetInitializer<MyCMSContext>(null);
 
+            // Add Admin role.
+            if (!Roles.RoleExists("admin"))
+            {
+                Roles.CreateRole("admin");
+            }
+            if (Membership.GetUser("admin") == null)
+            {
+                Membership.CreateUser("admin", "P@ssword1", "vothanhtai86@gmail.com");
+                Roles.AddUserToRole("admin", "admin");
+            }
+
             // Add Routes.
-            
             RegisterRoutes(RouteTable.Routes);
         }
 

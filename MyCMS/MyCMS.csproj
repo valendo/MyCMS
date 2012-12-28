@@ -129,9 +129,10 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
-    <Content Include="Admin\HandleModuleControls.aspx" />
+    <Content Include="Admin\EditModule.aspx" />
     <Content Include="Admin\ModuleSetting.aspx" />
     <Content Include="Admin\Page.aspx" />
+    <Content Include="Admin\Role.aspx" />
     <Content Include="Cmd.asmx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
@@ -196,7 +197,13 @@
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\icons\12\Delete.png" />
     <Content Include="Images\icons\12\Edit.png" />
+    <Content Include="Images\icons\12\Gear.png" />
     <Content Include="Images\icons\12\More.png" />
+    <Content Include="Images\icons\16\Refresh.png" />
+    <Content Include="Images\icons\16\Add.png" />
+    <Content Include="Images\icons\16\Cancel.png" />
+    <Content Include="Images\icons\16\Delete.png" />
+    <Content Include="Images\icons\16\Edit.png" />
     <Content Include="Images\icons\20\3d bar chart.png" />
     <Content Include="Images\icons\20\Abacus.png" />
     <Content Include="Images\icons\20\Abort.png" />
@@ -1272,6 +1279,7 @@
     <Content Include="Styles\contextmenu\jquery.contextMenu-custom.js" />
     <Content Include="Styles\contextmenu\jquery.contextMenu.css" />
     <Content Include="Styles\module.css" />
+    <Content Include="Styles\admin.css" />
     <Content Include="Styles\popupbox.css" />
     <Content Include="Styles\reset.css" />
     <Content Include="Styles\Site.css" />
@@ -1294,12 +1302,12 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\HandleModuleControls.aspx.cs">
-      <DependentUpon>HandleModuleControls.aspx</DependentUpon>
+    <Compile Include="Admin\EditModule.aspx.cs">
+      <DependentUpon>EditModule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\HandleModuleControls.aspx.designer.cs">
-      <DependentUpon>HandleModuleControls.aspx</DependentUpon>
+    <Compile Include="Admin\EditModule.aspx.designer.cs">
+      <DependentUpon>EditModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ModuleSetting.aspx.cs">
       <DependentUpon>ModuleSetting.aspx</DependentUpon>
@@ -1314,6 +1322,13 @@
     </Compile>
     <Compile Include="Admin\Page.aspx.designer.cs">
       <DependentUpon>Page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Role.aspx.cs">
+      <DependentUpon>Role.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Role.aspx.designer.cs">
+      <DependentUpon>Role.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />

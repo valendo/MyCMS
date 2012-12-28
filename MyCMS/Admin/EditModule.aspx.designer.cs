@@ -10,7 +10,7 @@
 namespace MyCMS.Admin {
     
     
-    public partial class HandleModuleControls {
+    public partial class EditModule {
         
         /// <summary>
         /// form1 control.

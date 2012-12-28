@@ -27,32 +27,16 @@ namespace MyCMS.Logic
                     sb.AppendFormat("<h2><span>{0}</span>", ModuleTitle);
                     sb.AppendFormat("<a class=\"delete opIcons\"> </a>");
                     sb.AppendFormat("<a class=\"maxmin opIcons\"> </a>");
-                    sb.AppendFormat("<a class=\"edit opIcons\" onclick=\"openPopup('Edit module','/Admin/HandleModuleControls.aspx?action=edit&mid={0}');\"> </a>", ModuleId);
+                    sb.AppendFormat("<a class=\"setting opIcons\" onclick=\"openPopup('Module Settings','/Admin/ModuleSetting.aspx?action=edit&pmid={0}');\"> </a>", PageModuleId);
+                    sb.AppendFormat("<a class=\"edit opIcons\" onclick=\"openPopup('Edit module','/Admin/EditModule.aspx?mid={0}');\"> </a>", ModuleId);
                     sb.AppendFormat("</h2>");
                     sb.AppendFormat("<div class=\"dragbox-content\" >");
                     pchPane.Controls.Add(new LiteralControl(sb.ToString()));
                     pchPane.Controls.Add(control);
-                    pchPane.Controls.Add(new LiteralControl("</div></div>"));
+                    pchPane.Controls.Add(new LiteralControl("</div><div class='clear'></div></div>"));
                 }
             }
         }
-
-        //public int GetPageId(string pageSEO)
-        //{
-        //    if (!string.IsNullOrEmpty(pageSEO))
-        //    {
-        //        var page = db.Pages.Where(t => t.PageSEO == pageSEO).ToList();
-        //        if (page.Count > 0)
-        //        {
-        //            return page.FirstOrDefault().PageId;
-        //        }
-        //        else
-        //        {
-        //            return -1;
-        //        }
-        //    }
-        //    return -1;
-        //}
 
         public int PageId
         {

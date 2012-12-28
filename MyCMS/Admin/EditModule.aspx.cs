@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace MyCMS.Admin
 {
-    public partial class HandleModuleControls : System.Web.UI.Page
+    public partial class EditModule : System.Web.UI.Page
     {
         MyCMSContext db = new MyCMSContext();
 
@@ -26,22 +26,8 @@ namespace MyCMS.Admin
 
         private void LoadModuleControls()
         {
-            int PageId = -1;
-            int ModuleDefId = -1;
-            int ModuleId = -1;
-            string PaneName = "";
-
-            if (Request.QueryString["action"] == "add")
-            {
-                PageId = int.Parse(Request.QueryString["PageId"]);
-                ModuleDefId = int.Parse(Request.QueryString["ModuleDefId"]);
-                PaneName = Request.QueryString["PaneName"];
-            }
-            else if (Request.QueryString["action"] == "edit")
-            {
-                ModuleId = int.Parse(Request.QueryString["mid"]);
-                ModuleDefId = db.Modules.Where(t => t.ModuleId == ModuleId).FirstOrDefault().ModuleDefId;
-            }
+            int ModuleId = int.Parse(Request.QueryString["mid"]);
+            int ModuleDefId = db.Modules.Where(t => t.ModuleId == ModuleId).FirstOrDefault().ModuleDefId;
             string controlSrc = "~/Modules/" + db.ModuleDefinitions.Where(t => t.ModuleDefId == ModuleDefId).FirstOrDefault().ModuleFolder + "/Edit.ascx";
             LoadModuleControl(pchEdit, controlSrc);
         }
