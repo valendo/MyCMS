@@ -13,12 +13,12 @@
     Settings</button>
 </div>
 <div class="panel_button">
-    <button onclick="openPopup('Users', '/admin/role.aspx');return false;" class="cpsecondary">
+    <button onclick="openPopup('Users', '/admin/user.aspx');return false;" class="cpsecondary">
         <span style="background-image:url('/images/icons/20/users.png')" class="icon"></span>
     Users</button>
 </div>
 <div class="panel_button">
-    <button onclick="openPopup('Roles', '/admin/role.aspx', 310, 300);return false;" class="cpsecondary">
+    <button onclick="openPopup('Roles', '/admin/role.aspx', 400, 300);return false;" class="cpsecondary">
         <span style="background-image:url('/images/icons/20/user group.png')" class="icon"></span>
     Roles</button>
 </div>

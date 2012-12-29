@@ -10,7 +10,7 @@
 namespace MyCMS.Admin {
     
     
-    public partial class Role {
+    public partial class User {
         
         /// <summary>
         /// form1 control.
@@ -22,13 +22,13 @@ namespace MyCMS.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// gvRoles control.
+        /// gvUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvRoles;
+        protected global::System.Web.UI.WebControls.GridView gvUsers;
         
         /// <summary>
         /// ValidationSummary1 control.
@@ -38,5 +38,14 @@ namespace MyCMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
+        /// ValidationSummary2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
     }
 }

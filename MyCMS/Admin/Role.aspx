@@ -12,29 +12,29 @@
     <div>
         <asp:GridView ID="gvRoles" runat="server" AutoGenerateColumns="False"  
             ShowFooter="True" CssClass="gridview"
-            OnRowCommand="gvRoles_RowCommand" OnRowDeleting="gvRoles_RowDeleting" 
-            OnRowDataBound="gvRoles_RowDataBound">
+            OnRowCommand="gvRoles_RowCommand" OnRowDeleting="gvRoles_RowDeleting" OnRowEditing="gvRoles_RowEditing" OnRowCancelingEdit="gvRoles_RowCancelingEdit">
             <Columns>
-                <asp:CommandField ShowDeleteButton="true" ButtonType="Image" 
-                    DeleteImageUrl="~/Images/icons/16/Delete.png" DeleteText="" EditText="" />
                 <asp:TemplateField HeaderText="Role">
                     <ItemTemplate>
                         <asp:Label ID="lblRoleName" runat="server" Text="<%# Container.DataItem.ToString() %>"></asp:Label>
                     </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtRoleName" runat="server" Text='<%# Container.DataItem.ToString() %>'></asp:TextBox>
-                        
-                    </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:TextBox ID="txtRoleName" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtRoleName" Display="None" ErrorMessage="Role name is required" ValidationGroup="add"></asp:RequiredFieldValidator>
-                        <asp:Button ID="btnAdd" CommandName = "add" runat="server" Text="Add new role" ValidationGroup="add" CausesValidation="true" />
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ShowSummary="false" EnableClientScript="true" ValidationGroup="add" />
+                        <asp:TextBox ID="txtRoleName" runat="server" Width="340px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtRoleName" Display="None" ErrorMessage="Role name is required" ValidationGroup="role"></asp:RequiredFieldValidator>
+                        
+                    </FooterTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:ImageButton ID="btnDelete" CommandName="delete" runat="server" OnClientClick="return confirm('Do you want to delete?');" CausesValidation="false" ImageUrl="~/Images/icons/16/Delete.png" ImageAlign="AbsMiddle" />
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        <asp:ImageButton ID="btnInsert" CommandName="insert" runat="server" ValidationGroup="role" ImageUrl="~/Images/icons/16/Add.png" ImageAlign="AbsMiddle" />
                     </FooterTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ShowSummary="false" EnableClientScript="true" ValidationGroup="role" />
     </div>
     </form>
 </body>

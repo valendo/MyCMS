@@ -129,6 +129,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\User.aspx" />
     <Content Include="Admin\EditModule.aspx" />
     <Content Include="Admin\ModuleSetting.aspx" />
     <Content Include="Admin\Page.aspx" />
@@ -204,6 +205,7 @@
     <Content Include="Images\icons\16\Cancel.png" />
     <Content Include="Images\icons\16\Delete.png" />
     <Content Include="Images\icons\16\Edit.png" />
+    <Content Include="Images\icons\16\Save.png" />
     <Content Include="Images\icons\20\3d bar chart.png" />
     <Content Include="Images\icons\20\Abacus.png" />
     <Content Include="Images\icons\20\Abort.png" />
@@ -1303,6 +1305,13 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\EditModule.aspx.cs">
       <DependentUpon>EditModule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
