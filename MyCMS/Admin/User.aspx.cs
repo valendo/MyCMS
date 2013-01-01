@@ -39,23 +39,14 @@ namespace MyCMS.Admin
             }
         }
 
-        protected void AddNew(string RoleName)
-        {
-            //if (!Users.RoleExists(RoleName))
-            //{
-            //    Users.CreateRole(RoleName);
-            //    BindData();
-            //}
-        }
-
         protected void gvUsers_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            //string RoleName = ((Label)gvUsers.Rows[e.RowIndex].Cells[1].FindControl("lblRoleName")).Text;
-            //if (RoleName != "host" && RoleName != "admin")
-            //{
-            //    Users.DeleteRole(RoleName);
-            //    BindData();
-            //}
+            string UserName = ((Label)gvUsers.Rows[e.RowIndex].Cells[1].FindControl("lblUserName")).Text;
+            if (UserName != "host" && UserName != "admin")
+            {
+                Membership.DeleteUser(UserName);
+                BindData();
+            }
         }
 
         protected void gvUsers_RowEditing(object sender, GridViewEditEventArgs e)
@@ -78,6 +69,12 @@ namespace MyCMS.Admin
             user.Email = Email;
             Membership.UpdateUser(user);
             gvUsers.EditIndex = -1;
+            BindData();
+        }
+
+        protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvUsers.PageIndex = e.NewPageIndex;
             BindData();
         }
     }

@@ -10,9 +10,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False"  
+        <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" AllowPaging="true" PageSize="10" PagerSettings-Mode="NumericFirstLast"
             ShowFooter="True" CssClass="gridview"
-            OnRowCommand="gvUsers_RowCommand" OnRowDeleting="gvUsers_RowDeleting" OnRowEditing="gvUsers_RowEditing" OnRowCancelingEdit="gvUsers_RowCancelingEdit" OnRowUpdating="gvUsers_RowUpdating">
+            OnRowCommand="gvUsers_RowCommand" OnRowDeleting="gvUsers_RowDeleting" OnRowEditing="gvUsers_RowEditing" OnRowCancelingEdit="gvUsers_RowCancelingEdit" OnRowUpdating="gvUsers_RowUpdating" OnPageIndexChanging="gvUsers_PageIndexChanging">
             <Columns>
                 <asp:TemplateField HeaderText="UserName">
                     <ItemTemplate>
@@ -23,7 +23,7 @@
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtUserName" runat="server" ></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorUserName" runat="server" ControlToValidate="txtUserName" Display="None" ErrorMessage="UserName is required" ValidationGroup="user"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorUserName" runat="server" ControlToValidate="txtUserName" Display="None" ErrorMessage="UserName is required" ValidationGroup="insert"></asp:RequiredFieldValidator>
                     </FooterTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Password">
@@ -34,8 +34,8 @@
                         <asp:Label ID="lblPassword" runat="server" Text="********"></asp:Label>
                     </EditItemTemplate>
                     <FooterTemplate>
-                        <asp:TextBox ID="txtPassword" runat="server" ></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="txtPassword" Display="None" ErrorMessage="Password is required" ValidationGroup="user"></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="txtPassword" Display="None" ErrorMessage="Password is required" ValidationGroup="insert"></asp:RequiredFieldValidator>
                     </FooterTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Email">
@@ -45,10 +45,12 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="txtEmail" runat="server"  Text='<%# Bind("Email") %>'></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ControlToValidate="txtEmail" Display="None" ErrorMessage="Email is required" ValidationGroup="update"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" Display="None" ErrorMessage="Email is not in the correct format" ValidationGroup="update" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                     </EditItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtEmail" runat="server" ></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ControlToValidate="txtEmail" Display="None" ErrorMessage="Email is required" ValidationGroup="user"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorEmail" runat="server" ControlToValidate="txtEmail" Display="None" ErrorMessage="Email is required" ValidationGroup="insert"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorEmail" runat="server" Display="None" ErrorMessage="Email is not in the correct format" ValidationGroup="insert" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                     </FooterTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Is Approved">
@@ -99,12 +101,12 @@
 		                <asp:ImageButton ID="btnCanel" CommandName="cancel" runat="server" CausesValidation="false" ImageUrl="~/Images/icons/16/Cancel.png" ImageAlign="AbsMiddle" />
 	                </EditItemTemplate>
 	                <FooterTemplate>
-		                <asp:ImageButton ID="btnInsert" CommandName="insert" runat="server" ValidationGroup="user" ImageUrl="~/Images/icons/16/Add.png" ImageAlign="AbsMiddle" />
+		                <asp:ImageButton ID="btnInsert" CommandName="insert" runat="server" ValidationGroup="insert" ImageUrl="~/Images/icons/16/Add.png" ImageAlign="AbsMiddle" />
 	                </FooterTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ShowSummary="false" EnableClientScript="true" ValidationGroup="user" />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ShowSummary="false" EnableClientScript="true" ValidationGroup="insert" />
         <asp:ValidationSummary ID="ValidationSummary2" runat="server" ShowMessageBox="true" ShowSummary="false" EnableClientScript="true" ValidationGroup="update" />
     </div>
     </form>

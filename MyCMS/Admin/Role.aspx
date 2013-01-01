@@ -20,8 +20,7 @@
                     </ItemTemplate>
                     <FooterTemplate>
                         <asp:TextBox ID="txtRoleName" runat="server" Width="340px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtRoleName" Display="None" ErrorMessage="Role name is required" ValidationGroup="role"></asp:RequiredFieldValidator>
-                        
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtRoleName" Display="None" ErrorMessage="Role name is required" ValidationGroup="insert"></asp:RequiredFieldValidator>
                     </FooterTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
@@ -29,12 +28,12 @@
                         <asp:ImageButton ID="btnDelete" CommandName="delete" runat="server" OnClientClick="return confirm('Do you want to delete?');" CausesValidation="false" ImageUrl="~/Images/icons/16/Delete.png" ImageAlign="AbsMiddle" />
                     </ItemTemplate>
                     <FooterTemplate>
-                        <asp:ImageButton ID="btnInsert" CommandName="insert" runat="server" ValidationGroup="role" ImageUrl="~/Images/icons/16/Add.png" ImageAlign="AbsMiddle" />
+                        <asp:ImageButton ID="btnInsert" CommandName="insert" runat="server" ValidationGroup="insert" ImageUrl="~/Images/icons/16/Add.png" ImageAlign="AbsMiddle" />
                     </FooterTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ShowSummary="false" EnableClientScript="true" ValidationGroup="role" />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ShowSummary="false" EnableClientScript="true" ValidationGroup="insert" />
     </div>
     </form>
 </body>
