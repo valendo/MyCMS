@@ -40,6 +40,15 @@ namespace MyCMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtPageName;
         
         /// <summary>
+        /// RequiredFieldValidatorPageName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPageName;
+        
+        /// <summary>
         /// txtTitle control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,24 @@ namespace MyCMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtPageSEO;
         
         /// <summary>
+        /// RequiredFieldValidatorPageSEO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPageSEO;
+        
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        
+        /// <summary>
         /// txtPageOrder control.
         /// </summary>
         /// <remarks>
@@ -74,6 +101,15 @@ namespace MyCMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPageOrder;
+        
+        /// <summary>
+        /// RegularExpressionValidatorPageSEO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorPageSEO;
         
         /// <summary>
         /// chkIsVisible control.
@@ -128,5 +164,14 @@ namespace MyCMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSave;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
     }
 }

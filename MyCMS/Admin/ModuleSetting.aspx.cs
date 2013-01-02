@@ -61,7 +61,7 @@ namespace MyCMS.Admin
             db.Modules.Add(m);
             db.SaveChanges();
             int ModuleId = db.Modules.OrderByDescending(t => t.ModuleId).FirstOrDefault().ModuleId;
-            int ModuleOrder = db.PageModules.OrderByDescending(t => t.ModuleOrder).FirstOrDefault().ModuleOrder;
+            int ModuleOrder = db.PageModules.OrderByDescending(t => t.ModuleOrder).FirstOrDefault().ModuleOrder + 1;
             PageModuleInfo pm = new PageModuleInfo();
             pm.PageId = PageId;
             pm.ModuleId = ModuleId;

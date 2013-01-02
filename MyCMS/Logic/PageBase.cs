@@ -43,17 +43,41 @@ namespace MyCMS.Logic
             get
             {
                 string pageSEO = Page.RouteData.Values["pageSEO"] as string;
-                var page = db.Pages.Where(t => t.PageSEO == pageSEO).ToList();
-                if (page.Count > 0)
-                {
-                    return page.FirstOrDefault().PageId;
-                }
-                else
+                if (pageSEO == null)
                 {
                     return -1;
                 }
+                if (pageSEO.Contains("?"))
+                {
+                    pageSEO = pageSEO.Split('?')[0];
+                }
+                string[] arrPages = pageSEO.Split(new char[] { '/' });
+                pageSEO = arrPages[arrPages.Length - 1];
+                var pages = db.Pages.Where(t => t.PageSEO == pageSEO).ToList();
+                foreach (var item in pages)
+                {
+                    int level = 0;
+                    GetCurrentLevel(item.PageId, ref level);
+                    if (level == arrPages.Length)
+                    {
+                        return item.PageId;
+                    }
+                }
+                return -1;
             }
         }
 
+        private void GetCurrentLevel(int PageId, ref int level)
+        {
+            var page = db.Pages.Where(t => t.PageId == PageId).FirstOrDefault();
+            if (page !=null)
+            {
+                level += 1;
+                if (page.ParentId != -1)
+                {
+                    GetCurrentLevel(page.ParentId, ref level);
+                }
+            }
+        }
     }
 }

@@ -5,12 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="../Styles/admin.css" rel="stylesheet" />
+    <link href="/Styles/admin.css" rel="stylesheet" />
     <link href="/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
     <script src="/Scripts/jquery-1.7.1.min.js"></script>
     <script src="/Scripts/jquery-ui-1.8.20.min.js"></script>
     <script src="/Scripts/MyScripts/dialog.js"></script>
-    <script src="../Resources/ckeditor/ckeditor.js"></script>
+    <script src="/Resources/ckeditor/ckeditor.js"></script>
 
 </head>
 <body>

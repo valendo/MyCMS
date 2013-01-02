@@ -1,10 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PageTree.ascx.cs" Inherits="MyCMS.UserControls.PageTree" %>
 
 <%@ Register Assembly="ASTreeView" Namespace="Geekees.Common.Controls" TagPrefix="ct" %>
-<link href="../Styles/dynatree/ui.dynatree.css" rel="stylesheet" />
-<link href="../Styles/contextmenu/jquery.contextMenu.css" rel="stylesheet" />
-<script src="../Scripts/MyScripts/jquery.dynatree-1.2.2.js"></script>
-<script src="../Styles/contextmenu/jquery.contextMenu-custom.js"></script>
+<link href="/Styles/dynatree/ui.dynatree.css" rel="stylesheet" />
+<link href="/Styles/contextmenu/jquery.contextMenu.css" rel="stylesheet" />
+<script src="/Scripts/MyScripts/jquery.dynatree-1.2.2.js"></script>
+<script src="/Styles/contextmenu/jquery.contextMenu-custom.js"></script>
 
 
 <script type="text/javascript">
@@ -15,7 +15,6 @@
             },
             onPostInit: function (isReloading, isError) {
                 this.activateKey(PageId);
-                
             },
             onActivate: function (node) {
                 if (node.tree.isUserEvent()) {

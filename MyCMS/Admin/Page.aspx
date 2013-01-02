@@ -16,6 +16,7 @@
                 <td class="auto-style2">Page Name</td>
                 <td class="auto-style1">
                     <asp:TextBox ID="txtPageName" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorPageName" runat="server" ControlToValidate="txtPageName" Display="None" ErrorMessage="Page name is required" ValidationGroup="page"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -35,18 +36,21 @@
                 <td class="auto-style3">Page SEO</td>
                 <td>
                     <asp:TextBox ID="txtPageSEO" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorPageSEO" runat="server" ControlToValidate="txtPageSEO" Display="None" ErrorMessage="Page SEO is required" ValidationGroup="page"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPageSEO" Display="None" ErrorMessage="Page SEO only charactor a-z and 0-9" ValidationGroup="page" ValidationExpression="[a-z0-9-]*$"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style3">Page Order</td>
                 <td>
-                    <asp:TextBox ID="txtPageOrder" runat="server" Width="128px"></asp:TextBox>
+                    <asp:TextBox ID="txtPageOrder" runat="server" Width="128px" ></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidatorPageSEO" runat="server" ControlToValidate="txtPageOrder" Display="None" ErrorMessage="Page order only number" ValidationGroup="page" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style3">Is Visible</td>
                 <td>
-                    <asp:CheckBox ID="chkIsVisible" runat="server" />
+                    <asp:CheckBox ID="chkIsVisible" runat="server" Checked="true" />
                 </td>
             </tr>
             <tr>
@@ -81,11 +85,11 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+                    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="page" />
                 </td>
             </tr>
         </table>
-    
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ShowSummary="false" EnableClientScript="true" ValidationGroup="page" />
     </div>
     </form>
 </body>

@@ -53,7 +53,7 @@ namespace MyCMS
             routes.Ignore("{resource}.axd/{*pathInfo}");
             routes.MapPageRoute(
                 "PageRoute",
-                "{pageSEO}",
+                "{*pageSEO}",
                 "~/Default.aspx"
             );
             //routes.MapPageRoute(

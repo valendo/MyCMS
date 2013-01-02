@@ -12,7 +12,7 @@ function () {
 	        var pageModuleId = $(this).parent().parent().attr("id");
 	        $.ajax({
 	            type: "POST",
-	            url: "Cmd.asmx/DeleteModule",
+	            url: "/Cmd.asmx/DeleteModule",
 	            data: "{'PageModuleId':'" + pageModuleId + "'}",
 	            contentType: "application/json; charset=utf-8",
 	            dataType: "json",
@@ -57,7 +57,7 @@ function () {
             //alert('SortOrder: ' + sortorder);
             $.ajax({
                 type: "POST",
-                url: "Cmd.asmx/SortModules",
+                url: "/Cmd.asmx/SortModules",
                 data: "{'PageModuleId':'" + pageModuleId + "', 'OldPane':'" + oldPane + "', 'NewPane':'" + newPane + "','SortOrder':'" + sortorder + "'}",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
