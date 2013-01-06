@@ -85,11 +85,14 @@ D:\Web\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 D:\Web\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.AspNet.xml
 D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.dll
 D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.pdb
+D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache
+D:\Web\cms\My CMS\MyCMS\MyCMS\bin\CKFinder.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\MyCMS.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\MyCMS.pdb
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\Antlr3.Runtime.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\AspNet.ScriptManager.jQuery.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\CKFinder.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.AspNet.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.Core.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.OAuth.Consumer.dll
@@ -111,9 +114,6 @@ D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.OAuth.Consumer.xml
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.OpenId.xml
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.AspNet.xml
+D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.pdb
-D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache
-D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache
-D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\CKFinder.dll
-D:\Web\cms\My CMS\MyCMS\MyCMS\bin\CKFinder.dll
