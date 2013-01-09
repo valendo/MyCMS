@@ -6,6 +6,7 @@
     font-family:Arial;
 }
 .ui-widget {
+    font-family: Arial, Verdana,sans-serif !important;
     font-size:12px !important;
 }
 .gridview td, th

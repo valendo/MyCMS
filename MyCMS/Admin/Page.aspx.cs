@@ -110,54 +110,59 @@ namespace MyCMS.Admin
         {
             if (Page.IsValid)
             {
-                Response.Write("Hello world");
+                string action = Request.QueryString["act"].ToString();
+                int pageId = int.Parse(Request.QueryString["pid"].ToString());
+                int ParentId = int.Parse(ddlParentPage.SelectedValue);
+                int PageOrder = 0;
+                var p = new MyCMS.Model.PageInfo();
+                if (action == "update")
+                {
+                    p = db.Pages.Find(pageId);
+                }
+                p.PageName = txtPageName.Text;
+                p.Title = txtTitle.Text;
+                p.ParentId = ParentId;
+                p.PageSEO = GetPageSEO();
+                if (txtPageOrder.Text == "")
+                {
+                    if (action == "update")
+                    {
+                        PageOrder = db.Pages.Where(t => t.ParentId == ParentId && t.PageId != pageId).OrderByDescending(t => t.PageOrder).FirstOrDefault().PageOrder + 1;
+                    }
+                    else
+                    {
+                        var pageOrders = db.Pages.Where(t => t.ParentId == ParentId).ToList();
+                        if (pageOrders.Count > 0)
+                        {
+                            PageOrder = db.Pages.Where(t => t.ParentId == ParentId).OrderByDescending(t => t.PageOrder).FirstOrDefault().PageOrder + 1;
+                        }
+                        else
+                        {
+                            PageOrder = 1;
+                        }
+                    }
+                }
+                else
+                {
+                    PageOrder = int.Parse(txtPageOrder.Text);
+                }
+                p.PageOrder = PageOrder;
+                p.IsVisible = chkIsVisible.Checked;
+                p.Description = txtDescription.Text;
+                p.Keywords = txtKeywords.Text;
+                p.Theme = ddlTheme.SelectedValue;
+                p.Layout = ddlLayout.SelectedValue;
+                if (action == "update")
+                {
+                    db.Entry(p).State = EntityState.Modified;
+                }
+                else
+                {
+                    db.Pages.Add(p);
+                }
+                db.SaveChanges();
+                ScriptManager.RegisterClientScriptBlock(this, typeof(Page), UniqueID, "closePopup();", true);
             }
-
-            
-            //string action = Request.QueryString["act"].ToString();
-            //int pageId = int.Parse(Request.QueryString["pid"].ToString());
-            //int ParentId = int.Parse(ddlParentPage.SelectedValue);
-            //int PageOrder = 0;
-            //var p = new MyCMS.Model.PageInfo();
-            //if (action == "update")
-            //{
-            //    p = db.Pages.Find(pageId);
-            //}
-            //p.PageName = txtPageName.Text;
-            //p.Title = txtTitle.Text;
-            //p.ParentId = ParentId;
-            //p.PageSEO = GetPageSEO();
-            //if (txtPageOrder.Text == "")
-            //{
-            //    if (action == "update")
-            //    {
-            //        PageOrder = db.Pages.Where(t => t.ParentId == ParentId && t.PageId != pageId).OrderByDescending(t => t.PageOrder).FirstOrDefault().PageOrder + 1;
-            //    }
-            //    else
-            //    {
-            //        PageOrder = db.Pages.Where(t => t.ParentId == ParentId).OrderByDescending(t => t.PageOrder).FirstOrDefault().PageOrder + 1;
-            //    }
-            //}
-            //else
-            //{
-            //    PageOrder = int.Parse(txtPageOrder.Text);
-            //}
-            //p.PageOrder = PageOrder;
-            //p.IsVisible = chkIsVisible.Checked;
-            //p.Description = txtDescription.Text;
-            //p.Keywords = txtKeywords.Text;
-            //p.Theme = ddlTheme.SelectedValue;
-            //p.Layout = ddlLayout.SelectedValue;
-            //if (action == "update")
-            //{
-            //    db.Entry(p).State = EntityState.Modified;
-            //}
-            //else
-            //{
-            //    db.Pages.Add(p);
-            //}
-            //db.SaveChanges();
-            //ScriptManager.RegisterClientScriptBlock(this, typeof(Page), UniqueID, "closePopup();", true);
         }
 
         protected string GetPageSEO()

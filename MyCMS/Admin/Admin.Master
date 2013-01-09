@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="MyCMS.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="/Styles/admin.css" rel="stylesheet" />
+    <link href="/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.8.20.min.js"></script>
+    <script src="/Scripts/MyScripts/dialog.js"></script>
+    <script src="/Scripts/MyScripts/jquery.cookie.js"></script>
+    <script src="/Scripts/MyScripts/admin.js"></script>
+    <%--<script type="text/javascript">
+        $.noConflict();
+        jQuery(document).ready(function ($) {
+            $("input[type=submit], a, button")
+              .button()
+              .click(function (event) {
+                  event.preventDefault();
+              });
+        });
+    </script>--%>
+    <script type="text/javascript">
+        $.noConflict();
+    </script>
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

@@ -133,7 +133,6 @@
     <Content Include="Admin\EditModule.aspx" />
     <Content Include="Admin\ModuleSetting.aspx" />
     <Content Include="Admin\Page.aspx" />
-    <Content Include="Admin\Role.aspx" />
     <Content Include="Cmd.asmx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
@@ -1150,12 +1149,14 @@
     <Content Include="Modules\Text\Edit.ascx" />
     <Content Include="Modules\Text\View.ascx" />
     <Content Include="packages.config" />
+    <Content Include="Admin\Admin.Master" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\MyScripts\admin.js" />
     <Content Include="Scripts\MyScripts\asdropdowntreeview\dropdowntreeview.css" />
     <Content Include="Scripts\MyScripts\asdropdowntreeview\images\windropdown-disabled.gif" />
     <Content Include="Scripts\MyScripts\asdropdowntreeview\images\windropdown.gif" />
@@ -1305,6 +1306,13 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="Admin\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1332,13 +1340,6 @@
     </Compile>
     <Compile Include="Admin\Page.aspx.designer.cs">
       <DependentUpon>Page.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Role.aspx.cs">
-      <DependentUpon>Role.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Role.aspx.designer.cs">
-      <DependentUpon>Role.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
@@ -1477,6 +1478,7 @@
   <ItemGroup>
     <Content Include="Scripts\MyScripts\asdropdowntreeview\images\Thumbs.db" />
     <Content Include="Styles\contextmenu\images\Thumbs.db" />
+    <Content Include="Scripts\MyScripts\jquery.cookie.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
