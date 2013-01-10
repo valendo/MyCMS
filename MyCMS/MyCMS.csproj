@@ -1415,7 +1415,6 @@
     <Compile Include="Logic\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Logic\Test.cs" />
     <Compile Include="Model\ModuleDefinitionInfo.cs" />
     <Compile Include="Model\ModuleInfo.cs" />
     <Compile Include="Model\MyCMSContext.cs" />
