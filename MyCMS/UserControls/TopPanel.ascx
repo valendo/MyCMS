@@ -3,9 +3,11 @@
 
 
 <div class="panel_button">
-    <button onclick="" class="cpsecondary">
+    <%--<button onclick="" class="cpsecondary">
         <span style="background-image:url('/images/icons/20/zoom.png')" class="icon"></span>
-    Preview</button>
+    Preview</button>--%>
+    <asp:Button ID="btnPreview" runat="server" Text="Preview" OnClick="btnPreview_Click" />
+    
 </div>
 <div class="panel_button">
     <button onclick="openPopup('Settings', '/admin/role.aspx');return false;" class="cpsecondary">

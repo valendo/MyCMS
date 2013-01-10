@@ -26,14 +26,17 @@
 </head>
 <body id="Body">
     <form id="Form1" runat="server">
-        <div id="x_top">
+        <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click"/>
+        <div id="x_top" runat="server">
             <uc1:TopPanel runat="server" id="TopPanel" />
         </div>
-        <div id="x_left">
+        <div id="x_left" runat="server">
             <uc1:DockPanel runat="server" id="DockPanel" />
         </div>
         <div id="x_main">
+            <asp:Label ID="lblMsg" runat="server" Text="hello"></asp:Label>
             <asp:PlaceHolder ID="pchDefault" runat="server"></asp:Placeholder>
+            
             <div id="popup" style="z-index:999;"></div>
         </div>
         <script type="text/javascript">

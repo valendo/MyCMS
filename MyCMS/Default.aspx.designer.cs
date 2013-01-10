@@ -31,6 +31,24 @@ namespace MyCMS {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
+        /// btnEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEdit;
+        
+        /// <summary>
+        /// x_top control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl x_top;
+        
+        /// <summary>
         /// TopPanel control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace MyCMS {
         protected global::MyCMS.UserControls.TopPanel TopPanel;
         
         /// <summary>
+        /// x_left control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl x_left;
+        
+        /// <summary>
         /// DockPanel control.
         /// </summary>
         /// <remarks>
@@ -47,6 +74,15 @@ namespace MyCMS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::MyCMS.UserControls.DockPanel DockPanel;
+        
+        /// <summary>
+        /// lblMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
         /// pchDefault control.

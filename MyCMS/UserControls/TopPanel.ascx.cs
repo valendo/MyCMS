@@ -13,5 +13,13 @@ namespace MyCMS.UserControls
         {
 
         }
+
+        protected void btnPreview_Click(object sender, EventArgs e)
+        {
+            Session["IsEdit"] = false;
+            Response.Redirect(Request.RawUrl);
+        }
+
+        
     }
 }

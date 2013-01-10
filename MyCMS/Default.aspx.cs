@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.ModelBinding;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -15,8 +16,27 @@ namespace MyCMS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsHost || IsAdmin)
+                btnEdit.Visible = true;
+            else
+            {
+                btnEdit.Visible = false;
+                Session["IsEdit"] = false;
+            }
+            if (IsEdit)
+            {
+                x_top.Visible = true;
+                x_left.Visible = true;
+            }
+            else
+            {
+                x_top.Visible = false;
+                x_left.Visible = false;
+            }
+            lblMsg.Text = IsEdit.ToString();
             if (!IsPostBack)
             {
+                
                 if (this.PageId != -1)
                 {
                     var page = db.Pages.Where(t => t.PageId == this.PageId).FirstOrDefault();
@@ -53,6 +73,12 @@ namespace MyCMS
             metaKeywords.Content = keywords;
             Page.Header.Controls.Add(metaKeywords);
 
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            Session["IsEdit"] = true;
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

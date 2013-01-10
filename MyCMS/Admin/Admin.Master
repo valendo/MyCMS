@@ -12,16 +12,6 @@
     <script src="/Scripts/MyScripts/dialog.js"></script>
     <script src="/Scripts/MyScripts/jquery.cookie.js"></script>
     <script src="/Scripts/MyScripts/admin.js"></script>
-    <%--<script type="text/javascript">
-        $.noConflict();
-        jQuery(document).ready(function ($) {
-            $("input[type=submit], a, button")
-              .button()
-              .click(function (event) {
-                  event.preventDefault();
-              });
-        });
-    </script>--%>
     <script type="text/javascript">
         $.noConflict();
     </script>

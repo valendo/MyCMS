@@ -79,5 +79,28 @@ namespace MyCMS.Logic
                 }
             }
         }
+
+        public bool IsEdit
+        {
+            get
+            {
+                bool _IsEdit = false;
+                if (Session["IsEdit"] != null)
+                {
+                    _IsEdit = bool.Parse(Session["IsEdit"].ToString());
+                }
+                return _IsEdit;
+            }
+        }
+
+        public bool IsHost
+        {
+            get { return Context.User.IsInRole("host"); }
+        }
+
+        public bool IsAdmin
+        {
+            get { return Context.User.IsInRole("admin"); }
+        }
     }
 }
