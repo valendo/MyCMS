@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -30,6 +31,7 @@ namespace MyCMS.Admin
                 ddlTheme.DataSource = Folders;
                 ddlTheme.DataBind();
                 BindingLayout();
+                BindingRoles();
 
                 if (action == "update")
                 {
@@ -61,6 +63,18 @@ namespace MyCMS.Admin
             ddlTheme.SelectedValue = p.Theme;
             BindingLayout();
             ddlLayout.SelectedValue = p.Layout;
+            var pm = db.PagePermissions.Where(t => t.PageId == PageId).ToList();
+            foreach (var item in pm)
+            {
+                ListItem li = chkListRoles.Items.FindByValue(item.Role);
+                li.Selected = true;
+            }
+        }
+
+        private void BindingRoles()
+        {
+            chkListRoles.DataSource = Roles.GetAllRoles();
+            chkListRoles.DataBind();
         }
 
         private void BindingParentPages()
@@ -155,12 +169,50 @@ namespace MyCMS.Admin
                 if (action == "update")
                 {
                     db.Entry(p).State = EntityState.Modified;
+                    db.SaveChanges();
+                    //Update page permissions
+                    foreach (ListItem item in chkListRoles.Items)
+                    {
+                        var checkExist = db.PagePermissions.Where(t => t.PageId == pageId && t.Role == item.Value).ToList();
+                        if (item.Selected)
+                        {
+                            if (checkExist.Count == 0)
+                            {
+                                PagePermissionInfo pm = new PagePermissionInfo();
+                                pm.PageId = pageId;
+                                pm.Role = item.Value;
+                                db.PagePermissions.Add(pm);
+                                db.SaveChanges();
+                            }
+                        }
+                        else
+                        {
+                            if (checkExist.Count > 0)
+                            {
+                                var pm = db.PagePermissions.Where(t => t.PageId == pageId && t.Role == item.Value).FirstOrDefault();
+                                db.PagePermissions.Remove(pm);
+                                db.SaveChanges();
+                            }
+                        }
+                    }
                 }
                 else
                 {
                     db.Pages.Add(p);
+                    db.SaveChanges();
+                    //Add page permissions
+                    foreach (ListItem item in chkListRoles.Items)
+                    {
+                        if (item.Selected)
+                        {
+                            PagePermissionInfo pm = new PagePermissionInfo();
+                            pm.PageId = p.PageId;
+                            pm.Role = item.Value;
+                            db.PagePermissions.Add(pm);
+                            db.SaveChanges();
+                        }
+                    }
                 }
-                db.SaveChanges();
                 ScriptManager.RegisterClientScriptBlock(this, typeof(Page), UniqueID, "closePopup();", true);
             }
         }

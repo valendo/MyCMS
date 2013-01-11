@@ -15,6 +15,7 @@ namespace MyCMS.Model
         public DbSet<ModuleDefinitionInfo> ModuleDefinitions { get; set; }
         public DbSet<ModuleInfo> Modules { get; set; }
         public DbSet<PageModuleInfo> PageModules { get; set; }
+        public DbSet<PagePermissionInfo> PagePermissions { get; set; }
         public DbSet<TextInfo> Texts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -23,6 +24,7 @@ namespace MyCMS.Model
             modelBuilder.Entity<ModuleDefinitionInfo>().ToTable("ModuleDefinitions");
             modelBuilder.Entity<ModuleInfo>().ToTable("Modules");
             modelBuilder.Entity<PageModuleInfo>().ToTable("PageModules");
+            modelBuilder.Entity<PagePermissionInfo>().ToTable("PagePermissions");
             modelBuilder.Entity<TextInfo>().ToTable("Texts");
         }
     }

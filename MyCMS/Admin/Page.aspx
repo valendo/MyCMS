@@ -75,6 +75,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style3" valign="top">Permissions</td>
+                <td>
+                    <asp:CheckBoxList ID="chkListRoles" runat="server"></asp:CheckBoxList>
+                </td>
+            </tr>
+            <tr>
                 <td class="auto-style3">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>

@@ -23,20 +23,22 @@ namespace MyCMS
                 btnEdit.Visible = false;
                 Session["IsEdit"] = false;
             }
-            if (IsEdit)
-            {
-                x_top.Visible = true;
-                x_left.Visible = true;
-            }
-            else
-            {
-                x_top.Visible = false;
-                x_left.Visible = false;
-            }
+            
             lblMsg.Text = IsEdit.ToString();
             if (!IsPostBack)
             {
-                
+                if (IsEdit)
+                {
+                    x_top.Visible = true;
+                    x_left.Visible = true;
+                    XPanelStyleSheet.Attributes.Add("href", "/Styles/xpanel.css");
+                    Page.ClientScript.RegisterClientScriptInclude("script", "/Scripts/MyScripts/xpanel.js");
+                }
+                else
+                {
+                    x_top.Visible = false;
+                    x_left.Visible = false;
+                }
                 if (this.PageId != -1)
                 {
                     var page = db.Pages.Where(t => t.PageId == this.PageId).FirstOrDefault();
@@ -75,7 +77,7 @@ namespace MyCMS
 
         }
 
-        protected void btnEdit_Click(object sender, EventArgs e)
+        protected void btnEdit_Click(object sender, ImageClickEventArgs e)
         {
             Session["IsEdit"] = true;
             Response.Redirect(Request.RawUrl);

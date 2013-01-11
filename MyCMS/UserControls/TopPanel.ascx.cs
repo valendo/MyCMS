@@ -14,11 +14,15 @@ namespace MyCMS.UserControls
 
         }
 
-        protected void btnPreview_Click(object sender, EventArgs e)
+        protected void btnPreview_Click(object sender, ImageClickEventArgs e)
         {
             Session["IsEdit"] = false;
             Response.Redirect(Request.RawUrl);
         }
+
+        
+
+        
 
         
     }

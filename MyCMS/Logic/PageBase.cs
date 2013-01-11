@@ -23,17 +23,23 @@ namespace MyCMS.Logic
                 {
                     BaseUserControl control = this.Page.LoadControl(ControlSrc) as BaseUserControl;
                     control.ModuleId = ModuleId;
-                    sb.AppendFormat("<div class=\"dragbox\" id=\"PageModule{0}\" >", PageModuleId);
-                    sb.AppendFormat("<h2><span>{0}</span>", ModuleTitle);
-                    sb.AppendFormat("<a class=\"delete opIcons\"> </a>");
-                    sb.AppendFormat("<a class=\"maxmin opIcons\"> </a>");
-                    sb.AppendFormat("<a class=\"setting opIcons\" onclick=\"openPopup('Module Settings','/Admin/ModuleSetting.aspx?action=edit&pmid={0}');\"> </a>", PageModuleId);
-                    sb.AppendFormat("<a class=\"edit opIcons\" onclick=\"openPopup('Edit module','/Admin/EditModule.aspx?mid={0}');\"> </a>", ModuleId);
-                    sb.AppendFormat("</h2>");
-                    sb.AppendFormat("<div class=\"dragbox-content\" >");
-                    pchPane.Controls.Add(new LiteralControl(sb.ToString()));
+                    if (IsEdit)
+                    {
+                        sb.AppendFormat("<div class=\"dragbox\" id=\"PageModule{0}\" >", PageModuleId);
+                        sb.AppendFormat("<h2><span>{0}</span>", ModuleTitle);
+                        sb.AppendFormat("<a class=\"delete opIcons\"> </a>");
+                        sb.AppendFormat("<a class=\"maxmin opIcons\"> </a>");
+                        sb.AppendFormat("<a class=\"setting opIcons\" onclick=\"openPopup('Module Settings','/Admin/ModuleSetting.aspx?action=edit&pmid={0}');\"> </a>", PageModuleId);
+                        sb.AppendFormat("<a class=\"edit opIcons\" onclick=\"openPopup('Edit module','/Admin/EditModule.aspx?mid={0}');\"> </a>", ModuleId);
+                        sb.AppendFormat("</h2>");
+                        sb.AppendFormat("<div class=\"dragbox-content\" >");
+                        pchPane.Controls.Add(new LiteralControl(sb.ToString()));
+                    }
                     pchPane.Controls.Add(control);
-                    pchPane.Controls.Add(new LiteralControl("</div><div class='clear'></div></div>"));
+                    if (IsEdit)
+                    {
+                        pchPane.Controls.Add(new LiteralControl("</div><div class='clear'></div></div>"));
+                    }
                 }
             }
         }

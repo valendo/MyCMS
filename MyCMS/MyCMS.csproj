@@ -1142,6 +1142,8 @@
     <Content Include="Images\Site\module_header_bg.png" />
     <Content Include="Images\Site\panel_bg.png" />
     <Content Include="Images\Site\panel_header_bg.png" />
+    <Content Include="Images\Site\preview.png" />
+    <Content Include="Images\Site\preview_edit.png" />
     <Content Include="Images\Splitter\paneh.gif" />
     <Content Include="Images\Splitter\panehc.gif" />
     <Content Include="Images\Splitter\panev.gif" />
@@ -1420,6 +1422,7 @@
     <Compile Include="Model\MyCMSContext.cs" />
     <Compile Include="Model\PageModuleInfo.cs" />
     <Compile Include="Model\PageInfo.cs" />
+    <Compile Include="Model\PagePermissionInfo.cs" />
     <Compile Include="Model\TextInfo.cs" />
     <Compile Include="Modules\Text\Edit.ascx.cs">
       <DependentUpon>Edit.ascx</DependentUpon>

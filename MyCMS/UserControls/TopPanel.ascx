@@ -1,14 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TopPanel.ascx.cs" Inherits="MyCMS.UserControls.TopPanel" %>
 
 
-
-<div class="panel_button">
-    <%--<button onclick="" class="cpsecondary">
-        <span style="background-image:url('/images/icons/20/zoom.png')" class="icon"></span>
-    Preview</button>--%>
-    <asp:Button ID="btnPreview" runat="server" Text="Preview" OnClick="btnPreview_Click" />
-    
-</div>
+<asp:ImageButton ID="btnPreview" runat="server" ImageUrl="~/Images/Site/preview.png" OnClick="btnPreview_Click" CssClass="preview_button" />
 <div class="panel_button">
     <button onclick="openPopup('Settings', '/admin/role.aspx');return false;" class="cpsecondary">
         <span style="background-image:url('/images/icons/20/gear.png')" class="icon"></span>

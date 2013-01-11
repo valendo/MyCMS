@@ -13,7 +13,7 @@
     <link href="/Styles/reset.css" rel="stylesheet" />
     <link href="/Styles/Site.css" rel="stylesheet" />
     <link href="/Styles/admin.css" rel="stylesheet" />
-    <link href="/Styles/xpanel.css" rel="stylesheet" />
+    <link id="XPanelStyleSheet" rel="stylesheet" type="text/css" runat="server" />
     <link href="/Styles/module.css" rel="stylesheet" />
     <link href="/Styles/popupbox.css" rel="stylesheet" />
     <link href="/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
@@ -21,12 +21,11 @@
     <script src="/Scripts/jquery-ui-1.8.20.min.js"></script>
     <script src="/Scripts/MyScripts/dragdrop.js"></script>
     <script src="/Scripts/MyScripts/dialog.js"></script>
-    <script src="/Scripts/MyScripts/xpanel.js"></script>
 
 </head>
 <body id="Body">
     <form id="Form1" runat="server">
-        <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click"/>
+        <asp:ImageButton ID="btnEdit" runat="server" ImageUrl="~/Images/Site/preview_edit.png" OnClick="btnEdit_Click" CssClass="preview_edit_button" />
         <div id="x_top" runat="server">
             <uc1:TopPanel runat="server" id="TopPanel" />
         </div>

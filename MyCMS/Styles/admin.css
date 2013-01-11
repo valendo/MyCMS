@@ -77,3 +77,12 @@ button.cpsecondary:active {
 .icon:hover {
     background-position: left top;
 }
+.preview_button {
+    float:right;
+    margin-top:2px;
+}
+.preview_edit_button {
+    position:absolute;
+    top:2px;
+    right:0;
+}
