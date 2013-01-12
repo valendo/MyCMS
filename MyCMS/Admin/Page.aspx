@@ -61,13 +61,6 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style3">Theme</td>
-                <td>
-                    <asp:DropDownList ID="ddlTheme" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTheme_SelectedIndexChanged">
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
                 <td class="auto-style3">Layout</td>
                 <td>
                     <asp:DropDownList ID="ddlLayout" runat="server">

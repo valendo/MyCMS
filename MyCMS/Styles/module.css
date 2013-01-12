@@ -28,7 +28,7 @@
             }
 
         .dragbox-content{
-	        min-height:100px;
+	        min-height:30px;
         }
         .placeholder{
 	        background: #EED5B7;

@@ -123,12 +123,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\Setting.aspx" />
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\EditModule.aspx" />
     <Content Include="Admin\ModuleSetting.aspx" />
@@ -1148,6 +1150,8 @@
     <Content Include="Images\Splitter\panehc.gif" />
     <Content Include="Images\Splitter\panev.gif" />
     <Content Include="Images\Splitter\panevc.gif" />
+    <Content Include="Layout\Detail.ascx" />
+    <Content Include="Layout\Home.ascx" />
     <Content Include="Modules\Text\Edit.ascx" />
     <Content Include="Modules\Text\View.ascx" />
     <Content Include="packages.config" />
@@ -1295,10 +1299,6 @@
     <Content Include="Styles\dynatree\vline-rtl.gif" />
     <Content Include="Styles\dynatree\vline.gif" />
     <Content Include="Styles\xpanel.css" />
-    <Content Include="Themes\Custom\2Columns.ascx" />
-    <Content Include="Themes\Custom\Index.ascx" />
-    <Content Include="Themes\Default\Detail.ascx" />
-    <Content Include="Themes\Default\Home.ascx" />
     <Content Include="UserControls\DockPanel.ascx" />
     <Content Include="UserControls\PageTree.ascx" />
     <Content Include="UserControls\TopPanel.ascx" />
@@ -1308,12 +1308,26 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Setting.aspx.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Setting.aspx.designer.cs">
+      <DependentUpon>Setting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
@@ -1417,12 +1431,14 @@
     <Compile Include="Logic\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Logic\Utility.cs" />
     <Compile Include="Model\ModuleDefinitionInfo.cs" />
     <Compile Include="Model\ModuleInfo.cs" />
     <Compile Include="Model\MyCMSContext.cs" />
     <Compile Include="Model\PageModuleInfo.cs" />
     <Compile Include="Model\PageInfo.cs" />
     <Compile Include="Model\PagePermissionInfo.cs" />
+    <Compile Include="Model\SettingInfo.cs" />
     <Compile Include="Model\TextInfo.cs" />
     <Compile Include="Modules\Text\Edit.ascx.cs">
       <DependentUpon>Edit.ascx</DependentUpon>

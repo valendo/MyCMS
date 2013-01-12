@@ -18,7 +18,6 @@ namespace MyCMS.Model
         public bool IsVisible { get; set; }
         public string Description { get; set; }
         public string Keywords { get; set; }
-        public string Theme { get; set; }
         public string Layout { get; set; }
     }
 }

@@ -22,14 +22,6 @@ namespace MyCMS.Admin
                 int pageId = int.Parse(Request.QueryString["pid"].ToString());
 
                 BindingParentPages();
-                DirectoryInfo dirTheme = new DirectoryInfo(Server.MapPath("~/Themes"));
-                List<string> Folders = new List<string>();
-                foreach (DirectoryInfo item in dirTheme.GetDirectories())
-                {
-                    Folders.Add(item.Name);
-                }
-                ddlTheme.DataSource = Folders;
-                ddlTheme.DataBind();
                 BindingLayout();
                 BindingRoles();
 
@@ -44,7 +36,21 @@ namespace MyCMS.Admin
                     db.SaveChanges();
                     ScriptManager.RegisterClientScriptBlock(this, typeof(Page), UniqueID, "closePopup();", true);
                 }
-                
+                else if (action == "add")
+                {
+                    ddlParentPage.SelectedValue = pageId.ToString();
+                    ListItem liAnonymous = chkListRoles.Items.FindByValue("Anonymous");
+                    if (liAnonymous != null)
+                    {
+                        liAnonymous.Selected = true;
+                    }
+                }
+                ListItem liAdmin = chkListRoles.Items.FindByValue("Admin");
+                if (liAdmin != null)
+                {
+                    liAdmin.Selected = true;
+                    liAdmin.Enabled = false;
+                }
             }
         }
 
@@ -60,14 +66,16 @@ namespace MyCMS.Admin
             chkIsVisible.Checked = p.IsVisible;
             txtDescription.Text = p.Description;
             txtKeywords.Text = p.Keywords;
-            ddlTheme.SelectedValue = p.Theme;
             BindingLayout();
             ddlLayout.SelectedValue = p.Layout;
             var pm = db.PagePermissions.Where(t => t.PageId == PageId).ToList();
             foreach (var item in pm)
             {
                 ListItem li = chkListRoles.Items.FindByValue(item.Role);
-                li.Selected = true;
+                if (li != null)
+                {
+                    li.Selected = true;
+                }
             }
         }
 
@@ -111,7 +119,7 @@ namespace MyCMS.Admin
         private void BindingLayout()
         {
             List<string> Files = new List<string>();
-            DirectoryInfo dirLayout = new DirectoryInfo(Server.MapPath("~/Themes/" + ddlTheme.SelectedValue));
+            DirectoryInfo dirLayout = new DirectoryInfo(Server.MapPath("~/Layout"));
             foreach (FileInfo item in dirLayout.GetFiles())
             {
                 Files.Add(item.Name);
@@ -164,7 +172,6 @@ namespace MyCMS.Admin
                 p.IsVisible = chkIsVisible.Checked;
                 p.Description = txtDescription.Text;
                 p.Keywords = txtKeywords.Text;
-                p.Theme = ddlTheme.SelectedValue;
                 p.Layout = ddlLayout.SelectedValue;
                 if (action == "update")
                 {
@@ -193,6 +200,16 @@ namespace MyCMS.Admin
                                 db.PagePermissions.Remove(pm);
                                 db.SaveChanges();
                             }
+                        }
+                    }
+                    //Delete no longer roles
+                    var pagePermissions = db.PagePermissions.Where(t => t.PageId == pageId).ToList();
+                    foreach (PagePermissionInfo item in pagePermissions)
+                    {
+                        if (!Roles.RoleExists(item.Role))
+                        {
+                            db.PagePermissions.Remove(item);
+                            db.SaveChanges();
                         }
                     }
                 }
@@ -242,9 +259,5 @@ namespace MyCMS.Admin
             return pageSEO;
         }
 
-        protected void ddlTheme_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindingLayout();
-        }
     }
 }

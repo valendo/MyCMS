@@ -22,14 +22,14 @@ namespace MyCMS
             Database.SetInitializer<MyCMSContext>(null);
 
             // Add Admin role.
-            if (!Roles.RoleExists("admin"))
+            if (!Roles.RoleExists("Admin"))
             {
-                Roles.CreateRole("admin");
+                Roles.CreateRole("Admin");
             }
             if (Membership.GetUser("admin") == null)
             {
                 Membership.CreateUser("admin", "P@ssword1", "vothanhtai86@gmail.com");
-                Roles.AddUserToRole("admin", "admin");
+                Roles.AddUserToRole("admin", "Admin");
             }
 
             // Add Routes.

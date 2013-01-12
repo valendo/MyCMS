@@ -51,7 +51,23 @@ namespace MyCMS.Logic
                 string pageSEO = Page.RouteData.Values["pageSEO"] as string;
                 if (pageSEO == null)
                 {
-                    return -1;
+                    int homePageId = int.Parse(db.Settings.Find("HomePage").Value);
+                    if (homePageId != -1)
+                    {
+                        return homePageId;
+                    }
+                    else
+                    {
+                        int FirstPageId = db.Pages.FirstOrDefault().PageId;
+                        if (FirstPageId > 0)
+                        {
+                            return FirstPageId;
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    }
                 }
                 if (pageSEO.Contains("?"))
                 {

@@ -139,8 +139,14 @@ namespace MyCMS.Admin
         protected void gvRoles_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             string RoleName = ((Label)gvRoles.Rows[e.RowIndex].Cells[1].FindControl("lblRoleName")).Text;
-            if (RoleName != "host" && RoleName != "admin")
+            if (RoleName != "Admin" && RoleName != "Anonymous")
             {
+                string[] currentUserRoles;
+                currentUserRoles = Roles.GetUsersInRole(RoleName);
+                if (currentUserRoles.Length > 0)
+                {
+                    Roles.RemoveUsersFromRole(currentUserRoles, RoleName);
+                }
                 Roles.DeleteRole(RoleName);
                 BindRoles();
             }

@@ -23,8 +23,6 @@ namespace MyCMS
                 btnEdit.Visible = false;
                 Session["IsEdit"] = false;
             }
-            
-            lblMsg.Text = IsEdit.ToString();
             if (!IsPostBack)
             {
                 if (IsEdit)
@@ -39,31 +37,58 @@ namespace MyCMS
                     x_top.Visible = false;
                     x_left.Visible = false;
                 }
+                
                 if (this.PageId != -1)
                 {
-                    var page = db.Pages.Where(t => t.PageId == this.PageId).FirstOrDefault();
-                    var pageModules = db.PageModules.Where(t => t.PageId == this.PageId).OrderBy(t => t.ModuleOrder).ToList();
-                    //Add meta
-                    AddMeta(page.Title, page.Description, page.Keywords);
-
-                    UserControl layoutControl = this.Page.LoadControl("~/Themes/" + page.Theme + "/" + page.Layout + "") as UserControl;
-                    pchDefault.Controls.Add(layoutControl);
-                    foreach (var item in pageModules)
+                    if (CheckPagePermissions())
                     {
-                        var module = db.Modules.Where(t => t.ModuleId == item.ModuleId).FirstOrDefault();
-                        string controlSrc = "~/Modules/" + db.ModuleDefinitions.Where(t => t.ModuleDefId == module.ModuleDefId).FirstOrDefault().ModuleFolder + "/View.ascx";
-                        LoadControl(layoutControl, controlSrc, item.PaneName, item.ModuleId, item.ModuleTitle, item.PageModuleId);
+                        var page = db.Pages.Where(t => t.PageId == this.PageId).FirstOrDefault();
+                        var pageModules = db.PageModules.Where(t => t.PageId == this.PageId).OrderBy(t => t.ModuleOrder).ToList();
+                        //Add meta
+                        AddMeta(page.Title, page.Description, page.Keywords);
+
+                        UserControl layoutControl = this.Page.LoadControl("~/Layout/" + page.Layout + "") as UserControl;
+                        pchDefault.Controls.Add(layoutControl);
+                        foreach (var item in pageModules)
+                        {
+                            var module = db.Modules.Where(t => t.ModuleId == item.ModuleId).FirstOrDefault();
+                            string controlSrc = "~/Modules/" + db.ModuleDefinitions.Where(t => t.ModuleDefId == module.ModuleDefId).FirstOrDefault().ModuleFolder + "/View.ascx";
+                            LoadControl(layoutControl, controlSrc, item.PaneName, item.ModuleId, item.ModuleTitle, item.PageModuleId);
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("/404.aspx?type=authentication");
                     }
                 }
                 else
                 {
-                    pchDefault.Controls.Add(new LiteralControl("<h2>Page not found!!!</h2>"));
+                    Response.Redirect("/404.aspx?type=notfound");
                 }
             }
         }
 
+        protected bool CheckPagePermissions()
+        {
+            bool result = false;
+            var pm = db.PagePermissions.Where(t => t.PageId == this.PageId).ToList();
+            foreach (var item in pm)
+            {
+                if (item.Role == "Anonymous" || Context.User.IsInRole(item.Role))
+                {
+                    return true;
+                }
+            }
+            return result;
+        }
+
         protected void AddMeta(string title, string description, string keywords)
         {
+            string SiteTitle = MyCMS.Utility.GetSettingByKey("SiteTitle");
+            if (!string.IsNullOrEmpty(SiteTitle))
+            {
+                title = title + " - " + SiteTitle;
+            }
             Page.Header.Title = title;
             HtmlMeta metaDescription = new HtmlMeta();
             metaDescription.Name = "description";

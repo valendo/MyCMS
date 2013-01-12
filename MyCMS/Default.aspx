@@ -9,7 +9,7 @@
 <html lang="en">
 <head id="Head1" runat="server">
     <meta charset="utf-8" />
-    <title><%: Page.Title %> - My CMS</title>
+                                 
     <link href="/Styles/reset.css" rel="stylesheet" />
     <link href="/Styles/Site.css" rel="stylesheet" />
     <link href="/Styles/admin.css" rel="stylesheet" />
@@ -33,7 +33,6 @@
             <uc1:DockPanel runat="server" id="DockPanel" />
         </div>
         <div id="x_main">
-            <asp:Label ID="lblMsg" runat="server" Text="hello"></asp:Label>
             <asp:PlaceHolder ID="pchDefault" runat="server"></asp:Placeholder>
             
             <div id="popup" style="z-index:999;"></div>
