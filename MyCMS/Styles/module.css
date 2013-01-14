@@ -57,6 +57,9 @@
 .dragbox .edit {
      background-image:url(/images/icons/12/edit.png);
 }
+.dragbox .share {
+     background-image:url(/images/icons/12/share.png);
+}
 .dragbox .setting {
      background-image:url(/images/icons/12/gear.png);
 }

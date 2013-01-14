@@ -131,6 +131,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Admin\Setting.aspx" />
+    <Content Include="Admin\ShareModule.aspx" />
     <Content Include="Admin\User.aspx" />
     <Content Include="Admin\EditModule.aspx" />
     <Content Include="Admin\ModuleSetting.aspx" />
@@ -201,6 +202,7 @@
     <Content Include="Images\icons\12\Edit.png" />
     <Content Include="Images\icons\12\Gear.png" />
     <Content Include="Images\icons\12\More.png" />
+    <Content Include="Images\icons\12\Share.png" />
     <Content Include="Images\icons\16\Refresh.png" />
     <Content Include="Images\icons\16\Add.png" />
     <Content Include="Images\icons\16\Cancel.png" />
@@ -1328,6 +1330,13 @@
     </Compile>
     <Compile Include="Admin\Setting.aspx.designer.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ShareModule.aspx.cs">
+      <DependentUpon>ShareModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ShareModule.aspx.designer.cs">
+      <DependentUpon>ShareModule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
