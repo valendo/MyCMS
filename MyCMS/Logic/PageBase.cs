@@ -13,7 +13,7 @@ namespace MyCMS.Logic
     public class PageBase : System.Web.UI.Page
     {
         public MyCMSContext db = new MyCMSContext();
-        public void LoadControl(UserControl layoutControl, string ControlSrc, string PaneName, int ModuleId, string ModuleTitle, int PageModuleId)
+        public void LoadControl(UserControl layoutControl, string ControlSrc, string PaneName, int ModuleId, string ModuleTitle, int PageModuleId, string Container, bool DisplayTitle)
         {
             StringBuilder sb = new StringBuilder();
             if (ControlSrc.ToLower().EndsWith(".ascx"))
@@ -36,10 +36,41 @@ namespace MyCMS.Logic
                         sb.AppendFormat("<div class=\"dragbox-content\" >");
                         pchPane.Controls.Add(new LiteralControl(sb.ToString()));
                     }
-                    pchPane.Controls.Add(control);
+                    //add container module style
+                    if (!string.IsNullOrEmpty(Container))
+                    {
+                        UserControl containerControl = this.Page.LoadControl("~/Theme/Container/" + Container + ".ascx") as UserControl;
+                        foreach (Control ctl in containerControl.Controls)
+                        {
+                            if (ctl is PlaceHolder)
+                            {
+                                if (DisplayTitle)
+                                {
+                                    if (ctl.ID == "ModuleTitle")
+                                    {
+                                        PlaceHolder pchModuleTitle = (PlaceHolder)containerControl.FindControl("ModuleTitle");
+                                        pchModuleTitle.Controls.Add(new LiteralControl(ModuleTitle));
+                                    }
+                                }
+                                if (ctl.ID == "ModuleContent")
+                                {
+                                    PlaceHolder pchModuleContent = (PlaceHolder)containerControl.FindControl("ModuleContent");
+                                    pchModuleContent.Controls.Add(control);
+                                    pchModuleContent.Controls.Add(new LiteralControl("<div class='clear'></div>"));
+                                }
+                            }
+                        }
+                        pchPane.Controls.Add(containerControl);
+                    }
+                    else
+                    {
+                        pchPane.Controls.Add(control);
+                        pchPane.Controls.Add(new LiteralControl("<div class='clear'></div>"));
+                    }
+                    
                     if (IsEdit)
                     {
-                        pchPane.Controls.Add(new LiteralControl("</div><div class='clear'></div></div>"));
+                        pchPane.Controls.Add(new LiteralControl("</div></div>"));
                     }
                 }
             }

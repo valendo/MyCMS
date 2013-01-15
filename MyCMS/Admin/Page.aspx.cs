@@ -119,10 +119,10 @@ namespace MyCMS.Admin
         private void BindingLayout()
         {
             List<string> Files = new List<string>();
-            DirectoryInfo dirLayout = new DirectoryInfo(Server.MapPath("~/Layout"));
+            DirectoryInfo dirLayout = new DirectoryInfo(Server.MapPath("~/Theme/Layout"));
             foreach (FileInfo item in dirLayout.GetFiles())
             {
-                Files.Add(item.Name);
+                Files.Add(Path.GetFileNameWithoutExtension(item.Name));
             }
             ddlLayout.DataSource = Files;
             ddlLayout.DataBind();

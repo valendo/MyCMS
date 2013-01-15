@@ -1152,8 +1152,9 @@
     <Content Include="Images\Splitter\panehc.gif" />
     <Content Include="Images\Splitter\panev.gif" />
     <Content Include="Images\Splitter\panevc.gif" />
-    <Content Include="Layout\Detail.ascx" />
-    <Content Include="Layout\Home.ascx" />
+    <Content Include="Theme\Container\Title.ascx" />
+    <Content Include="Theme\Layout\Detail.ascx" />
+    <Content Include="Theme\Layout\Home.ascx" />
     <Content Include="Modules\Text\Edit.ascx" />
     <Content Include="Modules\Text\View.ascx" />
     <Content Include="packages.config" />
@@ -1505,7 +1506,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\MyScripts\asdropdowntreeview\images\Thumbs.db" />
-    <Content Include="Styles\contextmenu\images\Thumbs.db" />
     <Content Include="Scripts\MyScripts\jquery.cookie.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

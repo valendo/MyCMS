@@ -83,7 +83,7 @@ namespace MyCMS.Admin
                                 pageModule.PageId = currentPageId;
                                 pageModule.ModuleId = pm.ModuleId;
                                 var toPage = db.Pages.Find(currentPageId);
-                                UserControl layoutControl = this.Page.LoadControl("~/Layout/" + toPage.Layout + "") as UserControl;
+                                UserControl layoutControl = this.Page.LoadControl("~/Theme/Layout/" + toPage.Layout + ".ascx") as UserControl;
                                 string PaneName = pm.PaneName;
                                 bool checkExistPaneName = false;
                                 foreach (Control ctl in layoutControl.Controls)

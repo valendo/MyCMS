@@ -47,13 +47,13 @@ namespace MyCMS
                         //Add meta
                         AddMeta(page.Title, page.Description, page.Keywords);
 
-                        UserControl layoutControl = this.Page.LoadControl("~/Layout/" + page.Layout + "") as UserControl;
+                        UserControl layoutControl = this.Page.LoadControl("~/Theme/Layout/" + page.Layout + ".ascx") as UserControl;
                         pchDefault.Controls.Add(layoutControl);
                         foreach (var item in pageModules)
                         {
                             var module = db.Modules.Where(t => t.ModuleId == item.ModuleId).FirstOrDefault();
                             string controlSrc = "~/Modules/" + db.ModuleDefinitions.Where(t => t.ModuleDefId == module.ModuleDefId).FirstOrDefault().ModuleFolder + "/View.ascx";
-                            LoadControl(layoutControl, controlSrc, item.PaneName, item.ModuleId, item.ModuleTitle, item.PageModuleId);
+                            LoadControl(layoutControl, controlSrc, item.PaneName, item.ModuleId, item.ModuleTitle, item.PageModuleId, item.Container, item.DisplayTitle);
                         }
                     }
                     else

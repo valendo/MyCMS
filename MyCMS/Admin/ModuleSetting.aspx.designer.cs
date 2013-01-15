@@ -13,15 +13,6 @@ namespace MyCMS.Admin {
     public partial class ModuleSetting {
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// txtModuleTitle control.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace MyCMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkDisplayTitle;
+        
+        /// <summary>
+        /// ddlContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlContainer;
         
         /// <summary>
         /// btnSave control.

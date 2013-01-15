@@ -16,5 +16,6 @@ namespace MyCMS.Model
         public int ModuleOrder { get; set; }
         public string ModuleTitle { get; set; }
         public bool DisplayTitle { get; set; }
+        public string Container { get; set; }
     }
 }
