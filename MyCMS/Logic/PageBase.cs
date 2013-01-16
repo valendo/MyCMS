@@ -27,11 +27,10 @@ namespace MyCMS.Logic
                     {
                         sb.AppendFormat("<div class=\"dragbox\" id=\"PageModule{0}\" >", PageModuleId);
                         sb.AppendFormat("<h2><span>{0}</span>", ModuleTitle);
-                        sb.AppendFormat("<a class=\"delete opIcons\"> </a>");
-                        sb.AppendFormat("<a class=\"maxmin opIcons\"> </a>");
-                        sb.AppendFormat("<a class=\"share opIcons\" onclick=\"openPopup('Share modules','/Admin/ShareModule.aspx?pmid={0}');\"> </a>", PageModuleId);
-                        sb.AppendFormat("<a class=\"setting opIcons\" onclick=\"openPopup('Module Settings','/Admin/ModuleSetting.aspx?action=edit&pmid={0}');\"> </a>", PageModuleId);
-                        sb.AppendFormat("<a class=\"edit opIcons\" onclick=\"openPopup('Edit module','/Admin/EditModule.aspx?mid={0}');\"> </a>", ModuleId);
+                        sb.AppendFormat("<a class=\"delete opIcons\" title=\"Delete\"> </a>");
+                        sb.AppendFormat("<a class=\"share opIcons\" onclick=\"openPopup('Share modules','/Admin/ShareModule.aspx?pmid={0}');\" title=\"Share\"> </a>", PageModuleId);
+                        sb.AppendFormat("<a class=\"setting opIcons\" onclick=\"openPopup('Module Settings','/Admin/ModuleSetting.aspx?action=edit&pmid={0}');\" title=\"Settings\"> </a>", PageModuleId);
+                        sb.AppendFormat("<a class=\"edit opIcons\" onclick=\"openPopup('Edit module','/Admin/EditModule.aspx?mid={0}');\" title=\"Edit\"> </a>", ModuleId);
                         sb.AppendFormat("</h2>");
                         sb.AppendFormat("<div class=\"dragbox-content\" >");
                         pchPane.Controls.Add(new LiteralControl(sb.ToString()));

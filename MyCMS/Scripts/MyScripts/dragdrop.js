@@ -1,9 +1,9 @@
 ﻿$(
 function () {
-    $('a.maxmin').click(
-	function () {
-	    $(this).parent().siblings('.dragbox-content').toggle();
-	});
+    //$('a.maxmin').click(
+	//function () {
+	//    $(this).parent().siblings('.dragbox-content').toggle();
+	//});
 
     $('a.delete').click(
 	function () {

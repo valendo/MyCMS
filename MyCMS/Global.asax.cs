@@ -50,17 +50,24 @@ namespace MyCMS
 
         void RegisterRoutes(RouteCollection routes)
         {
+            
             routes.Ignore("{resource}.axd/{*pathInfo}");
+            routes.MapPageRoute(
+                "AboutRoute",
+                "About",
+                "~/About.aspx"
+            );
+            routes.MapPageRoute(
+                "AdminRoute",
+                "login",
+                "~/admin/login.aspx"
+            );
             routes.MapPageRoute(
                 "PageRoute",
                 "{*pageSEO}",
                 "~/Default.aspx"
             );
-            //routes.MapPageRoute(
-            //    "ProductByNameRoute",
-            //    "Product/{productName}",
-            //    "~/ProductDetails.aspx"
-            //);
+            
         }
     }
 }

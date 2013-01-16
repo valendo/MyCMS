@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -18,6 +19,12 @@ namespace MyCMS.UserControls
         {
             Session["IsEdit"] = false;
             Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            FormsAuthentication.SignOut();
+            Response.Redirect("~/");
         }
 
         

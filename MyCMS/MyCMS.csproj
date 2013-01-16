@@ -130,6 +130,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\Setting.aspx" />
     <Content Include="Admin\ShareModule.aspx" />
     <Content Include="Admin\User.aspx" />
@@ -1324,6 +1325,13 @@
     </Compile>
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Setting.aspx.cs">
       <DependentUpon>Setting.aspx</DependentUpon>
