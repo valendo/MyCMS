@@ -13,6 +13,7 @@ namespace MyCMS.Model
         { }
         public DbSet<PageInfo> Pages { get; set; }
         public DbSet<ModuleDefinitionInfo> ModuleDefinitions { get; set; }
+        public DbSet<ModuleControlInfo> ModuleControls { get; set; }
         public DbSet<ModuleInfo> Modules { get; set; }
         public DbSet<PageModuleInfo> PageModules { get; set; }
         public DbSet<PagePermissionInfo> PagePermissions { get; set; }
@@ -23,6 +24,7 @@ namespace MyCMS.Model
         {
             modelBuilder.Entity<PageInfo>().ToTable("Pages");
             modelBuilder.Entity<ModuleDefinitionInfo>().ToTable("ModuleDefinitions");
+            modelBuilder.Entity<ModuleControlInfo>().ToTable("ModuleControls");
             modelBuilder.Entity<ModuleInfo>().ToTable("Modules");
             modelBuilder.Entity<PageModuleInfo>().ToTable("PageModules");
             modelBuilder.Entity<PagePermissionInfo>().ToTable("PagePermissions");

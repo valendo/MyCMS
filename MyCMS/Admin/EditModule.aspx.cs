@@ -28,7 +28,8 @@ namespace MyCMS.Admin
         {
             int ModuleId = int.Parse(Request.QueryString["mid"]);
             int ModuleDefId = db.Modules.Where(t => t.ModuleId == ModuleId).FirstOrDefault().ModuleDefId;
-            string controlSrc = "~/Modules/" + db.ModuleDefinitions.Where(t => t.ModuleDefId == ModuleDefId).FirstOrDefault().ModuleFolder + "/Edit.ascx";
+            var moduleControl = db.ModuleControls.Where(t => t.ModuleDefId == ModuleDefId && t.Type == "edit").FirstOrDefault();
+            string controlSrc = moduleControl.ControlSrc;
             LoadModuleControl(pchEdit, controlSrc);
         }
     }

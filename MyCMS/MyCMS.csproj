@@ -1442,6 +1442,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Logic\Utility.cs" />
+    <Compile Include="Model\ModuleControlInfo.cs" />
     <Compile Include="Model\ModuleDefinitionInfo.cs" />
     <Compile Include="Model\ModuleInfo.cs" />
     <Compile Include="Model\MyCMSContext.cs" />

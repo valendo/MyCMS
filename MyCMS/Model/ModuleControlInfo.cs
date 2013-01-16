@@ -6,11 +6,12 @@ using System.Web;
 
 namespace MyCMS.Model
 {
-    public class ModuleDefinitionInfo
+    public class ModuleControlInfo
     {
         [Key]
+        public int ModuleControlId { get; set; }
         public int ModuleDefId { get; set; }
-        public string ModuleName { get; set; }
-        public string Icon { get; set; }
+        public string ControlSrc { get; set; }
+        public string Type { get; set; }
     }
 }

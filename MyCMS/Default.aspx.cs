@@ -52,7 +52,8 @@ namespace MyCMS
                         foreach (var item in pageModules)
                         {
                             var module = db.Modules.Where(t => t.ModuleId == item.ModuleId).FirstOrDefault();
-                            string controlSrc = "~/Modules/" + db.ModuleDefinitions.Where(t => t.ModuleDefId == module.ModuleDefId).FirstOrDefault().ModuleFolder + "/View.ascx";
+                            var moduleControl = db.ModuleControls.Where(t => t.ModuleDefId == module.ModuleDefId && t.Type == "view").FirstOrDefault();
+                            string controlSrc = moduleControl.ControlSrc;
                             LoadControl(layoutControl, controlSrc, item.PaneName, item.ModuleId, item.ModuleTitle, item.PageModuleId, item.Container, item.DisplayTitle);
                         }
                     }
