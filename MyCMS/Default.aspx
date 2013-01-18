@@ -34,7 +34,7 @@
         </div>
         <div id="x_main">
             <asp:PlaceHolder ID="pchDefault" runat="server"></asp:Placeholder>
-            
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             <div id="popup" style="z-index:999;"></div>
         </div>
         <script type="text/javascript">

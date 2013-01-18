@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <td colspan="2">
-                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="save_button" />
             </td>
         </tr> 
     </table>

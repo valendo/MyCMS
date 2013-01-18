@@ -17,7 +17,7 @@ namespace MyCMS.UserControls
 
         protected void btnPreview_Click(object sender, ImageClickEventArgs e)
         {
-            Session["IsEdit"] = false;
+            Session["UserMode"] = "view";
             Response.Redirect(Request.RawUrl);
         }
 

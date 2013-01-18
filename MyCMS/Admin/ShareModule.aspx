@@ -4,5 +4,5 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:CheckBoxList ID="chkListPages" runat="server"></asp:CheckBoxList>
     <br />
-    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="save_button" />
 </asp:Content>

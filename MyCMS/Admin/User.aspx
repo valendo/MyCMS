@@ -151,7 +151,7 @@
                     <asp:ListBox ID="UsersListBox" DataTextField="Username" Rows="20" SelectionMode="Multiple"
                     runat="server" /></td>
                 <td valign="top">
-                    <asp:Button Text="Add User(s) to Role" ID="AddUsersButton" runat="server" OnClick="AddUsers_OnClick" /></td>
+                    <asp:Button Text="Add User(s) to Role" ID="AddUsersButton" runat="server" OnClick="AddUsers_OnClick" CssClass="save_button" /></td>
                 </tr>
                 <tr>
                 <td valign="top">

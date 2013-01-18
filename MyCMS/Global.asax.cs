@@ -18,6 +18,7 @@ namespace MyCMS
             // Code that runs on application startup
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             Database.SetInitializer<MyCMSContext>(null);
 
@@ -31,9 +32,6 @@ namespace MyCMS
                 Membership.CreateUser("admin", "P@ssword1", "vothanhtai86@gmail.com");
                 Roles.AddUserToRole("admin", "Admin");
             }
-
-            // Add Routes.
-            RegisterRoutes(RouteTable.Routes);
         }
 
         void Application_End(object sender, EventArgs e)
@@ -46,28 +44,6 @@ namespace MyCMS
         {
             // Code that runs when an unhandled error occurs
 
-        }
-
-        void RegisterRoutes(RouteCollection routes)
-        {
-            
-            routes.Ignore("{resource}.axd/{*pathInfo}");
-            routes.MapPageRoute(
-                "AboutRoute",
-                "About",
-                "~/About.aspx"
-            );
-            routes.MapPageRoute(
-                "AdminRoute",
-                "login",
-                "~/admin/login.aspx"
-            );
-            routes.MapPageRoute(
-                "PageRoute",
-                "{*pageSEO}",
-                "~/Default.aspx"
-            );
-            
         }
     }
 }

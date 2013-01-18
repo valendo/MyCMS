@@ -49,15 +49,15 @@
                 var node = $.ui.dynatree.getNode(el);
                 switch (action) {
                     case "add":
-                        openPopup('hello', '/admin/page.aspx?act=add&pid=' + node.data.key);
+                        openPopup('Add new page', '/admin/page.aspx?act=add&pid=' + node.data.key);
                         break;
                     case "edit":
-                        openPopup('hello', '/admin/page.aspx?act=update&pid=' + node.data.key);
+                        openPopup('Edit page', '/admin/page.aspx?act=update&pid=' + node.data.key);
                         break;
                     case "delete":
                         var sel = confirm('Do you want to delete this page?');
                         if (sel) {
-                            openPopup('hello', '/admin/page.aspx?act=delete&pid=' + node.data.key);
+                            openPopup('Delete page', '/admin/page.aspx?act=delete&pid=' + node.data.key);
                         }
                         break;
                 }

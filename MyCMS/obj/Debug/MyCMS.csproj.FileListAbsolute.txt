@@ -116,4 +116,5 @@ D:\Web\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 D:\Web\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.AspNet.xml
 D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.dll
 D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.pdb
+D:\Web\cms\My CMS\MyCMS\MyCMS\bin\Microsoft.AspNet.FriendlyUrls.dll
 D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache

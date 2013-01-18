@@ -18,6 +18,43 @@
 {
     background: LightGray;
 }
+.logoff
+{
+    display: inline-block;
+    position:relative;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-decoration: none;
+	font: 12px Arial, Helvetica, sans-serif;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	-webkit-border-radius: .3em; 
+	-moz-border-radius: .3em;
+	border-radius: 0.3em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+
+	color: #fff;
+	border: solid 1px #282828;
+	background: #424242;
+	background: -webkit-gradient(linear, left top, left bottom, from(#696969), to(#424242));
+	background: -moz-linear-gradient(top,  #696969,  #424242);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#696969', endColorstr='#424242');
+}
+.logoff:hover
+{
+    background: #616161;
+	background: -webkit-gradient(linear, left top, left bottom, from(#757575), to(#4b4b4b));
+	background: -moz-linear-gradient(top,  #757575,  #4b4b4b);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#757575', endColorstr='#4b4b4b');
+}
 button.cpsecondary {
 	display: inline-block;
     position:relative;
@@ -85,4 +122,24 @@ button.cpsecondary:active {
     position:absolute;
     top:2px;
     right:0;
+}
+.save_button
+{
+    background:#F6BD34;
+    border:1px solid gray;
+    padding:2px 8px;
+    cursor:pointer;
+    -webkit-border-radius: .2em; 
+	-moz-border-radius: .2em;
+	border-radius: 0.2em;
+}
+.cancel_button
+{
+    background:#DEDEDE;
+    border:1px solid gray;
+    padding:2px 8px;
+    cursor:pointer;
+    -webkit-border-radius: .2em; 
+	-moz-border-radius: .2em;
+	border-radius: 0.2em;
 }

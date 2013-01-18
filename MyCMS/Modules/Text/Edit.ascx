@@ -3,4 +3,4 @@
 <asp:TextBox ID="txtContent" runat="server" TextMode="MultiLine" CssClass="ckeditor"></asp:TextBox>
 <br /><br />
 
-<asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+<asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="save_button" />

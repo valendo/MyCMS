@@ -133,14 +133,30 @@ namespace MyCMS.Logic
             }
         }
 
+        public string Preview
+        {
+            get
+            {
+                string mode = "edit";
+                if (Session["UserMode"] != null)
+                {
+                    if (Session["UserMode"].ToString() == "view")
+                    {
+                        mode = "view";
+                    }
+                }
+                return mode;
+            }
+        }
+
         public bool IsEdit
         {
             get
             {
                 bool _IsEdit = false;
-                if (Session["IsEdit"] != null)
+                if (IsAdmin && Preview == "edit")
                 {
-                    _IsEdit = bool.Parse(Session["IsEdit"].ToString());
+                    _IsEdit = true;
                 }
                 return _IsEdit;
             }

@@ -79,7 +79,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="page" CausesValidation="true" />
+                    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="page" CausesValidation="true" CssClass="save_button" />
                 </td>
             </tr>
         </table>

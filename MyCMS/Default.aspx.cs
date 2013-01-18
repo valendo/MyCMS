@@ -16,13 +16,12 @@ namespace MyCMS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsHost || IsAdmin)
-                btnEdit.Visible = true;
-            else
+            btnEdit.Visible = false;
+            if (Preview == "view")
             {
-                btnEdit.Visible = false;
-                Session["IsEdit"] = false;
+                btnEdit.Visible = true;
             }
+            
             if (!IsPostBack)
             {
                 if (IsEdit)
@@ -105,7 +104,7 @@ namespace MyCMS
 
         protected void btnEdit_Click(object sender, ImageClickEventArgs e)
         {
-            Session["IsEdit"] = true;
+            Session["UserMode"] = "edit";
             Response.Redirect(Request.RawUrl);
         }
     }
