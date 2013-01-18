@@ -28,11 +28,9 @@
                 <asp:DropDownList ID="ddlContainer" runat="server"></asp:DropDownList>
             </td>
         </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="save_button" />
-            </td>
-        </tr>
     </table>
 </asp:Content>
-
+<asp:Content runat="server" ID="Content3" ContentPlaceHolderID="ButtonArea">
+    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="save_button" />
+    <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClientClick="cancelPopup();" CssClass="cancel_button" />
+</asp:Content>

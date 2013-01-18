@@ -1154,6 +1154,8 @@
     <Content Include="Images\Splitter\panehc.gif" />
     <Content Include="Images\Splitter\panev.gif" />
     <Content Include="Images\Splitter\panevc.gif" />
+    <Content Include="Modules\Spacer\Edit.ascx" />
+    <Content Include="Modules\Spacer\View.ascx" />
     <Content Include="Theme\Container\Title.ascx" />
     <Content Include="Theme\Layout\Detail.ascx" />
     <Content Include="Theme\Layout\Home.ascx" />
@@ -1446,7 +1448,22 @@
     <Compile Include="Model\PageInfo.cs" />
     <Compile Include="Model\PagePermissionInfo.cs" />
     <Compile Include="Model\SettingInfo.cs" />
+    <Compile Include="Model\SpacerInfo.cs" />
     <Compile Include="Model\TextInfo.cs" />
+    <Compile Include="Modules\Spacer\Edit.ascx.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Spacer\Edit.ascx.designer.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Spacer\View.ascx.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Spacer\View.ascx.designer.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Text\Edit.ascx.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -143,3 +143,17 @@ button.cpsecondary:active {
 	-moz-border-radius: .2em;
 	border-radius: 0.2em;
 }
+.content_area {    
+    position:absolute; 
+    bottom:45px; 
+    top:0;
+    overflow:auto;
+    width:100%;
+}
+.buttons_area {
+    position:fixed; 
+    bottom:5px; 
+    right:0;
+    display:block; 
+    margin-top:100px;
+}

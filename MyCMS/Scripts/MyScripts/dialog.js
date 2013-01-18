@@ -23,3 +23,7 @@ function closePopup() {
     parent.$('#popup').dialog("close");
     self.parent.location.reload();
 }
+function cancelPopup() {
+    parent.$('#popup').dialog("close");
+}
+

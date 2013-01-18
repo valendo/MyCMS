@@ -1,7 +1,8 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Edit.ascx.cs" Inherits="MyCMS.Modules.Text.Edit" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Edit.ascx.cs" Inherits="MyCMS.Modules.Spacer.Edit" %>
 
 <div class="content_area">
-    <asp:TextBox ID="txtContent" runat="server" TextMode="MultiLine" CssClass="ckeditor"></asp:TextBox>
+    <span>Height: </span>
+    <asp:TextBox ID="txtHeight" runat="server"></asp:TextBox>
 </div>
 <div class="buttons_area">
     <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="save_button" />
