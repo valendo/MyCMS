@@ -24,11 +24,10 @@ namespace MyCMS.Modules.Text
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            int moduleId = int.Parse(Request.QueryString["mid"].ToString());
-            var texts = db.Texts.Where(t => t.ModuleId == moduleId).ToList();
+            var texts = db.Texts.Where(t => t.ModuleId == this.ModuleId).ToList();
             if (texts.Count > 0)
             {
-                var TextId = db.Texts.Where(t => t.ModuleId == moduleId).FirstOrDefault().TextId;
+                var TextId = db.Texts.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().TextId;
                 var text = new TextInfo();
                 text = db.Texts.Find(TextId);
                 text.Content = txtContent.Text;
@@ -38,7 +37,7 @@ namespace MyCMS.Modules.Text
             else
             {
                 var text = new TextInfo();
-                text.ModuleId = moduleId;
+                text.ModuleId = this.ModuleId;
                 text.Content = txtContent.Text;
                 db.Texts.Add(text);
                 db.SaveChanges();

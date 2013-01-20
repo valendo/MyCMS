@@ -12,7 +12,6 @@
     <script src="/Scripts/jquery-ui-1.8.20.min.js"></script>
     <script src="/Scripts/MyScripts/dialog.js"></script>
     <script src="/Scripts/MyScripts/jquery.cookie.js"></script>
-    <script src="/Scripts/MyScripts/admin.js"></script>
     <script src="/Resources/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
         $.noConflict();
@@ -20,6 +19,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="sm" runat="server"></asp:ScriptManager>
         <asp:PlaceHolder ID="pchEdit" runat="server"></asp:PlaceHolder>
     </form>
 </body>

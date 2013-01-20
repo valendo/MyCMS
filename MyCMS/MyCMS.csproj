@@ -38,6 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=4.1.60919.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="CKFinder, Version=2.3.0.2394, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Resources\ckfinder\bin\Release\CKFinder.dll</HintPath>
@@ -1135,6 +1139,45 @@
     <Content Include="Images\icons\23\97-puzzle.png" />
     <Content Include="Images\icons\23\98-palette.png" />
     <Content Include="Images\icons\23\99-umbrella.png" />
+    <Content Include="Images\icons\knobs\Knob Add.png" />
+    <Content Include="Images\icons\knobs\Knob Attention.png" />
+    <Content Include="Images\icons\knobs\Knob Blue.png" />
+    <Content Include="Images\icons\knobs\Knob Cancel.png" />
+    <Content Include="Images\icons\knobs\Knob Download.png" />
+    <Content Include="Images\icons\knobs\Knob Fast Forward.png" />
+    <Content Include="Images\icons\knobs\Knob Fast Rewind.png" />
+    <Content Include="Images\icons\knobs\Knob Favorite.png" />
+    <Content Include="Images\icons\knobs\Knob Forward.png" />
+    <Content Include="Images\icons\knobs\Knob Graphite.png" />
+    <Content Include="Images\icons\knobs\Knob Green.png" />
+    <Content Include="Images\icons\knobs\Knob Grey.png" />
+    <Content Include="Images\icons\knobs\Knob Help.png" />
+    <Content Include="Images\icons\knobs\Knob Info.png" />
+    <Content Include="Images\icons\knobs\Knob Left.png" />
+    <Content Include="Images\icons\knobs\Knob Loop Off.png" />
+    <Content Include="Images\icons\knobs\Knob Loop On.png" />
+    <Content Include="Images\icons\knobs\Knob Message.png" />
+    <Content Include="Images\icons\knobs\Knob Orange.png" />
+    <Content Include="Images\icons\knobs\Knob Pause.png" />
+    <Content Include="Images\icons\knobs\Knob Play Green.png" />
+    <Content Include="Images\icons\knobs\Knob Play.png" />
+    <Content Include="Images\icons\knobs\Knob Purple.png" />
+    <Content Include="Images\icons\knobs\Knob Record Off.png" />
+    <Content Include="Images\icons\knobs\Knob Record On.png" />
+    <Content Include="Images\icons\knobs\Knob Red.png" />
+    <Content Include="Images\icons\knobs\Knob Refresh.png" />
+    <Content Include="Images\icons\knobs\Knob Remove Red.png" />
+    <Content Include="Images\icons\knobs\Knob Remove.png" />
+    <Content Include="Images\icons\knobs\Knob Search.png" />
+    <Content Include="Images\icons\knobs\Knob Shuffle Off.png" />
+    <Content Include="Images\icons\knobs\Knob Shuffle On.png" />
+    <Content Include="Images\icons\knobs\Knob Smart.png" />
+    <Content Include="Images\icons\knobs\Knob Snapback.png" />
+    <Content Include="Images\icons\knobs\Knob Snapforward.png" />
+    <Content Include="Images\icons\knobs\Knob Stop.png" />
+    <Content Include="Images\icons\knobs\Knob Upload.png" />
+    <Content Include="Images\icons\knobs\Knob Valid Blue.png" />
+    <Content Include="Images\icons\knobs\Knob Valid Green.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
@@ -1154,8 +1197,12 @@
     <Content Include="Images\Splitter\panehc.gif" />
     <Content Include="Images\Splitter\panev.gif" />
     <Content Include="Images\Splitter\panevc.gif" />
+    <Content Include="Modules\Menu\Edit.ascx" />
+    <Content Include="Modules\Menu\style.css" />
+    <Content Include="Modules\Menu\View.ascx" />
     <Content Include="Modules\Spacer\Edit.ascx" />
     <Content Include="Modules\Spacer\View.ascx" />
+    <Content Include="Styles\messagebox.css" />
     <Content Include="Theme\Container\Title.ascx" />
     <Content Include="Theme\Layout\Detail.ascx" />
     <Content Include="Theme\Layout\Home.ascx" />
@@ -1163,13 +1210,13 @@
     <Content Include="Modules\Text\View.ascx" />
     <Content Include="packages.config" />
     <Content Include="Admin\Admin.Master" />
+    <Content Include="Images\icons\knobs\Thumbs.db" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Scripts\MyScripts\admin.js" />
     <Content Include="Scripts\MyScripts\asdropdowntreeview\dropdowntreeview.css" />
     <Content Include="Scripts\MyScripts\asdropdowntreeview\images\windropdown-disabled.gif" />
     <Content Include="Scripts\MyScripts\asdropdowntreeview\images\windropdown.gif" />
@@ -1440,6 +1487,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Logic\Utility.cs" />
+    <Compile Include="Model\MenuInfo.cs" />
     <Compile Include="Model\ModuleControlInfo.cs" />
     <Compile Include="Model\ModuleDefinitionInfo.cs" />
     <Compile Include="Model\ModuleInfo.cs" />
@@ -1450,6 +1498,20 @@
     <Compile Include="Model\SettingInfo.cs" />
     <Compile Include="Model\SpacerInfo.cs" />
     <Compile Include="Model\TextInfo.cs" />
+    <Compile Include="Modules\Menu\Edit.ascx.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Menu\Edit.ascx.designer.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Menu\View.ascx.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Menu\View.ascx.designer.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Spacer\Edit.ascx.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

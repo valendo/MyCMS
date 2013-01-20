@@ -1,0 +1,19 @@
+﻿.sort_menu_item li {
+    height:18px;
+    line-height:18px;
+    margin: 0 3px 3px;
+    padding: 0.4em 50px 0.4em 1.5em;
+}
+
+.sort_menu_item li span {
+    margin-left: -1.3em;
+    position: absolute;
+}
+.delete_item {
+    position: absolute;
+    right:7px;
+}
+.edit_item {
+    position: absolute;
+    right:27px;
+}

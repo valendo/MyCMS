@@ -21,7 +21,10 @@ namespace MyCMS.Modules.Text
             }
             else
             {
-                ltrContent.Text = "<div>No content! Please edit content.</div>";
+                if (IsEdit)
+                {
+                    ltrContent.Text = "<div class='warning'>No content! Please edit content.</div>";
+                }
             }
             
         }

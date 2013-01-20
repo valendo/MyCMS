@@ -116,6 +116,6 @@ D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.OAuth.Consumer.xml
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.OpenId.xml
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.AspNet.xml
-D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.pdb
+D:\WebForm\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache

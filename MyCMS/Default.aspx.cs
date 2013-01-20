@@ -29,7 +29,8 @@ namespace MyCMS
                     x_top.Visible = true;
                     x_left.Visible = true;
                     XPanelStyleSheet.Attributes.Add("href", "/Styles/xpanel.css");
-                    Page.ClientScript.RegisterClientScriptInclude("script", "/Scripts/MyScripts/xpanel.js");
+                    Page.ClientScript.RegisterClientScriptInclude("xpanel", "/Scripts/MyScripts/xpanel.js");
+                    Page.ClientScript.RegisterClientScriptInclude("dragdrop", "/Scripts/MyScripts/dragdrop.js");
                 }
                 else
                 {

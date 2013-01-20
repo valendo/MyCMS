@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#"%>
 
 
-<div style="width:960px;">
+<div style="width:960px;margin:0 auto;">
     <div style="float:left; width:200px;min-height:500px;" class="x_pane" id="LeftPane">
         <asp:PlaceHolder ID="LeftPane" runat="server"></asp:Placeholder>
     </div>

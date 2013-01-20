@@ -11,8 +11,7 @@
     <script src="/Scripts/jquery-1.7.1.min.js"></script>
     <script src="/Scripts/jquery-ui-1.8.20.min.js"></script>
     <script src="/Scripts/MyScripts/dialog.js"></script>
-    <script src="/Scripts/MyScripts/jquery.cookie.js"></script>
-    <script src="/Scripts/MyScripts/admin.js"></script>
+    <script src="/Scripts/MyScripts/jquery.cookie.js"></script>    
     <script type="text/javascript">
         $.noConflict();
     </script>

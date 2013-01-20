@@ -15,7 +15,7 @@ namespace MyCMS.UserControls
         protected void Page_Load(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            var list = db.ModuleDefinitions.ToList();
+            var list = db.ModuleDefinitions.Where(t =>t.Visible == true).ToList();
             foreach (var item in list)
             {
                 sb.AppendFormat("<li id=\"{0}\"><a href=\"#\" style=\"background-image:url(/images/icons/20/{1}.png);\">{2}</a></li>", item.ModuleDefId, item.Icon, item.ModuleName);

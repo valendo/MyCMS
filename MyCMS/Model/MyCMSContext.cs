@@ -22,6 +22,8 @@ namespace MyCMS.Model
         //Modules
         public DbSet<TextInfo> Texts { get; set; }
         public DbSet<SpacerInfo> Spacers { get; set; }
+        public DbSet<MenuInfo> Menus { get; set; }
+        public DbSet<MenuItemInfo> MenuItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,8 +36,10 @@ namespace MyCMS.Model
             modelBuilder.Entity<PagePermissionInfo>().ToTable("PagePermissions");
             modelBuilder.Entity<SettingInfo>().ToTable("Settings");
             //Modules
-            modelBuilder.Entity<TextInfo>().ToTable("Texts");
+            modelBuilder.Entity<TextInfo>().ToTable("module_Texts");
             modelBuilder.Entity<SpacerInfo>().ToTable("module_Spacers");
+            modelBuilder.Entity<MenuInfo>().ToTable("module_Menus");
+            modelBuilder.Entity<MenuItemInfo>().ToTable("module_MenuItems");
         }
     }
 
