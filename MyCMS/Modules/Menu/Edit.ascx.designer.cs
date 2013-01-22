@@ -58,6 +58,15 @@ namespace MyCMS.Modules.Menu {
         protected global::AjaxControlToolkit.TabPanel TabPanelLink;
         
         /// <summary>
+        /// hfMenuItemId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfMenuItemId;
+        
+        /// <summary>
         /// txtTitle control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace MyCMS.Modules.Menu {
         protected global::System.Web.UI.WebControls.Button btnAddLinkItem;
         
         /// <summary>
+        /// btnCancelLinkItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelLinkItem;
+        
+        /// <summary>
         /// ltrMenuItems control.
         /// </summary>
         /// <remarks>
@@ -101,6 +119,15 @@ namespace MyCMS.Modules.Menu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltrMenuItems;
+        
+        /// <summary>
+        /// rptMenuItems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptMenuItems;
         
         /// <summary>
         /// btnCancel control.

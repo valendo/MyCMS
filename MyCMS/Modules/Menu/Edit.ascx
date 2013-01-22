@@ -24,7 +24,7 @@
                         </tr>
                             <tr>
                                 <td>
-                                    <asp:Button ID="btnAddPageItems" runat="server" Text="Add menu item" CssClass="save_button" OnClick="btnAddPageItems_Click" />
+                                    <asp:Button ID="btnAddPageItems" runat="server" Text="Add page item" CssClass="save_button" OnClick="btnAddPageItems_Click" />
                                 </td>
                             </tr>
                         </table>
@@ -36,6 +36,7 @@
                         <tr>
                             <td>Link title</td>
                             <td>
+                                <asp:HiddenField ID="hfMenuItemId" runat="server" Value="-1" />
                                 <asp:TextBox ID="txtTitle" runat="server" Width="200"></asp:TextBox>
                             </td>
                         </tr>
@@ -54,7 +55,8 @@
                         <tr>
                             <td></td>
                             <td>
-                                <asp:Button ID="btnAddLinkItem" runat="server" Text="Add menu item" CssClass="save_button" OnClick="btnAddLinkItem_Click" />
+                                <asp:Button ID="btnAddLinkItem" runat="server" Text="Add link item" CssClass="save_button" OnClick="btnAddLinkItem_Click" />
+                                <asp:Button ID="btnCancelLinkItem" runat="server" Text="Cancel" CssClass="cancel_button" Visible="false" OnClick="btnCancelLinkItem_Click"/>
                             </td>
                         </tr>
                     </table>
@@ -65,6 +67,16 @@
     <div style="width:40%;float:right;">
         <div style="height:300px; overflow:auto;">
             <asp:Literal ID="ltrMenuItems" runat="server"></asp:Literal>
+            <ul class="sort_menu_item">
+                <asp:Repeater ID="rptMenuItems" runat="server" OnItemCommand="rptMenuItems_ItemCommand">
+                    <ItemTemplate>
+                        <li class="ui-state-default"><span class="ui-icon <%#Eval("Icon") %>"></span><%#Eval("Title")%>
+                            <asp:ImageButton Visible='<%# Eval("IsLink") %>' ID="btnEditItem" runat="server" CommandName="edit_item" CommandArgument='<%#Eval("MenuItemId") %>' ImageUrl="/images/icons/16/edit.png" CssClass="edit_item" />
+                            <asp:ImageButton ID="btnDeleteItem" runat="server" OnClientClick="return confirm('Do you want to delete?');" CommandName="delete_item" CommandArgument='<%#Eval("MenuItemId") %>' ImageUrl="/images/icons/16/delete.png" CssClass="delete_item" />
+                        </li>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </ul>
         </div>
     </div>
 </div>

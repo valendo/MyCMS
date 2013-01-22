@@ -26,7 +26,6 @@ namespace MyCMS.Modules.Menu
                 CheckMenuAdded();
                 BindingPages();
                 BindingMenuItems();
-                MenuItemEvent();
             }
         }
 
@@ -74,51 +73,36 @@ namespace MyCMS.Modules.Menu
             chkListPages.DataBind();
         }
 
+        public class CustomMenuItemInfo
+        {
+            public int MenuItemId { get; set; }
+            public string Title { get; set; }
+            public bool IsLink { get; set; }
+            public string Icon { get; set; }
+        }
+
         private void BindingMenuItems()
         {
-            StringBuilder sb = new StringBuilder();
+            List<CustomMenuItemInfo> listItems = new List<CustomMenuItemInfo>();
             var MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
             var list = db.MenuItems.Where(t => t.MenuId == MenuId).ToList();
             if (list.Count > 0)
             {
-                sb.Append("<ul class='sort_menu_item'>");
                 foreach (var item in list)
                 {
-                    sb.Append("<li class='ui-state-default'>");
                     if (item.LinkType == "page")
                     {
                         string title = db.Pages.Where(t => t.PageId == item.PageId).FirstOrDefault().PageName;
-                        sb.AppendFormat("<span class='ui-icon ui-icon-document'></span>{0}", title);
+                        listItems.Add(new CustomMenuItemInfo() { MenuItemId = item.MenuItemId, Title = title, IsLink = false, Icon = "ui-icon-document" });
                     }
                     else if (item.LinkType == "link")
                     {
-                        
-                        sb.AppendFormat("<span class='ui-icon ui-icon-link'></span>{0}", item.Title);
-                        sb.Append("<input type='image' src='/Images/icons/16/Edit.png' name='edit_item' class='edit_item' onclick=\"__doPostBack('edit_item');\" />");
+                        listItems.Add(new CustomMenuItemInfo() { MenuItemId = item.MenuItemId, Title = item.Title, IsLink = true, Icon = "ui-icon-link" });
                     }
-                    sb.Append("<input type='image' src='/Images/icons/16/Delete.png' name='delete_item' class='delete_item' onclick=\"__doPostBack('delete_item');\" />");
-                    sb.Append("</li>");
-                    
                 }
-                sb.Append("</ul>");
             }
-            else
-            {
-                sb.Append("<div class='warning'>No menu items added.</div>");
-            }
-            ltrMenuItems.Text = sb.ToString();
-        }
-
-        private void MenuItemEvent()
-        {
-            if (Request.Form["__EVENTTARGET"] != null)
-            {
-                if (Request.Form["__EVENTTARGET"] == "delete_item")
-                {
-                    ltrMenuItems.Text = "ok";
-                }
-                
-            }
+            rptMenuItems.DataSource = listItems;
+            rptMenuItems.DataBind();
         }
 
         const string spaceChar = "&nbsp;&nbsp;&nbsp; ";
@@ -161,20 +145,77 @@ namespace MyCMS.Modules.Menu
             BindingMenuItems();
         }
 
+        private void ResetLinkItem()
+        {
+            txtTitle.Text = "";
+            txtLinkUrl.Text = "";
+            chkOpenInNewWindow.Checked = false;
+        }
+
         protected void btnAddLinkItem_Click(object sender, EventArgs e)
         {
-            int MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
-            var menuItem = new MenuItemInfo();
-            menuItem.MenuId = MenuId;
-            menuItem.LinkType = "link";
-            menuItem.ParentId = -1;
-            menuItem.MenuOrder = 999;
-            menuItem.Title = txtTitle.Text;
-            menuItem.LinkUrl = txtLinkUrl.Text;
-            menuItem.OpenInNewWindow = chkOpenInNewWindow.Checked;
-            db.MenuItems.Add(menuItem);
-            db.SaveChanges();
+            int MenuItemId = int.Parse(hfMenuItemId.Value);
+            if (MenuItemId != -1)
+            {
+                var menuItem = db.MenuItems.Find(MenuItemId);
+                menuItem.Title = txtTitle.Text;
+                menuItem.LinkUrl = txtLinkUrl.Text;
+                menuItem.OpenInNewWindow = chkOpenInNewWindow.Checked;
+                db.Entry(menuItem).State = EntityState.Modified;
+                db.SaveChanges();
+                btnAddLinkItem.Text = "Add link item";
+                btnCancelLinkItem.Visible = false;
+                ResetLinkItem();
+                hfMenuItemId.Value = "-1";
+            }
+            else
+            {
+                int MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
+                var menuItem = new MenuItemInfo();
+                menuItem.MenuId = MenuId;
+                menuItem.LinkType = "link";
+                menuItem.ParentId = -1;
+                menuItem.MenuOrder = 999;
+                menuItem.Title = txtTitle.Text;
+                menuItem.LinkUrl = txtLinkUrl.Text;
+                menuItem.OpenInNewWindow = chkOpenInNewWindow.Checked;
+                db.MenuItems.Add(menuItem);
+                db.SaveChanges();
+                ResetLinkItem();
+            }
             BindingMenuItems();
+        }
+
+        protected void rptMenuItems_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("edit_item"))
+            {
+                int MenuItemId = int.Parse(e.CommandArgument.ToString());
+                var menuitem = db.MenuItems.Find(MenuItemId);
+                txtTitle.Text = menuitem.Title;
+                txtLinkUrl.Text = menuitem.LinkUrl;
+                chkOpenInNewWindow.Checked = menuitem.OpenInNewWindow;
+                hfMenuItemId.Value = MenuItemId.ToString();
+                TabMenuItem.ActiveTab = TabPanelLink;
+                btnAddLinkItem.Text = "Update link item";
+                btnCancelLinkItem.Visible = true;
+            }
+            else if (e.CommandName.Equals("delete_item"))
+            {
+                int MenuItemId = int.Parse(e.CommandArgument.ToString());
+                var menuitem = db.MenuItems.Find(MenuItemId);
+                db.MenuItems.Remove(menuitem);
+                db.SaveChanges();
+            }
+            BindingMenuItems();
+        }
+
+        protected void btnCancelLinkItem_Click(object sender, EventArgs e)
+        {
+            ResetLinkItem();
+            hfMenuItemId.Value = "-1";
+            btnAddLinkItem.Text = "Add link item";
+            btnCancelLinkItem.Visible = false;
         }
     }
 }
