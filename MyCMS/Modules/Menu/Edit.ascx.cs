@@ -98,7 +98,7 @@ namespace MyCMS.Modules.Menu
         {
             List<CustomMenuItemInfo> list = new List<CustomMenuItemInfo>();
             var MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
-            var menuItems = db.MenuItems.Where(t => t.MenuId == MenuId && t.ParentId == -1).ToList();
+            var menuItems = db.MenuItems.Where(t => t.MenuId == MenuId && t.ParentId == -1).OrderBy(t => t.MenuOrder).ToList();
             GetAllMenuItems(menuItems, ref list, 0);
             rptMenuItems.DataSource = list;
             rptMenuItems.DataBind();
@@ -175,7 +175,7 @@ namespace MyCMS.Modules.Menu
                 {
                     list.Add(new CustomMenuItemInfo() { MenuItemId = item.MenuItemId, Title = item.Title, IsLink = true, Icon = "ui-icon-link", Margin = level*10 });
                 }
-                var subItems = db.MenuItems.Where(t => t.ParentId == item.MenuItemId).ToList();
+                var subItems = db.MenuItems.Where(t => t.ParentId == item.MenuItemId).OrderBy(t => t.MenuOrder).ToList();
                 if (subItems.Count > 0)
                 {
                     GetAllMenuItems(subItems, ref list, level + 1);
@@ -189,20 +189,45 @@ namespace MyCMS.Modules.Menu
             txtLinkUrl.Text = "";
             chkOpenInNewWindow.Checked = false;
             ddlParent.SelectedValue = "-1";
+            txtMenuOrder.Text = "";
+        }
+
+        private void GetMenuItemDelete(ref List<int> list, List<MenuItemInfo> MenuItems)
+        {
+            if (MenuItems.Count > 0)
+            {
+                foreach (var item in MenuItems)
+                {
+                    list.Add(item.MenuItemId);
+                    var subMenuItems = db.MenuItems.Where(t => t.ParentId == item.MenuItemId).ToList();
+                    if (subMenuItems.Count > 0)
+                    {
+                        GetMenuItemDelete(ref list, subMenuItems);
+                    }
+                }
+            }
         }
 
         protected void rptMenuItems_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName.Equals("delete_item"))
             {
+                List<int> listItemDelete = new List<int>();
                 int MenuItemId = int.Parse(e.CommandArgument.ToString());
-                var menuitem = db.MenuItems.Find(MenuItemId);
-                db.MenuItems.Remove(menuitem);
-                db.SaveChanges();
-                ResetItem();
+                
+                listItemDelete.Add(MenuItemId);
+                GetMenuItemDelete(ref listItemDelete, db.MenuItems.Where(t => t.ParentId == MenuItemId).ToList());
+                foreach (int item in listItemDelete)
+                {
+                    var menuitem = db.MenuItems.Find(item);
+                    db.MenuItems.Remove(menuitem);
+                    db.SaveChanges();
+                }
                 hfMenuItemId.Value = "-1";
                 btnAddMenuItem.Text = "Add menu item";
                 btnCancelMenuItem.Visible = false;
+                BindingParentMenuItems();
+                ResetItem();
             }
             else if (e.CommandName.Equals("edit_link") || e.CommandName.Equals("edit_page"))
             {
@@ -222,6 +247,7 @@ namespace MyCMS.Modules.Menu
                     panelLink.Visible = false;
                 }
                 ddlParent.SelectedValue = menuitem.ParentId.ToString();
+                txtMenuOrder.Text = menuitem.MenuOrder.ToString();
                 hfMenuItemId.Value = MenuItemId.ToString();
                 rbtLinkType.SelectedValue = menuitem.LinkType;
                 btnAddMenuItem.Text = "Update menu item";
@@ -239,73 +265,111 @@ namespace MyCMS.Modules.Menu
 
         protected void btnAddMenuItem_Click(object sender, EventArgs e)
         {
-            int MenuItemId = int.Parse(hfMenuItemId.Value);
-            if (rbtLinkType.SelectedValue == "page")
+            if (Page.IsValid)
             {
-                if (MenuItemId != -1)
+                int MenuItemId = int.Parse(hfMenuItemId.Value);
+                int menuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
+                int MenuOrder = -1;
+                if (txtMenuOrder.Text == "")
                 {
-                    var menuItem = db.MenuItems.Find(MenuItemId);
-                    menuItem.ParentId = int.Parse(ddlParent.SelectedValue);
-                    db.Entry(menuItem).State = EntityState.Modified;
-                    db.SaveChanges();
-                    btnAddMenuItem.Text = "Add menu item";
-                    btnCancelMenuItem.Visible = false;
-                    hfMenuItemId.Value = "-1";
+                    if (MenuItemId == -1)
+                    {
+                        int ParentId = int.Parse(ddlParent.SelectedValue);
+                        var menuItems = db.MenuItems.Where(t => t.MenuId == menuId && t.ParentId == ParentId && t.MenuItemId != MenuItemId).ToList();
+                        MenuOrder = menuItems.Count + 1;
+                    }
                 }
                 else
                 {
-                    int MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
-                    foreach (ListItem item in chkListPages.Items)
+                    MenuOrder = int.Parse(txtMenuOrder.Text);
+                }
+                if (rbtLinkType.SelectedValue == "page")
+                {
+                    if (MenuItemId != -1)
                     {
-                        if (item.Selected && item.Enabled == true)
+                        var menuItem = db.MenuItems.Find(MenuItemId);
+                        menuItem.ParentId = int.Parse(ddlParent.SelectedValue);
+                        if (txtMenuOrder.Text != "")
                         {
-                            var menuItem = new MenuItemInfo();
-                            menuItem.MenuId = MenuId;
-                            menuItem.LinkType = "page";
-                            menuItem.ParentId = int.Parse(ddlParent.SelectedValue);
-                            menuItem.PageId = int.Parse(item.Value);
-                            menuItem.MenuOrder = 999;
-                            menuItem.OpenInNewWindow = false;
-                            db.MenuItems.Add(menuItem);
-                            db.SaveChanges();
+                            menuItem.MenuOrder = int.Parse(txtMenuOrder.Text);
+                        }
+                        db.Entry(menuItem).State = EntityState.Modified;
+                        db.SaveChanges();
+                        btnAddMenuItem.Text = "Add menu item";
+                        btnCancelMenuItem.Visible = false;
+                        hfMenuItemId.Value = "-1";
+                    }
+                    else
+                    {
+                        foreach (ListItem item in chkListPages.Items)
+                        {
+                            if (item.Selected && item.Enabled == true)
+                            {
+                                if (txtMenuOrder.Text == "")
+                                {
+                                    if (MenuItemId == -1)
+                                    {
+                                        int ParentId = int.Parse(ddlParent.SelectedValue);
+                                        var menuItems = db.MenuItems.Where(t => t.MenuId == menuId && t.ParentId == ParentId && t.MenuItemId != MenuItemId).ToList();
+                                        MenuOrder = menuItems.Count + 1;
+                                    }
+                                }
+                                else
+                                {
+                                    MenuOrder = int.Parse(txtMenuOrder.Text);
+                                }
+                                var menuItem = new MenuItemInfo();
+                                menuItem.MenuId = menuId;
+                                menuItem.LinkType = "page";
+                                menuItem.ParentId = int.Parse(ddlParent.SelectedValue);
+                                menuItem.PageId = int.Parse(item.Value);
+                                menuItem.MenuOrder = MenuOrder;
+                                menuItem.OpenInNewWindow = false;
+                                db.MenuItems.Add(menuItem);
+                                db.SaveChanges();
+                            }
                         }
                     }
                 }
-            }
-            else if (rbtLinkType.SelectedValue == "link")
-            {
-                if (MenuItemId != -1)
+                else if (rbtLinkType.SelectedValue == "link")
                 {
-                    var menuItem = db.MenuItems.Find(MenuItemId);
-                    menuItem.Title = txtTitle.Text;
-                    menuItem.LinkUrl = txtLinkUrl.Text;
-                    menuItem.OpenInNewWindow = chkOpenInNewWindow.Checked;
-                    menuItem.ParentId = int.Parse(ddlParent.SelectedValue);
-                    db.Entry(menuItem).State = EntityState.Modified;
-                    db.SaveChanges();
-                    btnAddMenuItem.Text = "Add menu item";
-                    btnCancelMenuItem.Visible = false;
-                    hfMenuItemId.Value = "-1";
+                    if (MenuItemId != -1)
+                    {
+                        var menuItem = db.MenuItems.Find(MenuItemId);
+                        menuItem.Title = txtTitle.Text;
+                        menuItem.LinkUrl = txtLinkUrl.Text;
+                        menuItem.OpenInNewWindow = chkOpenInNewWindow.Checked;
+                        menuItem.ParentId = int.Parse(ddlParent.SelectedValue);
+                        if (txtMenuOrder.Text != "")
+                        {
+                            menuItem.MenuOrder = int.Parse(txtMenuOrder.Text);
+                        }
+                        db.Entry(menuItem).State = EntityState.Modified;
+                        db.SaveChanges();
+                        btnAddMenuItem.Text = "Add menu item";
+                        btnCancelMenuItem.Visible = false;
+                        hfMenuItemId.Value = "-1";
+                    }
+                    else
+                    {
+                        int MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
+                        var menuItem = new MenuItemInfo();
+                        menuItem.MenuId = MenuId;
+                        menuItem.LinkType = "link";
+                        menuItem.ParentId = int.Parse(ddlParent.SelectedValue);
+                        menuItem.MenuOrder = MenuOrder;
+                        menuItem.Title = txtTitle.Text;
+                        menuItem.LinkUrl = txtLinkUrl.Text;
+                        menuItem.OpenInNewWindow = chkOpenInNewWindow.Checked;
+                        db.MenuItems.Add(menuItem);
+                        db.SaveChanges();
+                    }
                 }
-                else
-                {
-                    int MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
-                    var menuItem = new MenuItemInfo();
-                    menuItem.MenuId = MenuId;
-                    menuItem.LinkType = "link";
-                    menuItem.ParentId = int.Parse(ddlParent.SelectedValue);
-                    menuItem.MenuOrder = 999;
-                    menuItem.Title = txtTitle.Text;
-                    menuItem.LinkUrl = txtLinkUrl.Text;
-                    menuItem.OpenInNewWindow = chkOpenInNewWindow.Checked;
-                    db.MenuItems.Add(menuItem);
-                    db.SaveChanges();
-                }
+                BindingParentMenuItems();
+                BindingPages();
+                BindingMenuItems();
+                ResetItem();
             }
-            BindingParentMenuItems();
-            BindingPages();
-            BindingMenuItems();
-            ResetItem();
         }
 
         protected void btnCancelMenuItem_Click(object sender, EventArgs e)

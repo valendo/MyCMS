@@ -2,12 +2,12 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <link href="/modules/menu/style.css" rel="stylesheet" />
- <script>
+<%-- <script>
      jQuery(document).ready(function ($) {
          $(".sort_menu_item").sortable();
          $(".sort_menu_item").disableSelection();
      });
-</script>
+</script>--%>
 
 <div class="content_area">
     <div style="width:40%;float:left;">
@@ -40,7 +40,8 @@
                     <td>Link title</td>
                     <td>
                         <asp:HiddenField ID="hfMenuItemId" runat="server" Value="-1" />
-                        <asp:TextBox ID="txtTitle" runat="server" Width="200"></asp:TextBox>
+                        <asp:TextBox ID="txtTitle" runat="server" Width="200"></asp:TextBox><br />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorTitle" runat="server" ForeColor="Red" ControlToValidate="txtTitle" Display="Dynamic" ErrorMessage="Link title is required" ValidationGroup="menu_item"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
@@ -60,10 +61,14 @@
         <br /><br />
         <span>Parent item</span>
         <asp:DropDownList ID="ddlParent" runat="server"></asp:DropDownList>
+        <br />
+        <span>Item order</span>
+        <asp:TextBox ID="txtMenuOrder" runat="server" /><br />
+        <asp:RegularExpressionValidator ID="RegularExpressionValidatorMenuOrder" runat="server" ForeColor="Red" ControlToValidate="txtMenuOrder" Display="Dynamic" ErrorMessage="Menu order only number" ValidationGroup="menu_item" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
         <br /><br />
-        <asp:Button ID="btnAddMenuItem" runat="server" Text="Add menu item" 
+        <asp:Button ID="btnAddMenuItem" runat="server" Text="Add menu item" ValidationGroup="menu_item"
             CssClass="save_button" OnClick="btnAddMenuItem_Click" />
-        <asp:Button ID="btnCancelMenuItem" runat="server" Text="Cancel" 
+        <asp:Button ID="btnCancelMenuItem" runat="server" Text="Cancel" CausesValidation="false"
             CssClass="cancel_button" Visible="false" OnClick="btnCancelMenuItem_Click" />
     </div>
     <div style="width:40%;float:right;">

@@ -67,6 +67,15 @@ namespace MyCMS.Modules.Menu {
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
         
         /// <summary>
+        /// RequiredFieldValidatorTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorTitle;
+        
+        /// <summary>
         /// txtLinkUrl control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,24 @@ namespace MyCMS.Modules.Menu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlParent;
+        
+        /// <summary>
+        /// txtMenuOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMenuOrder;
+        
+        /// <summary>
+        /// RegularExpressionValidatorMenuOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorMenuOrder;
         
         /// <summary>
         /// btnAddMenuItem control.

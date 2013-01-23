@@ -39,7 +39,7 @@
                 <td class="auto-style3">Page Order</td>
                 <td>
                     <asp:TextBox ID="txtPageOrder" runat="server" Width="128px" ></asp:TextBox><br />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidatorPageSEO" runat="server" ForeColor="Red" ControlToValidate="txtPageOrder" Display="Dynamic" ErrorMessage="Page order only number" ValidationGroup="page" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidatorPageOrder" runat="server" ForeColor="Red" ControlToValidate="txtPageOrder" Display="Dynamic" ErrorMessage="Page order only number" ValidationGroup="page" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
