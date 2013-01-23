@@ -61,6 +61,7 @@ namespace MyCMS.Admin
             txtTitle.Text = p.Title;
             ddlParentPage.SelectedValue = p.ParentId.ToString();
             ddlParentPage.Items.FindByValue(p.ParentId.ToString()).Attributes.Add("style", "font-weight:bold;");
+            ddlParentPage.Items.FindByValue(p.PageId.ToString()).Attributes.Add("disabled", "");
             txtPageSEO.Text = p.PageSEO;
             txtPageOrder.Text = p.PageOrder.ToString();
             chkIsVisible.Checked = p.IsVisible;

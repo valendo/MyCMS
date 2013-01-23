@@ -13,22 +13,22 @@ namespace MyCMS.Modules.Menu {
     public partial class Edit {
         
         /// <summary>
-        /// TabMenuItem control.
+        /// rbtLinkType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabContainer TabMenuItem;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtLinkType;
         
         /// <summary>
-        /// TabPanePage control.
+        /// panelPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanePage;
+        protected global::System.Web.UI.WebControls.Panel panelPage;
         
         /// <summary>
         /// chkListPages control.
@@ -40,22 +40,13 @@ namespace MyCMS.Modules.Menu {
         protected global::System.Web.UI.WebControls.CheckBoxList chkListPages;
         
         /// <summary>
-        /// btnAddPageItems control.
+        /// panelLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddPageItems;
-        
-        /// <summary>
-        /// TabPanelLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanelLink;
+        protected global::System.Web.UI.WebControls.Panel panelLink;
         
         /// <summary>
         /// hfMenuItemId control.
@@ -94,31 +85,31 @@ namespace MyCMS.Modules.Menu {
         protected global::System.Web.UI.WebControls.CheckBox chkOpenInNewWindow;
         
         /// <summary>
-        /// btnAddLinkItem control.
+        /// ddlParent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddLinkItem;
+        protected global::System.Web.UI.WebControls.DropDownList ddlParent;
         
         /// <summary>
-        /// btnCancelLinkItem control.
+        /// btnAddMenuItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelLinkItem;
+        protected global::System.Web.UI.WebControls.Button btnAddMenuItem;
         
         /// <summary>
-        /// ltrMenuItems control.
+        /// btnCancelMenuItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrMenuItems;
+        protected global::System.Web.UI.WebControls.Button btnCancelMenuItem;
         
         /// <summary>
         /// rptMenuItems control.

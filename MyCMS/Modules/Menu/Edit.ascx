@@ -11,67 +11,69 @@
 
 <div class="content_area">
     <div style="width:40%;float:left;">
-        <ajaxToolkit:TabContainer ID="TabMenuItem" runat="server">
+        <%--<ajaxToolkit:TabContainer ID="TabMenuItem" runat="server">
             <ajaxToolkit:TabPanel ID="TabPanePage" runat="server" HeaderText="Pages">
                 <ContentTemplate>
-                    <table cellpadding="5">
-                        <tr>
-                            <td>
-                                <div style="height:300px; overflow:auto;">
-                                    <asp:CheckBoxList ID="chkListPages" runat="server"></asp:CheckBoxList>
-                                </div>
-                            </td>
-                        </tr>
-                            <tr>
-                                <td>
-                                    <asp:Button ID="btnAddPageItems" runat="server" Text="Add page item" CssClass="save_button" OnClick="btnAddPageItems_Click" />
-                                </td>
-                            </tr>
-                        </table>
                 </ContentTemplate>
             </ajaxToolkit:TabPanel>
             <ajaxToolkit:TabPanel ID="TabPanelLink" runat="server" HeaderText="Link">
                 <ContentTemplate>
-                    <table cellpadding="5">
-                        <tr>
-                            <td>Link title</td>
-                            <td>
-                                <asp:HiddenField ID="hfMenuItemId" runat="server" Value="-1" />
-                                <asp:TextBox ID="txtTitle" runat="server" Width="200"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Link url</td>
-                            <td>
-                                <asp:TextBox ID="txtLinkUrl" runat="server" Width="200"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <asp:CheckBox ID="chkOpenInNewWindow" runat="server" Text="Open in new window"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <asp:Button ID="btnAddLinkItem" runat="server" Text="Add link item" CssClass="save_button" OnClick="btnAddLinkItem_Click" />
-                                <asp:Button ID="btnCancelLinkItem" runat="server" Text="Cancel" CssClass="cancel_button" Visible="false" OnClick="btnCancelLinkItem_Click"/>
-                            </td>
-                        </tr>
-                    </table>
+                    
                 </ContentTemplate>
             </ajaxToolkit:TabPanel>
-        </ajaxToolkit:TabContainer>
+        </ajaxToolkit:TabContainer>--%>
+        <asp:RadioButtonList ID="rbtLinkType" runat="server" AutoPostBack="True" 
+            RepeatDirection="Horizontal" 
+            OnSelectedIndexChanged="rbtLinkType_SelectedIndexChanged">
+            <asp:ListItem Selected="True" Value="page">Page</asp:ListItem>
+            <asp:ListItem Value="link">Link</asp:ListItem>
+        </asp:RadioButtonList>
+        <br />
+        <asp:Panel ID="panelPage" runat="server">
+            <div style="height:300px; overflow:auto;">
+                <asp:CheckBoxList ID="chkListPages" runat="server"></asp:CheckBoxList>
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="panelLink" runat="server" Visible="false">
+            <table cellpadding="5">
+                <tr>
+                    <td>Link title</td>
+                    <td>
+                        <asp:HiddenField ID="hfMenuItemId" runat="server" Value="-1" />
+                        <asp:TextBox ID="txtTitle" runat="server" Width="200"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Link url</td>
+                    <td>
+                        <asp:TextBox ID="txtLinkUrl" runat="server" Width="200"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <asp:CheckBox ID="chkOpenInNewWindow" runat="server" Text="Open in new window"/>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+        <br /><br />
+        <span>Parent item</span>
+        <asp:DropDownList ID="ddlParent" runat="server"></asp:DropDownList>
+        <br /><br />
+        <asp:Button ID="btnAddMenuItem" runat="server" Text="Add menu item" 
+            CssClass="save_button" OnClick="btnAddMenuItem_Click" />
+        <asp:Button ID="btnCancelMenuItem" runat="server" Text="Cancel" 
+            CssClass="cancel_button" Visible="false" OnClick="btnCancelMenuItem_Click" />
     </div>
     <div style="width:40%;float:right;">
-        <div style="height:300px; overflow:auto;">
-            <asp:Literal ID="ltrMenuItems" runat="server"></asp:Literal>
+        <br /><br />
+        <div style="height:100%; overflow:auto;">
             <ul class="sort_menu_item">
                 <asp:Repeater ID="rptMenuItems" runat="server" OnItemCommand="rptMenuItems_ItemCommand">
                     <ItemTemplate>
-                        <li class="ui-state-default"><span class="ui-icon <%#Eval("Icon") %>"></span><%#Eval("Title")%>
-                            <asp:ImageButton Visible='<%# Eval("IsLink") %>' ID="btnEditItem" runat="server" CommandName="edit_item" CommandArgument='<%#Eval("MenuItemId") %>' ImageUrl="/images/icons/16/edit.png" CssClass="edit_item" />
+                        <li class="ui-state-default" style="margin-left:<%#Eval("Margin") %>px"><span class="ui-icon <%#Eval("Icon") %>"></span><%#Eval("Title")%>
+                            <asp:ImageButton ID="btnEditItem" runat="server" CommandName='<%# (Eval("IsLink").ToString() == "True") ? "edit_link" : "edit_page" %>' CommandArgument='<%#Eval("MenuItemId") %>' ImageUrl="/images/icons/16/edit.png" CssClass="edit_item" />
                             <asp:ImageButton ID="btnDeleteItem" runat="server" OnClientClick="return confirm('Do you want to delete?');" CommandName="delete_item" CommandArgument='<%#Eval("MenuItemId") %>' ImageUrl="/images/icons/16/delete.png" CssClass="delete_item" />
                         </li>
                     </ItemTemplate>
