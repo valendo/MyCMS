@@ -11,6 +11,8 @@ namespace MyCMS.Model
         [Key]
         public int MenuId { get; set; }
         public int ModuleId { get; set; }
+        public string CSS { get; set; }
+        public string JS { get; set; }
     }
     public class MenuItemInfo
     {

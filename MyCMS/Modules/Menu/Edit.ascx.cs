@@ -45,23 +45,7 @@ namespace MyCMS.Modules.Menu
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            //var spacer = db.Spacers.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault();
-            //var oSpacer = new SpacerInfo();
-            //if (spacer != null)
-            //{
-            //    oSpacer = db.Spacers.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault();
-            //    oSpacer.Height = int.Parse(txtHeight.Text);
-            //    db.Entry(oSpacer).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //}
-            //else
-            //{
-            //    oSpacer.ModuleId = this.ModuleId;
-            //    oSpacer.Height = int.Parse(txtHeight.Text);
-            //    db.Spacers.Add(oSpacer);
-            //    db.SaveChanges();
-            //}
-            //ScriptManager.RegisterClientScriptBlock(this, typeof(Page), UniqueID, "closePopup();", true);
+            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), UniqueID, "closePopup();", true);
         }
         private void BindingPages()
         {
