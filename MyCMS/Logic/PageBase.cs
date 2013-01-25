@@ -23,6 +23,7 @@ namespace MyCMS.Logic
                 {
                     BaseUserControl control = this.Page.LoadControl(ControlSrc) as BaseUserControl;
                     control.ModuleId = ModuleId;
+                    
                     if (IsEdit)
                     {
                         sb.AppendFormat("<div class=\"dragbox\" id=\"PageModule{0}\" >", PageModuleId);

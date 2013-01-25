@@ -33,8 +33,8 @@ namespace MyCMS.Modules.Menu
         private void BindingMenuItems()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("<div id='menu'>");
             var MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
+            sb.AppendFormat("<div id='menu{0}'>", MenuId);
             var menuItems = db.MenuItems.Where(t => t.MenuId == MenuId && t.ParentId == -1).OrderBy(t => t.MenuOrder).ToList();
             if (menuItems.Count > 0)
             {
@@ -46,6 +46,25 @@ namespace MyCMS.Modules.Menu
             }
             sb.Append("</div>");
             ltrContent.Text = sb.ToString();
+            var menu = db.Menus.Find(MenuId);
+            //add css
+            StringBuilder sbCSS = new StringBuilder();
+            if (!string.IsNullOrWhiteSpace(menu.CSS))
+            {
+                sbCSS.Append("<style type=\"text/css\">");
+                sbCSS.Append(menu.CSS);
+                sbCSS.Append("</style>");
+                Page.Header.Controls.Add(new LiteralControl(sbCSS.ToString()));
+            }
+            //add js
+            StringBuilder sbJS = new StringBuilder();
+            if (!string.IsNullOrWhiteSpace(menu.JS))
+            {
+                sbJS.Append("<script type=\"text/javascript\">");
+                sbJS.Append(menu.JS);
+                sbJS.Append("</script>");
+                Page.Header.Controls.Add(new LiteralControl(sbJS.ToString()));
+            }
         }
 
         private void GetMenuItems(List<MenuItemInfo> menuItems, ref StringBuilder sb)

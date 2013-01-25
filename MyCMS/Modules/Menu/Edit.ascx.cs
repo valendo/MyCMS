@@ -24,6 +24,7 @@ namespace MyCMS.Modules.Menu
                 //    txtHeight.Text = spacer.Height.ToString();
                 //}
                 CheckMenuAdded();
+                BindingMenu();
                 BindingPages();
                 BindingParentMenuItems();
                 BindingMenuItems();
@@ -45,6 +46,14 @@ namespace MyCMS.Modules.Menu
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            string css = hidCSS.Value;
+            string js = hidJS.Value;
+            var MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
+            var menu = db.Menus.Find(MenuId);
+            menu.CSS = css;
+            menu.JS = js;
+            db.Entry(menu).State = EntityState.Modified;
+            db.SaveChanges();
             ScriptManager.RegisterClientScriptBlock(this, typeof(Page), UniqueID, "closePopup();", true);
         }
         private void BindingPages()
@@ -76,6 +85,20 @@ namespace MyCMS.Modules.Menu
             public bool IsLink { get; set; }
             public string Icon { get; set; }
             public int Margin { get; set; }
+        }
+
+        private void BindingMenu()
+        {
+            var MenuId = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault().MenuId;
+            var menu = db.Menus.Find(MenuId);
+            if (!string.IsNullOrWhiteSpace(menu.CSS))
+            {
+                hidCSS.Value = menu.CSS;
+            }
+            if (!string.IsNullOrWhiteSpace(menu.JS))
+            {
+                hidJS.Value = menu.JS;
+            }
         }
 
         private void BindingMenuItems()

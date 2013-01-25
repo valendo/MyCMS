@@ -158,3 +158,12 @@ button.cpsecondary:active {
     display:block; 
     margin-top:100px;
 }
+.ace_editor {
+    margin: 0;
+    position: relative;
+    height:300px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

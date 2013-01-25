@@ -1203,6 +1203,7 @@
     <Content Include="Modules\Spacer\Edit.ascx" />
     <Content Include="Modules\Spacer\View.ascx" />
     <Content Include="Styles\messagebox.css" />
+    <Content Include="Test.html" />
     <Content Include="Theme\Container\Title.ascx" />
     <Content Include="Theme\Layout\Detail.ascx" />
     <Content Include="Theme\Layout\Home.ascx" />

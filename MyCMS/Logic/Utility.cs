@@ -13,5 +13,6 @@ namespace MyCMS
             MyCMSContext db = new MyCMSContext();
             return db.Settings.Find(key).Value;
         }
+        
     }
 }

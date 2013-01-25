@@ -166,13 +166,40 @@ namespace MyCMS.Modules.Menu {
         protected global::System.Web.UI.WebControls.Repeater rptMenuItems;
         
         /// <summary>
-        /// TabPanelSetting control.
+        /// TabPanelCSS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.TabPanel TabPanelSetting;
+        protected global::AjaxControlToolkit.TabPanel TabPanelCSS;
+        
+        /// <summary>
+        /// hidCSS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidCSS;
+        
+        /// <summary>
+        /// TabPanelJS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TabPanel TabPanelJS;
+        
+        /// <summary>
+        /// hidJS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidJS;
         
         /// <summary>
         /// btnSave control.
