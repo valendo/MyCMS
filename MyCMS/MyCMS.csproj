@@ -1200,6 +1200,8 @@
     <Content Include="Modules\Menu\Edit.ascx" />
     <Content Include="Modules\Menu\style.css" />
     <Content Include="Modules\Menu\View.ascx" />
+    <Content Include="Modules\Redirect\Edit.ascx" />
+    <Content Include="Modules\Redirect\View.ascx" />
     <Content Include="Modules\Spacer\Edit.ascx" />
     <Content Include="Modules\Spacer\View.ascx" />
     <Content Include="Styles\messagebox.css" />
@@ -1496,6 +1498,7 @@
     <Compile Include="Model\PageModuleInfo.cs" />
     <Compile Include="Model\PageInfo.cs" />
     <Compile Include="Model\PagePermissionInfo.cs" />
+    <Compile Include="Model\RedirectInfo.cs" />
     <Compile Include="Model\SettingInfo.cs" />
     <Compile Include="Model\SpacerInfo.cs" />
     <Compile Include="Model\TextInfo.cs" />
@@ -1511,6 +1514,20 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modules\Menu\View.ascx.designer.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Redirect\Edit.ascx.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Redirect\Edit.ascx.designer.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Redirect\View.ascx.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Redirect\View.ascx.designer.cs">
       <DependentUpon>View.ascx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Spacer\Edit.ascx.cs">

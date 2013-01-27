@@ -24,6 +24,7 @@ namespace MyCMS.Model
         public DbSet<SpacerInfo> Spacers { get; set; }
         public DbSet<MenuInfo> Menus { get; set; }
         public DbSet<MenuItemInfo> MenuItems { get; set; }
+        public DbSet<RedirectInfo> Redirects { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -40,6 +41,7 @@ namespace MyCMS.Model
             modelBuilder.Entity<SpacerInfo>().ToTable("module_Spacers");
             modelBuilder.Entity<MenuInfo>().ToTable("module_Menus");
             modelBuilder.Entity<MenuItemInfo>().ToTable("module_MenuItems");
+            modelBuilder.Entity<RedirectInfo>().ToTable("module_Redirects");
         }
     }
 
