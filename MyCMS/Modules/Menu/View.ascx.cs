@@ -18,10 +18,7 @@ namespace MyCMS.Modules.Menu
             var menu = db.Menus.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault();
             if (menu != null)
             {
-                if (!IsPostBack)
-                {
-                    BindingMenuItems();
-                }
+                BindingMenuItems();
             }
             else
             {

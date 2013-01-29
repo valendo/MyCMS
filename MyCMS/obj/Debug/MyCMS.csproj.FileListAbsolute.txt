@@ -87,7 +87,6 @@ D:\Web\cms\My CMS\MyCMS\MyCMS\bin\DotNetOpenAuth.AspNet.xml
 D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.dll
 D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.pdb
 D:\Web\cms\My CMS\MyCMS\MyCMS\bin\Microsoft.AspNet.FriendlyUrls.dll
-D:\Web\cms\My CMS\MyCMS\MyCMS\obj\Debug\MyCMS.csprojResolveAssemblyReference.cache
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\MyCMS.dll
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\MyCMS.pdb
 D:\WebForm\cms\My CMS\MyCMS\MyCMS\bin\Antlr3.Runtime.dll

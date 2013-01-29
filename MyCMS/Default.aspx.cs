@@ -22,50 +22,47 @@ namespace MyCMS
                 btnEdit.Visible = true;
             }
             
-            if (!IsPostBack)
-            {
-                if (IsEdit)
-                {
-                    x_top.Visible = true;
-                    x_left.Visible = true;
-                    XPanelStyleSheet.Attributes.Add("href", "/Styles/xpanel.css");
-                    Page.ClientScript.RegisterClientScriptInclude("xpanel", "/Scripts/MyScripts/xpanel.js");
-                    Page.ClientScript.RegisterClientScriptInclude("dragdrop", "/Scripts/MyScripts/dragdrop.js");
-                }
-                else
-                {
-                    x_top.Visible = false;
-                    x_left.Visible = false;
-                }
+        if (IsEdit)
+        {
+            x_top.Visible = true;
+            x_left.Visible = true;
+            XPanelStyleSheet.Attributes.Add("href", "/Styles/xpanel.css");
+            Page.ClientScript.RegisterClientScriptInclude("xpanel", "/Scripts/MyScripts/xpanel.js");
+            Page.ClientScript.RegisterClientScriptInclude("dragdrop", "/Scripts/MyScripts/dragdrop.js");
+        }
+        else
+        {
+            x_top.Visible = false;
+            x_left.Visible = false;
+        }
                 
-                if (this.PageId != -1)
+            if (this.PageId != -1)
+            {
+                if (CheckPagePermissions())
                 {
-                    if (CheckPagePermissions())
-                    {
-                        var page = db.Pages.Where(t => t.PageId == this.PageId).FirstOrDefault();
-                        var pageModules = db.PageModules.Where(t => t.PageId == this.PageId).OrderBy(t => t.ModuleOrder).ToList();
-                        //Add meta
-                        AddMeta(page.Title, page.Description, page.Keywords);
+                    var page = db.Pages.Where(t => t.PageId == this.PageId).FirstOrDefault();
+                    var pageModules = db.PageModules.Where(t => t.PageId == this.PageId).OrderBy(t => t.ModuleOrder).ToList();
+                    //Add meta
+                    AddMeta(page.Title, page.Description, page.Keywords);
 
-                        UserControl layoutControl = this.Page.LoadControl("~/Theme/Layout/" + page.Layout + ".ascx") as UserControl;
-                        pchDefault.Controls.Add(layoutControl);
-                        foreach (var item in pageModules)
-                        {
-                            var module = db.Modules.Where(t => t.ModuleId == item.ModuleId).FirstOrDefault();
-                            var moduleControl = db.ModuleControls.Where(t => t.ModuleDefId == module.ModuleDefId && t.Type == "view").FirstOrDefault();
-                            string controlSrc = moduleControl.ControlSrc;
-                            LoadControl(layoutControl, controlSrc, item.PaneName, item.ModuleId, item.ModuleTitle, item.PageModuleId, item.Container, item.DisplayTitle);
-                        }
-                    }
-                    else
+                    UserControl layoutControl = this.Page.LoadControl("~/Theme/Layout/" + page.Layout + ".ascx") as UserControl;
+                    pchDefault.Controls.Add(layoutControl);
+                    foreach (var item in pageModules)
                     {
-                        Response.Redirect("/404.aspx?type=authentication");
+                        var module = db.Modules.Where(t => t.ModuleId == item.ModuleId).FirstOrDefault();
+                        var moduleControl = db.ModuleControls.Where(t => t.ModuleDefId == module.ModuleDefId && t.Type == "view").FirstOrDefault();
+                        string controlSrc = moduleControl.ControlSrc;
+                        LoadControl(layoutControl, controlSrc, item.PaneName, item.ModuleId, item.ModuleTitle, item.PageModuleId, item.Container, item.DisplayTitle);
                     }
                 }
                 else
                 {
-                    Response.Redirect("/404.aspx?type=notfound");
+                    Response.Redirect("/404.aspx?type=authentication");
                 }
+            }
+            else
+            {
+                Response.Redirect("/404.aspx?type=notfound");
             }
         }
 
