@@ -21,10 +21,7 @@ namespace MyCMS.Modules.Redirect
                 {
                     if (redirect.Type == "page")
                     {
-                        string pageSEO = "";
-                        GetPageUrl(redirect.PageId, ref pageSEO);
-                        pageSEO = reverseIt(pageSEO);
-                        Response.Redirect(pageSEO);
+                        Response.Redirect(MyCMS.Utility.GetPageUrl(redirect.PageId));
                     }
                     else if (redirect.Type == "link" || redirect.Type == "file")
                     {
@@ -51,42 +48,6 @@ namespace MyCMS.Modules.Redirect
             }
         }
 
-        private void GetPageUrl(int PageId, ref string url)
-        {
-            var page = db.Pages.Where(t => t.PageId == PageId).FirstOrDefault();
-            url += page.PageSEO + ",";
-            var parentPage = db.Pages.Where(t => t.PageId == page.ParentId).FirstOrDefault();
-            if (parentPage != null)
-            {
-                GetPageUrl(parentPage.PageId, ref url);
-            }
-        }
-
-        public static string reverseIt(string strSource)
-        {
-            strSource = strSource.Substring(0, strSource.Length - 1);
-            string[] arySource = strSource.Split(new char[] { ',' });
-            string strReverse = string.Empty;
-            if (arySource.Length > 1)
-            {
-                for (int i = arySource.Length - 1; i >= 0; i--)
-                {
-                    if (strReverse != "")
-                    {
-                        strReverse = strReverse + "/" + arySource[i];
-                    }
-                    else
-                    {
-                        strReverse = arySource[i];
-                    }
-
-                }
-            }
-            else
-            {
-                strReverse = arySource[0];
-            }
-            return strReverse;
-        }
+        
     }
 }

@@ -19,7 +19,7 @@
             onActivate: function (node) {
                 if (node.tree.isUserEvent()) {
                     //node.expand(true);
-                    window.location.href = "/" + node.data.url;
+                    window.location.href =node.data.url;
                 }
             },
             dnd: {

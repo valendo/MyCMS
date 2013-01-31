@@ -15,6 +15,18 @@ namespace MyCMS.Logic
         {
         }
 
+        public string Langauge
+        {
+            get
+            {
+                HttpCookie cookie = Request.Cookies["culture"];
+                if (cookie != null)
+                    return cookie.Value;
+                else
+                    return "";
+            }
+        }
+
         public string Preview
         {
             get

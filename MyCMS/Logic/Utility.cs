@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace MyCMS
@@ -57,6 +59,79 @@ namespace MyCMS
             gv.Rows[0].Cells[0].Font.Bold = true;
             //set No Results found to the new added cell
             gv.Rows[0].Cells[0].Text = "NO RESULT FOUND!";
+        }
+
+        const string spaceChar = "&nbsp;&nbsp;&nbsp; ";
+        public static void GetListPages(List<PageInfo> pages, ref ListItemCollection list, int level)
+        {
+            MyCMSContext db = new MyCMSContext();
+            string space = "";
+            for (int i = 0; i < level; i++)
+            {
+                space += spaceChar;
+            }
+            foreach (var item in pages)
+            {
+                list.Add(new ListItem(WebUtility.HtmlDecode(space + item.PageName.ToString()), item.PageId.ToString()));
+                var subPages = db.Pages.Where(t => t.ParentId == item.PageId).ToList();
+                if (subPages.Count > 0)
+                {
+                    GetListPages(subPages, ref list, level + 1);
+                }
+            }
+        }
+
+        public static string GetPageUrl(int PageId)
+        {
+            MyCMSContext db = new MyCMSContext();
+            string url = "";
+            var page = db.Pages.Where(t => t.PageId == PageId).FirstOrDefault();
+            if (page != null)
+            {
+                RecursivePageUrl(PageId, ref url);
+                url = reverseIt(url);
+                url = "/" + url;
+            }
+            return url;
+        }
+
+        public static void RecursivePageUrl(int PageId, ref string url)
+        {
+            MyCMSContext db = new MyCMSContext();
+            var page = db.Pages.Where(t => t.PageId == PageId).FirstOrDefault();
+            url += page.PageSEO + ",";
+            var parentPage = db.Pages.Where(t => t.PageId == page.ParentId).FirstOrDefault();
+            if (parentPage != null)
+            {
+                RecursivePageUrl(parentPage.PageId, ref url);
+            }
+        }
+
+        public static string reverseIt(string strSource)
+        {
+            strSource = strSource.Substring(0, strSource.Length - 1);
+            string[] arySource = strSource.Split(new char[] { ',' });
+            string strReverse = string.Empty;
+            if (arySource.Length > 1)
+            {
+                for (int i = arySource.Length - 1; i >= 0; i--)
+                {
+                    if (strReverse != "")
+                    {
+                        strReverse = strReverse + "/" + arySource[i];
+                    }
+                    else
+                    {
+                        strReverse = arySource[i];
+                    }
+
+                }
+            }
+            else
+            {
+                strReverse = arySource[0];
+            }
+            return strReverse;
         }
     }
 }

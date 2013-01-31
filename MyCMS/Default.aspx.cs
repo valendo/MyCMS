@@ -2,7 +2,9 @@
 using MyCMS.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.ModelBinding;
 using System.Web.Security;
@@ -16,6 +18,7 @@ namespace MyCMS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            SetCulture();
             btnEdit.Visible = false;
             if (Preview == "view")
             {
@@ -64,6 +67,18 @@ namespace MyCMS
             {
                 Response.Redirect("/404.aspx?type=notfound");
             }
+        }
+
+        protected void SetCulture()
+        {
+            HttpCookie cookie = Request.Cookies["culture"];
+            if (cookie != null)
+            {
+                string currentCulture = cookie.Value;
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(currentCulture);
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(currentCulture);
+            }
+            
         }
 
         protected bool CheckPagePermissions()

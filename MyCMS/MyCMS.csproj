@@ -1649,6 +1649,16 @@
     <Compile Include="Admin\Page.aspx.designer.cs">
       <DependentUpon>Page.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Module.vi-VN.designer.cs">
+      <DependentUpon>Module.vi-VN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Module.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Module.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="Account\Login.aspx.cs">
@@ -1711,6 +1721,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Logic\Utility.cs" />
+    <Compile Include="Model\CutomGenericList.cs" />
     <Compile Include="Model\LanguageInfo.cs" />
     <Compile Include="Model\LanguageSettingInfo.cs" />
     <Compile Include="Model\MenuInfo.cs" />
@@ -1836,6 +1847,24 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modules\Language\App_LocalResources\View.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modules\Language\App_LocalResources\View.ascx.vi-VN.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Module.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Module.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Module.vi-VN.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Module.vi-VN.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -12,11 +12,6 @@ using System.Web.UI.WebControls;
 
 namespace MyCMS.Modules.Language
 {
-    public class LangInfo
-    {
-        public string CultureCode { get; set; }
-        public string CultureName { get; set; }
-    }
     public partial class Edit : BaseAdminUserControl
     {
         MyCMSContext db = new MyCMSContext();
@@ -27,6 +22,15 @@ namespace MyCMS.Modules.Language
                 BindingLanguages();
                 BindingLanguageSettings();
             }
+        }
+
+        public ListItemCollection GetPages()
+        {
+            var pages = db.Pages.Where(t => t.ParentId == -1).ToList();
+            ListItemCollection list = new ListItemCollection();
+            MyCMS.Utility.GetListPages(pages, ref list, 0);
+            return list;
+
         }
 
         protected void BindingLanguageSettings()
@@ -95,14 +99,20 @@ namespace MyCMS.Modules.Language
                 {
                     LanguageInfo language = new LanguageInfo();
                     language.ModuleId = this.ModuleId;
-                    language.CultureCode = ((DropDownList)gvLanguages.FooterRow.FindControl("ddlCultureCode")).SelectedValue;
+                    string CultureCode = ((DropDownList)gvLanguages.FooterRow.FindControl("ddlCultureCode")).SelectedValue;
+                    language.CultureCode = CultureCode;
                     language.CultureName = ((TextBox)gvLanguages.FooterRow.FindControl("txtCultureName")).Text;
+                    language.PageId = int.Parse(((DropDownList)gvLanguages.FooterRow.FindControl("ddlPage")).SelectedValue);
                     if (!string.IsNullOrWhiteSpace(((TextBox)gvLanguages.FooterRow.FindControl("txtSortOrder")).Text))
                         language.SortOrder = int.Parse(((TextBox)gvLanguages.FooterRow.FindControl("txtSortOrder")).Text);
                     else
                         language.SortOrder = 1;
-                    db.Languages.Add(language);
-                    db.SaveChanges();
+                    var exist = db.Languages.Where(t => t.ModuleId == this.ModuleId && t.CultureCode == CultureCode).FirstOrDefault();
+                    if (exist == null)
+                    {
+                        db.Languages.Add(language);
+                        db.SaveChanges();
+                    }
                     BindingLanguages();
                 }
             }
@@ -128,6 +138,7 @@ namespace MyCMS.Modules.Language
         {
             gvLanguages.EditIndex = -1;
             BindingLanguages();
+            
         }
 
         protected void gvLanguages_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -138,16 +149,22 @@ namespace MyCMS.Modules.Language
                 LanguageInfo language = new LanguageInfo();
                 language.ModuleId = this.ModuleId;
                 language = db.Languages.Find(LanguageId);
-                language.CultureCode = ((DropDownList)gvLanguages.Rows[e.RowIndex].FindControl("ddlCultureCode")).SelectedValue;
+                string CultureCode = ((DropDownList)gvLanguages.Rows[e.RowIndex].FindControl("ddlCultureCode")).SelectedValue;
+                language.CultureCode = CultureCode;
                 language.CultureName = ((TextBox)gvLanguages.Rows[e.RowIndex].FindControl("txtCultureName")).Text;
+                language.PageId = int.Parse(((DropDownList)gvLanguages.Rows[e.RowIndex].FindControl("ddlPage")).SelectedValue);
                 if (!string.IsNullOrWhiteSpace(((TextBox)gvLanguages.Rows[e.RowIndex].FindControl("txtSortOrder")).Text))
                     language.SortOrder = int.Parse(((TextBox)gvLanguages.Rows[e.RowIndex].FindControl("txtSortOrder")).Text);
                 else
                     language.SortOrder = 1;
-                db.Entry(language).State = EntityState.Modified;
-                db.SaveChanges();
-                gvLanguages.EditIndex = -1;
-                BindingLanguages();
+                var exist = db.Languages.Where(t => t.ModuleId == this.ModuleId && t.CultureCode == CultureCode && t.LanguageId != LanguageId).FirstOrDefault();
+                if (exist == null)
+                {
+                    db.Entry(language).State = EntityState.Modified;
+                    db.SaveChanges();
+                    gvLanguages.EditIndex = -1;
+                    BindingLanguages();
+                }
             }
         }
 
@@ -159,7 +176,16 @@ namespace MyCMS.Modules.Language
                 var language = db.Languages.Find(LanguageId);
                 DropDownList ddlCultureCode = (DropDownList)e.Row.FindControl("ddlCultureCode");
                 ddlCultureCode.SelectedValue = language.CultureCode;
-            }   
+                DropDownList ddlPage = (DropDownList)e.Row.FindControl("ddlPage");
+                ddlPage.SelectedValue = language.PageId.ToString();
+            }
+            else if ((e.Row.RowType == DataControlRowType.DataRow) && (gvLanguages.EditIndex == -1))
+            {
+                int LanguageId = (int)gvLanguages.DataKeys[e.Row.RowIndex].Value;
+                var language = db.Languages.Find(LanguageId);
+                Label lblPage = (Label)e.Row.FindControl("lblPage");
+                lblPage.Text = MyCMS.Utility.GetPageUrl(language.PageId);
+            }
         }
 
         

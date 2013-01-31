@@ -14,11 +14,10 @@
         <asp:Panel ID="panelPage" runat="server">
             <asp:RadioButtonList ID="rbtPage" runat="server"></asp:RadioButtonList>
         </asp:Panel>
-        <asp:Panel ID="panelLink" runat="server">
+        <asp:Panel ID="panelLink" runat="server" Visible="false">
             <asp:TextBox ID="txtExternalUrl" runat="server" Width="300px"></asp:TextBox>
         </asp:Panel>
-        <asp:Panel ID="panelFile" runat="server">
-            <%--<input type="text" style="width:300px;" id="txtFile" name="txtFile" value=""/>--%>
+        <asp:Panel ID="panelFile" runat="server" Visible="false">
             <asp:TextBox ID="txtFile" runat="server"></asp:TextBox>
             <input type="button" value="Browse ..." id="btnSelectFile" name="btnSelectFile" />
         </asp:Panel>

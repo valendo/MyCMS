@@ -17,12 +17,13 @@ namespace MyCMS.Modules.Redirect
         {
             if (!IsPostBack)
             {
+                BindingPages();
                 var redirect = db.Redirects.Where(t => t.ModuleId == this.ModuleId).FirstOrDefault();
                 if (redirect != null)
                 {
                     BindingType(redirect.Type);
                     rbtType.SelectedValue = redirect.Type;
-                    BindingPages();
+                    
                     if (redirect.Type == "link")
                     {
                         txtExternalUrl.Text = redirect.Url;
@@ -112,7 +113,7 @@ namespace MyCMS.Modules.Redirect
         {
             var pages = db.Pages.Where(t => t.ParentId == -1).ToList();
             ListItemCollection list = new ListItemCollection();
-            GetListPages(pages, ref list, 0);
+            MyCMS.Utility.GetListPages(pages, ref list, 0);
             rbtPage.DataSource = list;
             rbtPage.DataTextField = "Text";
             rbtPage.DataValueField = "Value";
@@ -131,23 +132,6 @@ namespace MyCMS.Modules.Redirect
             }
         }
 
-        const string spaceChar = "&nbsp;&nbsp;&nbsp; ";
-        private void GetListPages(List<PageInfo> pages, ref ListItemCollection list, int level)
-        {
-            string space = "";
-            for (int i = 0; i < level; i++)
-            {
-                space += spaceChar;
-            }
-            foreach (var item in pages)
-            {
-                list.Add(new ListItem(Server.HtmlDecode(space + item.PageName.ToString()), item.PageId.ToString()));
-                var subPages = db.Pages.Where(t => t.ParentId == item.PageId).ToList();
-                if (subPages.Count > 0)
-                {
-                    GetListPages(subPages, ref list, level + 1);
-                }
-            }
-        }
+        
     }
 }

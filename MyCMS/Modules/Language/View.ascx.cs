@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Globalization;
+using System.Threading;
 
 namespace MyCMS.Modules.Language
 {
@@ -27,8 +29,10 @@ namespace MyCMS.Modules.Language
                             ImageButton btn = new ImageButton();
                             btn.ID = "language_" + item.CultureCode;
                             btn.ImageUrl = "/images/icons/flags/" + item.CultureCode + ".gif";
-                            btn.CssClass = "image_language";
-                            
+                            if (item.CultureCode == this.Langauge)
+                                btn.CssClass = "image_language selected";
+                            else
+                                btn.CssClass = "image_language";
                             btn.CommandArgument = item.CultureCode;
                             btn.Click += language_Click;
                             pchContent.Controls.Add(btn);
@@ -42,7 +46,10 @@ namespace MyCMS.Modules.Language
                             LinkButton link = new LinkButton();
                             link.ID = "language_" + item.CultureCode;
                             link.Text = item.CultureName;
-                            link.CssClass = "link_language";
+                            if (item.CultureCode == this.Langauge)
+                                link.CssClass = "link_language selected";
+                            else
+                                link.CssClass = "link_language";
                             link.CommandArgument = item.CultureCode;
                             link.Click += language_Click;
                             pchContent.Controls.Add(link);
@@ -56,14 +63,20 @@ namespace MyCMS.Modules.Language
                             ImageButton btn = new ImageButton();
                             btn.ID = "img_language_" + item.CultureCode;
                             btn.ImageUrl = "/images/icons/flags/" + item.CultureCode + ".gif";
-                            btn.CssClass = "image_language";
+                            if (item.CultureCode == this.Langauge)
+                                btn.CssClass = "image_language selected";
+                            else
+                                btn.CssClass = "image_language";
                             btn.ImageAlign = ImageAlign.AbsMiddle;
                             btn.CommandArgument = item.CultureCode;
                             btn.Click += language_Click;
                             LinkButton link = new LinkButton();
                             link.ID = "link_language_" + item.CultureCode;
                             link.Text = item.CultureName;
-                            link.CssClass = "link_language";
+                            if (item.CultureCode == this.Langauge)
+                                link.CssClass = "link_language selected";
+                            else
+                                link.CssClass = "link_language";
                             link.CommandArgument = item.CultureCode;
                             link.Click += language_Click;
                             pchContent.Controls.Add(btn);
@@ -80,6 +93,13 @@ namespace MyCMS.Modules.Language
                         ddl.DataTextField = "CultureName";
                         ddl.DataValueField = "CultureCode";
                         ddl.DataBind();
+                        ddl.AutoPostBack = true;
+                        if (this.Langauge != "")
+                        {
+                            ddl.SelectedValue = this.Langauge;
+                        }
+                        ddl.CssClass = "ddl_langauge";
+                        ddl.SelectedIndexChanged += language_Click;
                         pchContent.Controls.Add(ddl);
                     }
                 }
@@ -99,19 +119,33 @@ namespace MyCMS.Modules.Language
         {
 
             string type = sender.GetType().Name;
+            string CultureCode = "";
             if (type == "ImageButton")
             {
                 ImageButton ctl = (ImageButton)sender;
-                string CultureCode = ctl.CommandArgument;
-                Response.Write(CultureCode);
+                CultureCode = ctl.CommandArgument;
             }
             else if (type == "LinkButton")
             {
                 LinkButton ctl = (LinkButton)sender;
-                string CultureCode = ctl.CommandArgument;
-                Response.Write(CultureCode);
+                CultureCode = ctl.CommandArgument;
             }
-            
+            else if (type == "DropDownList")
+            {
+                DropDownList ctl = (DropDownList)sender;
+                CultureCode = ctl.SelectedValue;
+            }
+            if (CultureCode != "")
+            {
+                var PageId = db.Languages.Where(t => t.ModuleId == this.ModuleId && t.CultureCode == CultureCode).FirstOrDefault().PageId;
+                var cookie = new HttpCookie("culture", CultureCode);
+                Response.Cookies.Add(cookie);
+                string url = MyCMS.Utility.GetPageUrl(PageId);
+                if (url != "")
+                    Response.Redirect(url);
+                else
+                    Response.Redirect("/");
+            }
         }
 
     }

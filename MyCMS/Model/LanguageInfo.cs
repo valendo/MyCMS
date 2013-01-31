@@ -14,5 +14,6 @@ namespace MyCMS.Model
         public string CultureCode { get; set; }
         public string CultureName { get; set; }
         public int SortOrder { get; set; }
+        public int PageId { get; set; }
     }
 }

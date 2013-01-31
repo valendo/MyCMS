@@ -39,6 +39,23 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorCultureName" runat="server" ForeColor="Red" ControlToValidate="txtCultureName" Display="Dynamic" ErrorMessage="Culture Name is required" ValidationGroup="insert_language"></asp:RequiredFieldValidator>
                 </FooterTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Redirect Page">
+                <ItemTemplate>
+                    <asp:Label ID="lblpage" runat="server" Text='<%# Bind("PageId") %>'></asp:Label>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:DropDownList ID="ddlPage" runat="server" 
+                        SelectMethod="GetPages"
+                        DataTextField="Text" DataValueField="Value">
+                    </asp:DropDownList>
+                </EditItemTemplate>
+                <FooterTemplate>
+                    <asp:DropDownList ID="ddlPage" runat="server" 
+                        SelectMethod="GetPages"
+                        DataTextField="Text" DataValueField="Value">
+                    </asp:DropDownList>
+                </FooterTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Sort Order">
                 <ItemTemplate>
                     <asp:Label ID="lblSortOrder" runat="server" Text='<%# Bind("SortOrder") %>'></asp:Label>

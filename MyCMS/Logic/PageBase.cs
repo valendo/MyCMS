@@ -26,8 +26,10 @@ namespace MyCMS.Logic
                     
                     if (IsEdit)
                     {
+                        var moduleDefId = db.Modules.Find(ModuleId).ModuleDefId;
+                        var moudleName = db.ModuleDefinitions.Find(moduleDefId).ModuleName;
                         sb.AppendFormat("<div class=\"dragbox\" id=\"PageModule{0}\" >", PageModuleId);
-                        sb.AppendFormat("<h2><span>{0}</span>", ModuleTitle);
+                        sb.AppendFormat("<h2><span>{0}</span>", moudleName);
                         sb.AppendFormat("<a class=\"delete opIcons\" title=\"Delete\"> </a>");
                         sb.AppendFormat("<a class=\"share opIcons\" onclick=\"openPopup('Share modules','/Admin/ShareModule.aspx?pmid={0}');\" title=\"Share\"> </a>", PageModuleId);
                         sb.AppendFormat("<a class=\"setting opIcons\" onclick=\"openPopup('Module Settings','/Admin/ModuleSetting.aspx?action=edit&pmid={0}');\" title=\"Settings\"> </a>", PageModuleId);
